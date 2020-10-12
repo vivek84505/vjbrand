@@ -1,6 +1,6 @@
 <?php 
 
-echo "This is test PHP File";
+echo "This is edited PHP File";
 
 
-?>
+?> 
