@@ -132,11 +132,11 @@ $db['default'] = array(
 
 	'hostname' => 'localhost',
 
-	'username' => 'root',
+	'username' => 'avenuine_user',
 
-	'password' => '',
+	'password' => 'proud@123',
 
-	'database' => 'newsproud1',
+	'database' => 'avenuine_proud',
 
 	'dbdriver' => 'mysqli',
 
