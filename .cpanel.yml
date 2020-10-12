@@ -1,5 +1,6 @@
- 
+---
 deployment:
- tasks:
- - export DEPLOYPATH=/home/user/public_html/
- 
+  tasks:
+    - export DEPLOYPATH=/home/avenuine/public_html/
+    - /bin/cp -R * $DEPLOYPATH
+    
