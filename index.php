@@ -1,6 +1,6 @@
 <?php 
 
-echo "new testing vk";
+echo "new  vk";
  
 
 ?> 
