@@ -1,0 +1,115 @@
+.menu-list {
+	position: relative;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.menu-item {
+	display: block;
+	margin: 1em 0;
+}
+
+.menu-link {
+	font-size: 16px;
+	font-weight: bold;
+	display: block;
+	padding: 5px;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-touch-callout: none;
+	-khtml-user-select: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.menu-link:hover,
+.menu-link:focus {
+	outline: none;
+}
+/* tab-menu-1 */
+.tab-menu-1 .menu-item {
+	position: relative;
+	margin: 0 5px;
+}
+
+.tab-menu-1 .menu-link {
+	position: relative;
+	min-width: 100px;
+	text-align: center;
+	-webkit-transition: color 0.3s;
+	transition: color 0.3s;
+}
+
+.tab-menu-1 .menu-item::before,
+.tab-menu-1 .menu-link::before,
+.tab-menu-1 .menu-link::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	width: 10px;
+	height: 2px;
+	opacity: 0;
+}
+
+/* flipped sides */
+.tab-menu-1 .menu-link::before,
+.tab-menu-1 .menu-link::after {
+	-webkit-transform: translate3d(0, 10px, 0);
+	transform: translate3d(0, 10px, 0);
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+	transition: transform 0.3s, opacity 0.3s;
+}
+
+.tab-menu-1 .active .menu-link::before,
+.tab-menu-1 .active .menu-link::after {
+	opacity: 1;
+}
+
+/* left flip */
+.tab-menu-1 .menu-link::before {
+	left: 0;
+	-webkit-transform-origin: 0% 0%;
+	transform-origin: 0% 0%;
+}
+
+.tab-menu-1 .active .menu-link::before {
+	-webkit-transform: rotate3d(0, 0, 1, -90deg);
+	transform: rotate3d(0, 0, 1, -90deg);
+}
+
+/* right flip */
+.tab-menu-1 .menu-link::after {
+	right: 0;
+	-webkit-transform-origin: 100% 0%;
+	transform-origin: 100% 0%;
+}
+
+.tab-menu-1 .active .menu-link::after {
+	-webkit-transform: rotate3d(0, 0, 1, 90deg);
+	transform: rotate3d(0, 0, 1, 90deg);
+}
+
+/* bottom line */
+.tab-menu-1 .menu-item::before {
+	left: 0;
+	width: 100%;
+	-webkit-transform: translate3d(0, 10px, 0);
+	transform: translate3d(0, 10px, 0);
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+	transition: transform 0.3s, opacity 0.3s;
+}
+
+.tab-menu-1 .active::before {
+	opacity: 1;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.1s;
+	transition: transform 0.3s, opacity 0.1s;
+}

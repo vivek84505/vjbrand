@@ -1,0 +1,2 @@
+<script src="<?php echo base_url();?>template/front/assets/plugins/owl-carousel2/owl.carousel.min.js"></script>
+<script src="<?php echo base_url();?>template/front/assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
