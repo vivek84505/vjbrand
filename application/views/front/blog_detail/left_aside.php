@@ -16,37 +16,36 @@
                     foreach($cat as $row){
                         $sub_cat = $this->db->get_where('blog_sub_category',array('parent_category_id'=> $row['blog_category_id']))->result_array();
                         if(count($sub_cat) == 0){
-                ?>
-                    <li>
-                        <a href="<?php echo base_url();?>home/blog_category/<?php echo $row['blog_category_id'];?>/0" onClick="get_blog_list('<?php echo $row['blog_category_id'];?>','0')" >
-                            <?php echo translate($row['name']);?>
-                        </a>
-                    </li>
-                <?php
-                        }else{
-                ?>
-                    <li>
-                        <span class="arrow"><i class="fa fa-angle-down"></i></span>
-                        <a href="<?php echo base_url();?>home/blog_category/<?php echo $row['blog_category_id'];?>/0" onClick="get_blog_list('<?php echo $row['blog_category_id'];?>','0')" >
-                            <?php echo translate($row['name']);?>
-                        </a>
-                        <ul class="children">
-                            <?php 
-                                foreach($sub_cat as $rows){
-                                    $total_sub_cat_blog = $this->db->get_where('blog',array('blog_sub_category_id' => $rows['blog_sub_category_id'], 'status' => 'published', 'hide_status' => 'false'))->result_array();
-                                    $x = sizeof($total_sub_cat_blog);
-                            ?>
+                        ?>
                             <li>
-                                <a href="<?php echo base_url();?>home/blog_category/<?php echo $row['blog_category_id'];?>/<?php echo $rows['blog_sub_category_id'];?>" onClick="get_blog_list('<?php echo $row['blog_category_id']; ?>','<?php echo $rows['blog_sub_category_id'];?>');" > 
-                                    <?php echo translate($rows['name']);?>
-                                    <span class="count"><?php echo $x; ?></span>
+                                <a href="<?php echo base_url();?>home/blog_category/<?php echo $row['blog_category_id'];?>/0" onClick="get_blog_list('<?php echo $row['blog_category_id'];?>','0')" >
+                                    <?php echo translate($row['name']);?>
                                 </a>
                             </li>
-                            <?php 
-                                }
-                            ?>
-                        </ul>
-                    </li>
+                            <?php
+                        } else{ ?>
+                            <li>
+                                <span class="arrow"><i class="fa fa-angle-down"></i></span>
+                                <a href="<?php echo base_url();?>home/blog_category/<?php echo $row['blog_category_id'];?>/0" onClick="get_blog_list('<?php echo $row['blog_category_id'];?>','0')" >
+                                    <?php echo translate($row['name']);?>
+                                </a>
+                                <ul class="children">
+                                    <?php
+                                        foreach($sub_cat as $rows){
+                                            $total_sub_cat_blog = $this->db->get_where('blog',array('blog_sub_category_id' => $rows['blog_sub_category_id'], 'status' => 'published', 'hide_status' => 'false'))->result_array();
+                                            $x = sizeof($total_sub_cat_blog);
+                                    ?>
+                                    <li>
+                                        <a href="<?php echo base_url();?>home/blog_category/<?php echo $row['blog_category_id'];?>/<?php echo $rows['blog_sub_category_id'];?>" onClick="get_blog_list('<?php echo $row['blog_category_id']; ?>','<?php echo $rows['blog_sub_category_id'];?>');" >
+                                            <?php echo translate($rows['name']);?>
+                                            <span class="count"><?php echo $x; ?></span>
+                                        </a>
+                                    </li>
+                                    <?php
+                                        }
+                                    ?>
+                                </ul>
+                            </li>
                 <?php }}?>
                 </ul>
             </div>

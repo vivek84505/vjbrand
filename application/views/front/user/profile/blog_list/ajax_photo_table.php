@@ -20,7 +20,7 @@
                         <td>
                             <?php
                                 $image = json_decode($photo['img_features'], true);
-                                if ($image[0]['thumb']) {
+                                if (isset($image[0]['thumb'])) {
                                 ?>
                                     <img class="img-responsive img-thumbnail image_delay" style="width: 64px;height: 50px;" src="<?php echo img_loading(); ?>" data-src="<?php echo base_url();?>uploads/blog_photo_image/<?php echo $image[0]['thumb'];?>"/>
                                 <?php
@@ -30,8 +30,8 @@
                                 <?php
                                 }
                             ?>
-                            
-                        </td>  
+
+                        </td>
                         <td><?=$photo['title']?></td>
                         <td><?=date('d/m/Y h:m A', $photo['timestamp'])?></td>
                         <td>

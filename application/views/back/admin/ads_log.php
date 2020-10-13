@@ -39,31 +39,33 @@
                                                         $img = $post_details[0]['img'];
                                                     }
                                                     else {
-                                                        $img = $default_post[0]['img'];     
+                                                        $img = $default_post[0]['img'];
                                                     }
                                                 ?>
                                                 <img class="img-sm" src="<?=base_url()?>uploads/default_banner/<?=$img?>" alt="">
                                             </td>
                                             <td><?=$row['position']?></td>
                                             <td><?=$row['availability']?></td>
-                                            <td><?php 
-                                                if ($row['user_id'] != NULL) {
-                                                  echo $this->db->get_where('user', array('user_id' => $row['user_id']))->row()->firstname .' '. $this->db->get_where('user', array('user_id' => $row['user_id']))->row()->lastname ;  
+                                            <td><?php
+                                                if ($row['user_id'] != NULL && $row['user_id'] != 0) {
+                                                  echo $this->db->get_where('user', array('user_id' => $row['user_id']))->row()->firstname .' '. $this->db->get_where('user', array('user_id' => $row['user_id']))->row()->lastname ;
                                                 }
                                                 else {
                                                     echo '-';
-                                                }                                                
+                                                }
                                                 ?>
                                             </td>
                                             <td>
                                                 <?php
-                                                    $packages = json_decode($row['package'], true);
-                                                    $package_id = $this->db->get_where('advertisement_payment', array('user_id' => $row['user_id'], 'expire' => 'no'))->row()->package_id;
-                                                    foreach ($packages as $package) {
-                                                        if ($package['index'] == $package_id) {?>
-                                                        <b><?=translate('name:_')?></b><?=$package['name'];?><br>
-                                                        <b><?=translate('amount:_')?></b><?='$'.$package['price'];?>
-                                                        <?php
+                                                    if ($row['user_id'] != NULL && $row['user_id'] != 0) {
+                                                        $packages = json_decode($row['package'], true);
+                                                        $package_id = $this->db->get_where('advertisement_payment', array('user_id' => $row['user_id'], 'expire' => 'no'))->row()->package_id;
+                                                        foreach ($packages as $package) {
+                                                            if ($package['index'] == $package_id) {?>
+                                                            <b><?=translate('name:_')?></b><?=$package['name'];?><br>
+                                                            <b><?=translate('amount:_')?></b><?='$'.$package['price'];?>
+                                                            <?php
+                                                            }
                                                         }
                                                     }
                                                 ?>

@@ -71,12 +71,19 @@ class Ads_model extends CI_Model
         }
     }
 
+    function show_google_adsense_element($type=''){
+        if($type !== ''){
+            $data['ad_data'] = $this->db->get_where('advertisement',array('type' => $type))->row();
+            $this->load->view('back/admin/google_adsense_element',$data);
+        }
+    }
+
     function getPageNameByID($id=''){
         if($id!== ''){
             return $this->db->get_where('ad_page',array('ad_page_id' => $id))->row()->name;
         }
     }
-    
+
     function update_package($id='',$index=''){
         $package_name = $this->input->post('name');
         $price        = $this->input->post('price');
@@ -150,7 +157,7 @@ class Ads_model extends CI_Model
         $this->db->where('advertisement_id',$id);
         $this->db->update('advertisement',$data);
     }
-    
+
     function package_data($id='',$index=''){
         $package = $this->db->get_where('advertisement',array('advertisement_id' => $id))->row()->package;
         $package = json_decode($package,true);

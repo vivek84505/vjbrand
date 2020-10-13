@@ -8,6 +8,7 @@ class Admin extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->database();
+        $this->load->library('spreadsheet');
         /* cache control */
         $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
         $this->output->set_header('Pragma: no-cache');
@@ -43,8 +44,10 @@ class Admin extends CI_Controller {
             $this->db->update('news_category', $data);
             recache();
         } elseif ($para1 == 'delete') {
-            $this->db->where('news_category_id', $para2);
-            $this->db->delete('news_category');
+            if(!demo()){
+                $this->db->where('news_category_id', $para2);
+                $this->db->delete('news_category');
+            }
             recache();
         } elseif ($para1 == 'list') {
             $this->db->order_by('news_category_id', 'desc');
@@ -85,8 +88,10 @@ class Admin extends CI_Controller {
             $this->db->update('news_sub_category', $data);
             recache();
         } elseif ($para1 == 'delete') {
-            $this->db->where('news_sub_category_id', $para2);
-            $this->db->delete('news_sub_category');
+            if(!demo()){
+                $this->db->where('news_sub_category_id', $para2);
+                $this->db->delete('news_sub_category');
+            }
             recache();
         } elseif ($para1 == 'list') {
             $this->db->order_by('news_sub_category_id', 'desc');
@@ -217,51 +222,56 @@ class Admin extends CI_Controller {
             $this->db->insert('news', $data);
             $id = $this->db->insert_id();
             $img_features = array();
-            foreach ($_FILES['nimg']['name'] as $i => $row) {
-                if ($_FILES['nimg']['name'][$i] !== '') {
-                    $ib = $i + 1;
-                    $path = $_FILES['nimg']['name'][$i];
-                    $ext = pathinfo($path, PATHINFO_EXTENSION);
-                    $img = 'news_' . $id . '_' . $ib . '.' . $ext;
-                    $img_thumb = 'news_' . $id . '_' . $ib . '_thumb.' . $ext;
-                    $img_features[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
-                    move_uploaded_file($_FILES['nimg']['tmp_name'][$i], 'uploads/' . 'news' . '_image/' . 'news' . '_' . $id . '_' . $ib .'.'. $ext);
-                    $this->Crud_model->img_thumb("news", $id . '_' . $ib, $ext);
+            if(!demo()){
+                foreach ($_FILES['nimg']['name'] as $i => $row) {
+                    if ($_FILES['nimg']['name'][$i] !== '') {
+                        $ib = $i + 1;
+                        $path = $_FILES['nimg']['name'][$i];
+                        //$ext = pathinfo($path, PATHINFO_EXTENSION);
+                        $ext = 'jpg';
+                        $img = 'news_' . $id . '_' . $ib . '.' . $ext;
+                        $img_thumb = 'news_' . $id . '_' . $ib . '_thumb.' . $ext;
+                        $img_features[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
+                        move_uploaded_file($_FILES['nimg']['tmp_name'][$i], 'uploads/' . 'news' . '_image/' . 'news' . '_' . $id . '_' . $ib .'.'. $ext);
+                        $this->Crud_model->img_thumb("news", $id . '_' . $ib, 'jpg');
+                    }
                 }
-            }
 
-            //$this->Crud_model->file_up("nimg", "news", $id, 'multi');
-            $data1['img_features'] = json_encode($img_features);
-            $this->db->where('news_id', $id);
-            $this->db->update('news', $data1);
+                //$this->Crud_model->file_up("nimg", "news", $id, 'multi');
+                $data1['img_features'] = json_encode($img_features);
+                $this->db->where('news_id', $id);
+                $this->db->update('news', $data1);
+            }
             recache();
         } else if ($para1 == 'to_archive') {
-            $news_data = $this->db->get_where('news', array('news_id' => $para2))->result_array();
-            foreach ($news_data as $row) {
-                $data['news_archive_id'] = $row['news_id'];
-                $data['title'] = $row['title'];
-                $data['summary'] = $row['summary'];
-                $data['description'] = $row['description'];
-                $data['news_category_id'] = $row['news_category_id'];
-                $data['news_sub_category_id'] = $row['news_sub_category_id'];
-                $data['date'] = $row['date'];
-                $data['timestamp'] = $row['timestamp'];
-                $data['view_count'] = $row['view_count'];
-                $data['tag'] = $row['tag'];
-                $data['status'] = 'unpublished';
-                $data['publish_timestamp'] = $row['publish_timestamp'];
-                $data['news_speciality_id'] = $row['news_speciality_id'];
-                $data['news_reporter_id'] = $row['news_reporter_id'];
-                $data['news_uploader_id'] = $row['news_uploader_id'];
-                $data['edited_by'] = $row['edited_by'];
-                $data['img_features'] = $row['img_features'];
-                $data['serial'] = $row['serial'];
-                $archived_by[] = array('admin' => $this->session->userdata('admin_id'), 'timestamp' => time());
-                $data['archived_by'] = json_encode($archived_by);
-                $this->db->insert('news_archive', $data);
+            if(!demo()){
+                $news_data = $this->db->get_where('news', array('news_id' => $para2))->result_array();
+                foreach ($news_data as $row) {
+                    $data['news_archive_id'] = $row['news_id'];
+                    $data['title'] = $row['title'];
+                    $data['summary'] = $row['summary'];
+                    $data['description'] = $row['description'];
+                    $data['news_category_id'] = $row['news_category_id'];
+                    $data['news_sub_category_id'] = $row['news_sub_category_id'];
+                    $data['date'] = $row['date'];
+                    $data['timestamp'] = $row['timestamp'];
+                    $data['view_count'] = $row['view_count'];
+                    $data['tag'] = $row['tag'];
+                    $data['status'] = 'unpublished';
+                    $data['publish_timestamp'] = $row['publish_timestamp'];
+                    $data['news_speciality_id'] = $row['news_speciality_id'];
+                    $data['news_reporter_id'] = $row['news_reporter_id'];
+                    $data['news_uploader_id'] = $row['news_uploader_id'];
+                    $data['edited_by'] = $row['edited_by'];
+                    $data['img_features'] = $row['img_features'];
+                    $data['serial'] = $row['serial'];
+                    $archived_by[] = array('admin' => $this->session->userdata('admin_id'), 'timestamp' => time());
+                    $data['archived_by'] = json_encode($archived_by);
+                    $this->db->insert('news_archive', $data);
+                }
+                $this->db->where('news_id', $para2);
+                $this->db->delete('news');
             }
-            $this->db->where('news_id', $para2);
-            $this->db->delete('news');
             recache();
         } else if ($para1 == 'edit') {
             $page_data['news_data'] = $this->db->get_where('news', array('news_id' => $para2))->result_array();
@@ -271,7 +281,8 @@ class Admin extends CI_Controller {
                         'news_id' => $para2
                     ))->result_array();
             $this->load->view('back/admin/news_view', $page_data);
-        } elseif ($para1 == "update") {
+        }
+        elseif ($para1 == "update") {
             $data['title'] = $this->input->post('title');
             $data['summary'] = $this->input->post('summary');
             $data['description'] = $this->input->post('description');
@@ -302,127 +313,120 @@ class Admin extends CI_Controller {
             $edited_by[] = array('admin' => $this->session->userdata('admin_id'), 'timestamp' => time());
             $data['edited_by'] = json_encode($edited_by);
 
-            $img_features = json_decode($this->db->get_where('news', array('news_id' => $para2))->row()->img_features, true);
-            $last_index = 0;
-            /*
-            foreach ($img_features as $roww) {
-                if($last_index < $roww['index']){
-                    $last_index = $roww['index'];
+            if(!demo()){
+
+                $img_features = json_decode($this->db->get_where('news', array('news_id' => $para2))->row()->img_features, true);
+                $last_index = 0;
+
+                $this->load->library('image_lib');
+                ini_set("memory_limit", "-1");
+
+                $totally_new = array();
+                $replaced_new = array();
+                $untouched = array();
+
+                foreach ($_FILES['nimg']['name'] as $i => $row) {
+                    if ($_FILES['nimg']['name'][$i] !== '') {
+                        $ib = $i + 1;
+                        $path = $_FILES['nimg']['name'][$i];
+                        //$ext = pathinfo($path, PATHINFO_EXTENSION);
+                        $ext = 'jpg';
+                        $img = 'news_' . $para2 . '_' . $ib . '.' . $ext;
+                        $img_thumb = 'news_' . $para2 . '_' . $ib . '_thumb.' . $ext;
+                        $in_db = 'no';
+                        foreach ($img_features as $roww) {
+                            if($roww['index'] == $i){
+                                $replaced_new[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
+                                $in_db = 'yes';
+                            }
+                        }
+                        if ($in_db == 'no') {
+                            $totally_new[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
+                        }
+                        move_uploaded_file($_FILES['nimg']['tmp_name'][$i], 'uploads/news_image/' . $img);
+
+                        $config1['image_library'] = 'gd2';
+                        $config1['create_thumb'] = TRUE;
+                        $config1['maintain_ratio'] = TRUE;
+                        $config1['width'] = '400';
+                        $config1['height'] = '400';
+                        $config1['source_image'] = 'uploads/news_image/' . $img;
+
+                        $this->image_lib->initialize($config1);
+                        $this->image_lib->resize();
+                        $this->image_lib->clear();
+                    }
                 }
-            }
-            */
-            $this->load->library('image_lib');
-            ini_set("memory_limit", "-1");
 
-            $totally_new = array();
-            $replaced_new = array();
-            $untouched = array();
-
-            foreach ($_FILES['nimg']['name'] as $i => $row) {
-                if ($_FILES['nimg']['name'][$i] !== '') {
-                    $ib = $i + 1;
-                    $path = $_FILES['nimg']['name'][$i];
-                    $ext = pathinfo($path, PATHINFO_EXTENSION);
-                    $img = 'news_' . $para2 . '_' . $ib . '.' . $ext;
-                    $img_thumb = 'news_' . $para2 . '_' . $ib . '_thumb.' . $ext;
-                    $in_db = 'no';
-                    foreach ($img_features as $roww) {
-                        if($roww['index'] == $i){
-                            $replaced_new[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
-                            $in_db = 'yes';
+                $touched = $replaced_new + $totally_new;
+                foreach ($img_features as $yy) {
+                    $is_touched = 'no';
+                    foreach ($touched as $rr) {
+                        if($yy['index'] == $rr['index']){
+                            $is_touched = 'yes';
                         }
                     }
-                    if ($in_db == 'no') {
-                        $totally_new[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
-                    }
-                    move_uploaded_file($_FILES['nimg']['tmp_name'][$i], 'uploads/news_image/' . $img);
-
-                    $config1['image_library'] = 'gd2';
-                    $config1['create_thumb'] = TRUE;
-                    $config1['maintain_ratio'] = TRUE;
-                    $config1['width'] = '400';
-                    $config1['height'] = '400';
-                    $config1['source_image'] = 'uploads/news_image/' . $img;
-
-                    $this->image_lib->initialize($config1);
-                    $this->image_lib->resize();
-                    $this->image_lib->clear();
-                }
-            }
-
-            $touched = $replaced_new + $totally_new;
-            foreach ($img_features as $yy) {
-                $is_touched = 'no';
-                foreach ($touched as $rr) {
-                    if($yy['index'] == $rr['index']){
-                        $is_touched = 'yes';
+                    if($is_touched == 'no'){
+                        $untouched[] = $yy;
                     }
                 }
-                if($is_touched == 'no'){
-                    $untouched[] = $yy;
+                $new_img_features = array();
+                foreach ($replaced_new as $k) {
+                    $new_img_features[] = $k;
                 }
+                foreach ($totally_new as $k) {
+                    $new_img_features[] = $k;
+                }
+                foreach ($untouched as $k) {
+                    $new_img_features[] = $k;
+                }
+                sort_array_of_array($new_img_features, 'index'); // Sort the data with Index
+
+                $data['img_features'] = json_encode($new_img_features);
             }
-            $new_img_features = array();
-            foreach ($replaced_new as $k) {
-                $new_img_features[] = $k;
-            }
-            foreach ($totally_new as $k) {
-                $new_img_features[] = $k;
-            }
-            foreach ($untouched as $k) {
-                $new_img_features[] = $k;
-            }
-            sort_array_of_array($new_img_features, 'index'); // Sort the data with Index
-            /*
-            echo "\n------------REPLACED------------\n";
-            var_dump($replaced_new);
-            echo "\n------------TOTALLY------------\n";
-            var_dump($totally_new);
-            echo "\n------------UNTOUCHED------------\n";
-            var_dump($untouched);
-            echo "\n------------------------\n";
-            echo "\n------------TOUCHED------------\n";
-            var_dump($touched);
-            echo "\n------------RESULT------------";
-            var_dump($new_img_features);
-            */
-            $data['img_features'] = json_encode($new_img_features);
+
             $this->db->where('news_id', $para2);
             $this->db->update('news', $data);
             recache();
-        } elseif ($para1 == 'delete_img') {
-            $new_img_features = array();
-            $old_img_features = json_decode($this->db->get_where('news', array('news_id' => $para2))->row()->img_features, true);
-            foreach ($old_img_features as $row2) {
-                if ($row2['img'] == $para3) {
-                    if (file_exists('uploads/news_image/' . $row2['img'])) {
-                        unlink('uploads/news_image/' . $row2['img']);
+
+        }
+        elseif ($para1 == 'delete_img') {
+            if(!demo()){
+                $new_img_features = array();
+                $old_img_features = json_decode($this->db->get_where('news', array('news_id' => $para2))->row()->img_features, true);
+                foreach ($old_img_features as $row2) {
+                    if ($row2['img'] == $para3) {
+                        if (file_exists('uploads/news_image/' . $row2['img'])) {
+                            unlink('uploads/news_image/' . $row2['img']);
+                        }
+                        if (file_exists('uploads/news_image/' . $row2['thumb'])) {
+                            unlink('uploads/news_image/' . $row2['thumb']);
+                        }
+                    } else {
+                        $new_img_features[] = $row2;
                     }
-                    if (file_exists('uploads/news_image/' . $row2['thumb'])) {
-                        unlink('uploads/news_image/' . $row2['thumb']);
-                    }
-                } else {
-                    $new_img_features[] = $row2;
                 }
+                $data['img_features'] = json_encode($new_img_features);
+                $this->db->where('news_id', $para2);
+                $this->db->update('news', $data);
             }
-            $data['img_features'] = json_encode($new_img_features);
-            $this->db->where('news_id', $para2);
-            $this->db->update('news', $data);
             recache();
         } elseif ($para1 == 'delete') {
-            $img_features = json_decode($this->db->get_where('news', array('news_id' => $para2))->row()->img_features, true);
+            if(!demo()){
+                $img_features = json_decode($this->db->get_where('news', array('news_id' => $para2))->row()->img_features, true);
 
-            foreach ($img_features as $row) {
-                if (file_exists('uploads/news_image/' . $row['img'])) {
-                    unlink('uploads/news_image/' . $row['img']);
+                foreach ($img_features as $row) {
+                    if (file_exists('uploads/news_image/' . $row['img'])) {
+                        unlink('uploads/news_image/' . $row['img']);
+                    }
+                    if (file_exists('uploads/news_image/' . $row['thumb'])) {
+                        unlink('uploads/news_image/' . $row['thumb']);
+                    }
                 }
-                if (file_exists('uploads/news_image/' . $row['thumb'])) {
-                    unlink('uploads/news_image/' . $row['thumb']);
-                }
+
+                $this->db->where('news_id', $para2);
+                $this->db->delete('news');
             }
-
-            $this->db->where('news_id', $para2);
-            $this->db->delete('news');
             recache();
         } elseif ($para1 == 'list') {
             $this->db->order_by('news_id', 'desc');
@@ -463,6 +467,8 @@ class Admin extends CI_Controller {
                 $thumb = '';
                 if(isset($img_features[0]['thumb'])){
                     $thumb = $img_features[0]['thumb'];
+                }else{
+                    $thumb = "default.jpg";
                 }
                 $update_timestamp = json_decode($row['edited_by']);
                 if(!empty($update_timestamp)){
@@ -517,7 +523,7 @@ class Admin extends CI_Controller {
                 //add html for action
                 $res['options'] = "
                     <center>
-                        <a class=\"btn btn-mint btn-xs btn-icon icon-lg fa fa-files-o add-tooltip\" data-news_id='" . $row['news_id'] . "' data-toggle=\"tooltip\"
+                        <a class=\"btn btn-mint btn-xs btn-icon icon-lg fa fa-files-o cop_news add-tooltip\" data-news_id='" . $row['news_id'] . "' data-toggle=\"tooltip\"
                             onclick=\"copy_news('" . $row['news_id'] . "')\" data-toggle=\"tooltip\" data-original-title= '".translate('copy')."'>
                                 <i class=\"icon-copy\"></i>
                         </a>
@@ -590,6 +596,93 @@ class Admin extends CI_Controller {
 
     /* ------------- NEWS POST Ends -------------------- */
 
+    // news bulk upload
+    function news_bulk_add($para1 = '', $para2 = '', $para3 = '') {
+        if (!$this->Crud_model->admin_permission('bulk_news_add')) {
+            redirect(base_url() . 'admin');
+        }
+        if ($para1 == 'do_add') {
+
+            $inputFileName = $_FILES['bulk_news_file']['tmp_name'];
+            $inputFileType = $this->spreadsheet->identify($inputFileName);
+            $reader = $this->spreadsheet->createReader($inputFileType);
+            $spreadsheet = $reader->load($inputFileName);
+            $sheetData = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
+
+            $newses = array();
+            if(!empty($sheetData)){
+                if(!isset($sheetData[1])){
+                    $this->session->set_flashdata('error',translate('Column names are missing'));
+                    redirect('admin/news_bulk_add');
+                }
+
+                foreach ($sheetData[1] as $colk => $colv){
+                    $col_map[$colk] = $colv;
+                }
+
+                if(!isset($sheetData[2])){
+                    $this->session->set_flashdata('error',translate('Data missing'));
+                    redirect('admin/news_bulk_add');
+                }
+
+                for($i = 2;$i <= count($sheetData);$i++){
+                    $news = array();
+                    foreach ($sheetData[$i] as $colk =>$colv) {
+                        $news[$col_map[$colk]] = $colv;
+                    }
+                    $newses[] = $news;
+                }
+            }
+
+            if(!empty($newses)){
+                foreach ($newses as $news){
+                    $this->news_bulk_upload_save_single($news);
+                }
+            }
+            $this->session->set_flashdata('success',translate('Bulk News uploaded'));
+            redirect('admin/news_bulk_add');
+        }
+        else{
+            $page_data['page_name'] = "news_bulk_add";
+            $this->load->view('back/index', $page_data);
+        }
+    }
+
+    // Single news upload form bulk
+    public function news_bulk_upload_save_single($news)
+    {
+        $data['title'] = $news['title'];
+        $data['summary'] = $news['summary'];
+        $data['news_category_id'] = $news['news_category'];
+        $data['news_sub_category_id'] = $news['news_sub_category'];
+        $data['date'] = strtotime($news['date']) ;
+        $data['timestamp'] = time();
+        $data['tag'] = $news['tags'];
+        $data['status'] = $news['status'];
+        if($this->input->post('status') == 'published'){
+            $data['publish_timestamp']  = time();
+        }
+        else{
+            $data['publish_timestamp']  = 0;
+        }
+        $data['news_speciality_id'] = $news['news_speciality'];
+        $data['news_reporter_id'] = $news['news_reporter'];
+        $data['news_uploader_id'] = $this->session->userdata('admin_id');
+        $data['edited_by'] = '[]';
+        $data['img_features'] = '[]';
+
+        $this->db->insert('news', $data);
+        $id = $this->db->insert_id();
+
+        if(!demo()){
+            $image_urls = array();
+            if(!empty($news['images'])){
+                $image_urls = explode(',', $news['images']);
+                $this->Crud_model->file_up_from_urls($image_urls,"news", $id);
+            }
+        }
+    }
+
     function news_archive($para1 = '', $para2 = '', $para3 = '') {
         if ($para1 == 'list') {
             $this->db->order_by('news_archive_id', 'desc');
@@ -629,7 +722,7 @@ class Admin extends CI_Controller {
                 $thumb = $img_features[0]['thumb'];
                 $res['image'] = '<center><img class="img-md thumbnail" style="height:auto !important; border:1px solid #ddd;padding:2px; border-radius:2px !important;" src="' . base_url() . 'uploads/news_image/' . $thumb . '"  /></center>';
                 $res['title'] = limit_chars($row['title'], 150);
-                $res['date'] = $row['date'];
+                $res['date'] = date("F j, Y", $row['date']);
                 $archived_by = json_decode($row['archived_by'], true);
                 foreach ($archived_by as $row2) {
                     $name = $this->db->get_where('admin', array('admin_id' => $row2['admin']))->row()->name;
@@ -675,29 +768,31 @@ class Admin extends CI_Controller {
 
             echo json_encode($result);
         } else if ($para1 == 'from_archive') {
-            $archive_data = $this->db->get_where('news_archive', array('news_archive_id' => $para2))->result_array();
-            foreach ($archive_data as $row) {
-                $data['news_id'] = $row['news_archive_id'];
-                $data['title'] = $row['title'];
-                $data['summary'] = $row['summary'];
-                $data['description'] = $row['description'];
-                $data['news_category_id'] = $row['news_category_id'];
-                $data['news_sub_category_id'] = $row['news_sub_category_id'];
-                $data['date'] = $row['date'];
-                $data['timestamp'] = $row['timestamp'];
-                $data['tag'] = $row['tag'];
-                $data['news_speciality_id'] = $row['news_speciality_id'];
-                $data['view_count'] = $row['view_count'];
-                $data['news_reporter_id'] = $row['news_reporter_id'];
-                $data['news_uploader_id'] = $row['news_uploader_id'];
-                $data['edited_by'] = $row['edited_by'];
-                $data['img_features'] = $row['img_features'];
-                $data['publish_timestamp'] = $row['publish_timestamp'];
-                $data['status'] = 'unpublished';
-                $this->db->insert('news', $data);
+            if(!demo()){
+                $archive_data = $this->db->get_where('news_archive', array('news_archive_id' => $para2))->result_array();
+                foreach ($archive_data as $row) {
+                    $data['news_id'] = $row['news_archive_id'];
+                    $data['title'] = $row['title'];
+                    $data['summary'] = $row['summary'];
+                    $data['description'] = $row['description'];
+                    $data['news_category_id'] = $row['news_category_id'];
+                    $data['news_sub_category_id'] = $row['news_sub_category_id'];
+                    $data['date'] = $row['date'];
+                    $data['timestamp'] = $row['timestamp'];
+                    $data['tag'] = $row['tag'];
+                    $data['news_speciality_id'] = $row['news_speciality_id'];
+                    $data['view_count'] = $row['view_count'];
+                    $data['news_reporter_id'] = $row['news_reporter_id'];
+                    $data['news_uploader_id'] = $row['news_uploader_id'];
+                    $data['edited_by'] = $row['edited_by'];
+                    $data['img_features'] = $row['img_features'];
+                    $data['publish_timestamp'] = $row['publish_timestamp'];
+                    $data['status'] = 'unpublished';
+                    $this->db->insert('news', $data);
+                }
+                $this->db->where('news_archive_id', $para2);
+                $this->db->delete('news_archive');
             }
-            $this->db->where('news_archive_id', $para2);
-            $this->db->delete('news_archive');
             recache();
         } elseif ($para1 == 'view') {
             $page_data['news_data'] = $this->db->get_where('news_archive', array(
@@ -719,19 +814,20 @@ class Admin extends CI_Controller {
             $this->db->update('news_archive', $data);
             recache();
         } elseif ($para1 == 'delete') {
-            $img_features = json_decode($this->db->get_where('news_archive', array('news_archive_id' => $para2))->row()->img_features, true);
+            if(!demo()){
+                $img_features = json_decode($this->db->get_where('news_archive', array('news_archive_id' => $para2))->row()->img_features, true);
 
-            foreach ($img_features as $row) {
-                if (file_exists('uploads/news_image/' . $row['img'])) {
-                    unlink('uploads/news_image/' . $row['img']);
+                foreach ($img_features as $row) {
+                    if (file_exists('uploads/news_image/' . $row['img'])) {
+                        unlink('uploads/news_image/' . $row['img']);
+                    }
+                    if (file_exists('uploads/news_image/' . $row['thumb'])) {
+                        unlink('uploads/news_image/' . $row['thumb']);
+                    }
                 }
-                if (file_exists('uploads/news_image/' . $row['thumb'])) {
-                    unlink('uploads/news_image/' . $row['thumb']);
-                }
+                $this->db->where('news_archive_id', $para2);
+                $this->db->delete('news_archive');
             }
-
-            $this->db->where('news_archive_id', $para2);
-            $this->db->delete('news_archive');
             recache();
         } else {
             $page_data['page_name'] = "news_archive";
@@ -794,8 +890,10 @@ class Admin extends CI_Controller {
             $this->db->update('blog_category', $data);
             recache();
         } elseif ($para1 == 'delete') {
-            $this->db->where('blog_category_id', $para2);
-            $this->db->delete('blog_category');
+            if(!demo()){
+                $this->db->where('blog_category_id', $para2);
+                $this->db->delete('blog_category');
+            }
             recache();
         } elseif ($para1 == 'list') {
             $this->db->order_by('blog_category_id', 'desc');
@@ -836,8 +934,10 @@ class Admin extends CI_Controller {
             $this->db->update('blog_sub_category', $data);
             recache();
         } elseif ($para1 == 'delete') {
-            $this->db->where('blog_sub_category_id', $para2);
-            $this->db->delete('blog_sub_category');
+            if(!demo()){
+                $this->db->where('blog_sub_category_id', $para2);
+                $this->db->delete('blog_sub_category');
+            }
             recache();
         } elseif ($para1 == 'list') {
             $this->db->order_by('blog_sub_category_id', 'desc');
@@ -871,113 +971,98 @@ class Admin extends CI_Controller {
             $id = $para2;
             $data['title'] = $this->input->post('title');
             $data['description'] = $this->input->post('description');
+            if(!demo()){
+                $img_features = json_decode($this->db->get_where('blog_photo', array('blog_photo_id' => $para2))->row()->img_features, true);
+                $last_index = 0;
 
-            $img_features = json_decode($this->db->get_where('blog_photo', array('blog_photo_id' => $para2))->row()->img_features, true);
-            $last_index = 0;
-            /*
-            foreach ($img_features as $roww) {
-                if($last_index < $roww['index']){
-                    $last_index = $roww['index'];
+                $this->load->library('image_lib');
+                ini_set("memory_limit", "-1");
+
+                $totally_new = array();
+                $replaced_new = array();
+                $untouched = array();
+
+                foreach ($_FILES['nimg']['name'] as $i => $row) {
+                    if ($_FILES['nimg']['name'][$i] !== '') {
+                        $ib = $i + 1;
+                        $path = $_FILES['nimg']['name'][$i];
+                        $ext = pathinfo($path, PATHINFO_EXTENSION);
+                        $img = 'blog_photo_' . $para2 . '_' . $ib . '.' . $ext;
+                        $img_thumb = 'blog_photo_' . $para2 . '_' . $ib . '_thumb.' . $ext;
+                        $in_db = 'no';
+                        foreach ($img_features as $roww) {
+                            if($roww['index'] == $i){
+                                $replaced_new[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
+                                $in_db = 'yes';
+                            }
+                        }
+                        if ($in_db == 'no') {
+                            $totally_new[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
+                        }
+                        move_uploaded_file($_FILES['nimg']['tmp_name'][$i], 'uploads/blog_photo_image/' . $img);
+
+                        $config1['image_library'] = 'gd2';
+                        $config1['create_thumb'] = TRUE;
+                        $config1['maintain_ratio'] = TRUE;
+                        $config1['width'] = '400';
+                        $config1['height'] = '400';
+                        $config1['source_image'] = 'uploads/blog_photo_image/' . $img;
+
+                        $this->image_lib->initialize($config1);
+                        $this->image_lib->resize();
+                        $this->image_lib->clear();
+                    }
                 }
-            }
-            */
-            $this->load->library('image_lib');
-            ini_set("memory_limit", "-1");
 
-            $totally_new = array();
-            $replaced_new = array();
-            $untouched = array();
-
-            foreach ($_FILES['nimg']['name'] as $i => $row) {
-                if ($_FILES['nimg']['name'][$i] !== '') {
-                    $ib = $i + 1;
-                    $path = $_FILES['nimg']['name'][$i];
-                    $ext = pathinfo($path, PATHINFO_EXTENSION);
-                    $img = 'blog_photo_' . $para2 . '_' . $ib . '.' . $ext;
-                    $img_thumb = 'blog_photo_' . $para2 . '_' . $ib . '_thumb.' . $ext;
-                    $in_db = 'no';
-                    foreach ($img_features as $roww) {
-                        if($roww['index'] == $i){
-                            $replaced_new[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
-                            $in_db = 'yes';
+                $touched = $replaced_new + $totally_new;
+                foreach ($img_features as $yy) {
+                    $is_touched = 'no';
+                    foreach ($touched as $rr) {
+                        if($yy['index'] == $rr['index']){
+                            $is_touched = 'yes';
                         }
                     }
-                    if ($in_db == 'no') {
-                        $totally_new[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
-                    }
-                    move_uploaded_file($_FILES['nimg']['tmp_name'][$i], 'uploads/blog_photo_image/' . $img);
-
-                    $config1['image_library'] = 'gd2';
-                    $config1['create_thumb'] = TRUE;
-                    $config1['maintain_ratio'] = TRUE;
-                    $config1['width'] = '400';
-                    $config1['height'] = '400';
-                    $config1['source_image'] = 'uploads/blog_photo_image/' . $img;
-
-                    $this->image_lib->initialize($config1);
-                    $this->image_lib->resize();
-                    $this->image_lib->clear();
-                }
-            }
-
-            $touched = $replaced_new + $totally_new;
-            foreach ($img_features as $yy) {
-                $is_touched = 'no';
-                foreach ($touched as $rr) {
-                    if($yy['index'] == $rr['index']){
-                        $is_touched = 'yes';
+                    if($is_touched == 'no'){
+                        $untouched[] = $yy;
                     }
                 }
-                if($is_touched == 'no'){
-                    $untouched[] = $yy;
+                $new_img_features = array();
+                foreach ($replaced_new as $k) {
+                    $new_img_features[] = $k;
                 }
+                foreach ($totally_new as $k) {
+                    $new_img_features[] = $k;
+                }
+                foreach ($untouched as $k) {
+                    $new_img_features[] = $k;
+                }
+                sort_array_of_array($new_img_features, 'index'); // Sort the data with Index
+
+                $data['img_features'] = json_encode($new_img_features);
             }
-            $new_img_features = array();
-            foreach ($replaced_new as $k) {
-                $new_img_features[] = $k;
-            }
-            foreach ($totally_new as $k) {
-                $new_img_features[] = $k;
-            }
-            foreach ($untouched as $k) {
-                $new_img_features[] = $k;
-            }
-            sort_array_of_array($new_img_features, 'index'); // Sort the data with Index
-            /*
-            echo "\n------------REPLACED------------\n";
-            var_dump($replaced_new);
-            echo "\n------------TOTALLY------------\n";
-            var_dump($totally_new);
-            echo "\n------------UNTOUCHED------------\n";
-            var_dump($untouched);
-            echo "\n------------------------\n";
-            echo "\n------------TOUCHED------------\n";
-            var_dump($touched);
-            echo "\n------------RESULT------------";
-            var_dump($new_img_features);
-            */
-            $data['img_features'] = json_encode($new_img_features);
             $this->db->where('blog_photo_id', $para2);
             $this->db->update('blog_photo', $data);
             recache();
         } elseif ($para1 == 'delete_img') {
-            $new_img_features = array();
-            $old_img_features = json_decode($this->db->get_where('blog_photo', array('blog_photo_id' => $para2))->row()->img_features, true);
-            foreach ($old_img_features as $row2) {
-                if ($row2['img'] == $para3) {
-                    if (file_exists('uploads/news_image/' . $row2['img'])) {
-                        unlink('uploads/news_image/' . $row2['img']);
+            if(!demo()){
+                $new_img_features = array();
+                $old_img_features = json_decode($this->db->get_where('blog_photo', array('blog_photo_id' => $para2))->row()->img_features, true);
+                foreach ($old_img_features as $row2) {
+                    if ($row2['img'] == $para3) {
+                        if (file_exists('uploads/news_image/' . $row2['img'])) {
+                            unlink('uploads/news_image/' . $row2['img']);
+                        }
+                        if (file_exists('uploads/news_image/' . $row2['thumb'])) {
+                            unlink('uploads/news_image/' . $row2['thumb']);
+                        }
+                    } else {
+                        $new_img_features[] = $row2;
                     }
-                    if (file_exists('uploads/news_image/' . $row2['thumb'])) {
-                        unlink('uploads/news_image/' . $row2['thumb']);
-                    }
-                } else {
-                    $new_img_features[] = $row2;
                 }
+                $data['img_features'] = json_encode($new_img_features);
+                $this->db->where('blog_photo_id', $para2);
+                $this->db->update('blog_photo', $data);
             }
-            $data['img_features'] = json_encode($new_img_features);
-            $this->db->where('blog_photo_id', $para2);
-            $this->db->update('blog_photo', $data);
             recache();
         } else if ($para1 == 'status') {
             if ($para3 == 'true') {
@@ -989,18 +1074,20 @@ class Admin extends CI_Controller {
             $this->db->update('blog_photo', $data);
             recache();
         } elseif ($para1 == 'delete') {
-            $img_features = json_decode($this->db->get_where('blog_photo', array('blog_photo_id' => $para2))->row()->img_features, true);
-            foreach ($img_features as $row) {
-                if (file_exists('uploads/blog_photo_image/' . $row['img'])) {
-                    unlink('uploads/blog_photo_image/' . $row['img']);
+            if(!demo()){
+                $img_features = json_decode($this->db->get_where('blog_photo', array('blog_photo_id' => $para2))->row()->img_features, true);
+                foreach ($img_features as $row) {
+                    if (file_exists('uploads/blog_photo_image/' . $row['img'])) {
+                        unlink('uploads/blog_photo_image/' . $row['img']);
+                    }
+                    if (file_exists('uploads/blog_photo_image/' . $row['thumb'])) {
+                        unlink('uploads/blog_photo_image/' . $row['thumb']);
+                    }
                 }
-                if (file_exists('uploads/blog_photo_image/' . $row['thumb'])) {
-                    unlink('uploads/blog_photo_image/' . $row['thumb']);
-                }
-            }
 
-            $this->db->where('blog_photo_id', $para2);
-            $this->db->delete('blog_photo');
+                $this->db->where('blog_photo_id', $para2);
+                $this->db->delete('blog_photo');
+            }
             recache();
         } else {
             $page_data['page_name'] = 'blog_photo';
@@ -1025,33 +1112,36 @@ class Admin extends CI_Controller {
             $type = $this->db->get_where('blog_video', array('blog_video_id' => $para2))->row()->type;
             $data['title'] = $this->input->post('title');
             $data['description'] = $this->input->post('vdo_desc');
-            if ($this->input->post('change_check') == 1) {
-                if ($type == 'upload') {
-                    $src = $this->db->get_where('blog_video', array('blog_video_id' => $para2))->row()->video_src;
-                    if (file_exists($src)) {
-                        unlink($src);
+            if(!demo()){
+                if ($this->input->post('change_check') == 1) {
+                    if ($type == 'upload') {
+                        $src = $this->db->get_where('blog_video', array('blog_video_id' => $para2))->row()->video_src;
+                        if (file_exists($src)) {
+                            unlink($src);
+                        }
                     }
-                }
-                if ($this->input->post('upload_method') == 'upload') {
-                    $data['type'] = 'upload';
-                    $data['from'] = 'local';
-                    if (!($_FILES['upload_video']['name'] == '')) {
-                        $video = $_FILES['upload_video']['name'];
-                        $ext = pathinfo($video, PATHINFO_EXTENSION);
-                        move_uploaded_file($_FILES['upload_video']['tmp_name'], 'uploads/blog_video/blog_video_' . $para2 . '.' . $ext);
-                        $data['video_src'] = 'uploads/blog_video/blog_video_' . $para2 . '.' . $ext;
+                    if ($this->input->post('upload_method') == 'upload') {
+                        $data['type'] = 'upload';
+                        $data['from'] = 'local';
+                        if (!($_FILES['upload_video']['name'] == '')) {
+                            $video = $_FILES['upload_video']['name'];
+                            $ext = pathinfo($video, PATHINFO_EXTENSION);
+                            move_uploaded_file($_FILES['upload_video']['tmp_name'], 'uploads/blog_video/blog_video_' . $para2 . '.' . $ext);
+                            $data['video_src'] = 'uploads/blog_video/blog_video_' . $para2 . '.' . $ext;
+                        }
                     }
-                } else if ($this->input->post('upload_method') == 'share') {
-                    $data['type'] = 'share';
-                    $data['from'] = $this->input->post('site');
-                    $data['video_link'] = $this->input->post('video_link');
-                    $data['video_code'] = $this->input->post('vl');
-                    if ($this->input->post('site') == 'youtube') {
-                        $data['video_src'] = 'https://www.youtube.com/embed/' . $data['video_code'];
-                    } else if ($this->input->post('site') == 'dailymotion') {
-                        $data['video_src'] = '//www.dailymotion.com/embed/video/' . $data['video_code'];
-                    } else if ($this->input->post('site') == 'vimeo') {
-                        $data['video_src'] = 'https://player.vimeo.com/video/' . $data['video_code'];
+                    else if ($this->input->post('upload_method') == 'share') {
+                        $data['type'] = 'share';
+                        $data['from'] = $this->input->post('site');
+                        $data['video_link'] = $this->input->post('video_link');
+                        $data['video_code'] = $this->input->post('vl');
+                        if ($this->input->post('site') == 'youtube') {
+                            $data['video_src'] = 'https://www.youtube.com/embed/' . $data['video_code'];
+                        } else if ($this->input->post('site') == 'dailymotion') {
+                            $data['video_src'] = '//www.dailymotion.com/embed/video/' . $data['video_code'];
+                        } else if ($this->input->post('site') == 'vimeo') {
+                            $data['video_src'] = 'https://player.vimeo.com/video/' . $data['video_code'];
+                        }
                     }
                 }
             }
@@ -1076,12 +1166,14 @@ class Admin extends CI_Controller {
             $this->db->update('blog_video', $data);
             recache();
         } else if ($para1 == 'delete') {
-            $src = $this->db->get_where('blog_video', array('blog_video_id' => $para2))->row()->video_src;
-            if (file_exists($src)) {
-                unlink($src);
+            if(!demo()){
+                $src = $this->db->get_where('blog_video', array('blog_video_id' => $para2))->row()->video_src;
+                if (file_exists($src)) {
+                    unlink($src);
+                }
+                $this->db->where('blog_video_id', $para2);
+                $this->db->delete('blog_video');
             }
-            $this->db->where('blog_video_id', $para2);
-            $this->db->delete('blog_video');
             recache();
         } else {
             $page_data['page_name'] = 'blog_video';
@@ -1090,8 +1182,7 @@ class Admin extends CI_Controller {
     }
     /*-------------Blog Video Ends--------------*/
 
-        /* ----------  Blog Add, Edit, Update, Delete  -------- */
-
+    /* ----------  Blog Add, Edit, Update, Delete  -------- */
     function blog($para1 = '', $para2 = '', $para3 = '') {
         if (!$this->Crud_model->admin_permission('all_blog')) {
             redirect(base_url() . 'admin');
@@ -1127,134 +1218,122 @@ class Admin extends CI_Controller {
             $data['blog_uploader_id'] = $this->session->userdata('admin_id');
             $edited_by[] = array('admin' => $this->session->userdata('admin_id'), 'timestamp' => time());
             $data['edited_by'] = json_encode($edited_by);
+            if(!demo()){
+                $img_features = json_decode($this->db->get_where('blog', array('blog_id' => $para2))->row()->img_features, true);
+                $last_index = 0;
+                $this->load->library('image_lib');
+                ini_set("memory_limit", "-1");
 
-            $img_features = json_decode($this->db->get_where('blog', array('blog_id' => $para2))->row()->img_features, true);
-            $last_index = 0;
-            /*
-            foreach ($img_features as $roww) {
-                if($last_index < $roww['index']){
-                    $last_index = $roww['index'];
+                $totally_new = array();
+                $replaced_new = array();
+                $untouched = array();
+
+                foreach ($_FILES['nimg']['name'] as $i => $row) {
+                    if ($_FILES['nimg']['name'][$i] !== '') {
+                        $ib = $i + 1;
+                        $path = $_FILES['nimg']['name'][$i];
+                        $ext = pathinfo($path, PATHINFO_EXTENSION);
+                        $img = 'blog_' . $para2 . '_' . $ib . '.' . $ext;
+                        $img_thumb = 'blog_' . $para2 . '_' . $ib . '_thumb.' . $ext;
+                        $in_db = 'no';
+                        foreach ($img_features as $roww) {
+                            if($roww['index'] == $i){
+                                $replaced_new[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
+                                $in_db = 'yes';
+                            }
+                        }
+                        if ($in_db == 'no') {
+                            $totally_new[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
+                        }
+                        move_uploaded_file($_FILES['nimg']['tmp_name'][$i], 'uploads/blog_image/' . $img);
+
+                        $config1['image_library'] = 'gd2';
+                        $config1['create_thumb'] = TRUE;
+                        $config1['maintain_ratio'] = TRUE;
+                        $config1['width'] = '400';
+                        $config1['height'] = '400';
+                        $config1['source_image'] = 'uploads/blog_image/' . $img;
+
+                        $this->image_lib->initialize($config1);
+                        $this->image_lib->resize();
+                        $this->image_lib->clear();
+                    }
                 }
-            }
-            */
-            $this->load->library('image_lib');
-            ini_set("memory_limit", "-1");
 
-            $totally_new = array();
-            $replaced_new = array();
-            $untouched = array();
-
-            foreach ($_FILES['nimg']['name'] as $i => $row) {
-                if ($_FILES['nimg']['name'][$i] !== '') {
-                    $ib = $i + 1;
-                    $path = $_FILES['nimg']['name'][$i];
-                    $ext = pathinfo($path, PATHINFO_EXTENSION);
-                    $img = 'blog_' . $para2 . '_' . $ib . '.' . $ext;
-                    $img_thumb = 'blog_' . $para2 . '_' . $ib . '_thumb.' . $ext;
-                    $in_db = 'no';
-                    foreach ($img_features as $roww) {
-                        if($roww['index'] == $i){
-                            $replaced_new[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
-                            $in_db = 'yes';
+                $touched = $replaced_new + $totally_new;
+                foreach ($img_features as $yy) {
+                    $is_touched = 'no';
+                    foreach ($touched as $rr) {
+                        if($yy['index'] == $rr['index']){
+                            $is_touched = 'yes';
                         }
                     }
-                    if ($in_db == 'no') {
-                        $totally_new[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
-                    }
-                    move_uploaded_file($_FILES['nimg']['tmp_name'][$i], 'uploads/blog_image/' . $img);
-
-                    $config1['image_library'] = 'gd2';
-                    $config1['create_thumb'] = TRUE;
-                    $config1['maintain_ratio'] = TRUE;
-                    $config1['width'] = '400';
-                    $config1['height'] = '400';
-                    $config1['source_image'] = 'uploads/blog_image/' . $img;
-
-                    $this->image_lib->initialize($config1);
-                    $this->image_lib->resize();
-                    $this->image_lib->clear();
-                }
-            }
-
-            $touched = $replaced_new + $totally_new;
-            foreach ($img_features as $yy) {
-                $is_touched = 'no';
-                foreach ($touched as $rr) {
-                    if($yy['index'] == $rr['index']){
-                        $is_touched = 'yes';
+                    if($is_touched == 'no'){
+                        $untouched[] = $yy;
                     }
                 }
-                if($is_touched == 'no'){
-                    $untouched[] = $yy;
+                $new_img_features = array();
+                foreach ($replaced_new as $k) {
+                    $new_img_features[] = $k;
                 }
+                foreach ($totally_new as $k) {
+                    $new_img_features[] = $k;
+                }
+                foreach ($untouched as $k) {
+                    $new_img_features[] = $k;
+                }
+                sort_array_of_array($new_img_features, 'index'); // Sort the data with Index
+                $data['img_features'] = json_encode($new_img_features);
             }
-            $new_img_features = array();
-            foreach ($replaced_new as $k) {
-                $new_img_features[] = $k;
-            }
-            foreach ($totally_new as $k) {
-                $new_img_features[] = $k;
-            }
-            foreach ($untouched as $k) {
-                $new_img_features[] = $k;
-            }
-            sort_array_of_array($new_img_features, 'index'); // Sort the data with Index
-            /*
-            echo "\n------------REPLACED------------\n";
-            var_dump($replaced_new);
-            echo "\n------------TOTALLY------------\n";
-            var_dump($totally_new);
-            echo "\n------------UNTOUCHED------------\n";
-            var_dump($untouched);
-            echo "\n------------------------\n";
-            echo "\n------------TOUCHED------------\n";
-            var_dump($touched);
-            echo "\n------------RESULT------------";
-            var_dump($new_img_features);
-            */
-            $data['img_features'] = json_encode($new_img_features);
             $this->db->where('blog_id', $para2);
             $this->db->update('blog', $data);
             recache();
         } elseif ($para1 == 'delete_img') {
-            $new_img_features = array();
-            $old_img_features = json_decode($this->db->get_where('blog', array('blog_id' => $para2))->row()->img_features, true);
-            foreach ($old_img_features as $row2) {
-                if ($row2['img'] == $para3) {
-                    if (file_exists('uploads/blog_image/' . $row2['img'])) {
-                        unlink('uploads/blog_image/' . $row2['img']);
+            if(!demo()){
+                $new_img_features = array();
+                $old_img_features = json_decode($this->db->get_where('blog', array('blog_id' => $para2))->row()->img_features, true);
+                foreach ($old_img_features as $row2) {
+                    if ($row2['img'] == $para3) {
+                        if (file_exists('uploads/blog_image/' . $row2['img'])) {
+                            unlink('uploads/blog_image/' . $row2['img']);
+                        }
+                        if (file_exists('uploads/blog_image/' . $row2['thumb'])) {
+                            unlink('uploads/blog_image/' . $row2['thumb']);
+                        }
+                    } else {
+                        $new_img_features[] = $row2;
                     }
-                    if (file_exists('uploads/blog_image/' . $row2['thumb'])) {
-                        unlink('uploads/blog_image/' . $row2['thumb']);
+                }
+                $data['img_features'] = json_encode($new_img_features);
+                $this->db->where('blog_id', $para2);
+                $this->db->update('blog', $data);
+            }
+            recache();
+        }
+        elseif ($para1 == 'delete') {
+            if(!demo()){
+                $img_features = json_decode($this->db->get_where('blog', array('blog_id' => $para2))->row()->img_features, true);
+
+                foreach ($img_features as $row) {
+                    if (file_exists('uploads/blog_image/' . $row['img'])) {
+                        unlink('uploads/blog_image/' . $row['img']);
                     }
-                } else {
-                    $new_img_features[] = $row2;
+                    if (file_exists('uploads/blog_image/' . $row['thumb'])) {
+                        unlink('uploads/blog_image/' . $row['thumb']);
+                    }
                 }
-            }
-            $data['img_features'] = json_encode($new_img_features);
-            $this->db->where('blog_id', $para2);
-            $this->db->update('blog', $data);
-            recache();
-        } elseif ($para1 == 'delete') {
-            $img_features = json_decode($this->db->get_where('blog', array('blog_id' => $para2))->row()->img_features, true);
 
-            foreach ($img_features as $row) {
-                if (file_exists('uploads/blog_image/' . $row['img'])) {
-                    unlink('uploads/blog_image/' . $row['img']);
-                }
-                if (file_exists('uploads/blog_image/' . $row['thumb'])) {
-                    unlink('uploads/blog_image/' . $row['thumb']);
-                }
+                $this->db->where('blog_id', $para2);
+                $this->db->delete('blog');
             }
-
-            $this->db->where('blog_id', $para2);
-            $this->db->delete('blog');
             recache();
-        } elseif ($para1 == 'list') {
+        }
+        elseif ($para1 == 'list') {
             $this->db->order_by('blog_id', 'desc');
             $page_data['all_blogs'] = $this->db->get('blog')->result_array();
             $this->load->view('back/admin/blog_list', $page_data);
-        } elseif ($para1 == 'list_data') {
+        }
+        elseif ($para1 == 'list_data') {
             $limit = $this->input->get('limit');
             $search = $this->input->get('search');
             $order = $this->input->get('order');
@@ -1362,9 +1441,8 @@ class Admin extends CI_Controller {
                         'blog_id' => $para2
                     ))->result_array();
             $this->load->view('back/admin/blog_view', $page_data);
-        } /*elseif ($para1 == 'add') {
-            $this->load->view('back/admin/blog_add');
-        }*/ else if ($para1 == 'status') {
+        }
+        else if ($para1 == 'status') {
             $id = $para2;
             $publish_time = $this->db->get_where('blog',array('blog_id' => $id))->row()->publish_timestamp;
             if ($para3 == 'true') {
@@ -1421,27 +1499,27 @@ class Admin extends CI_Controller {
 
                     $this->db->insert('blog', $data);
                     $id = $this->db->insert_id();
-                    $img_features = array();
-                    foreach ($_FILES['nimg']['name'] as $i => $row) {
-                        if ($_FILES['nimg']['name'][$i] !== '') {
-                            $ib = $i + 1;
-                            $path = $_FILES['nimg']['name'][$i];
-                            $ext = pathinfo($path, PATHINFO_EXTENSION);
-                            $img = 'blog_' . $id . '_' . $ib . '.' . $ext;
-                            $img_thumb = 'blog_' . $id . '_' . $ib . '_thumb.' . $ext;
-                            $img_features[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
-                            move_uploaded_file($_FILES['nimg']['tmp_name'][$i], 'uploads/' . 'blog' . '_image/' . 'blog' . '_' . $id . '_' . $ib .'.'. $ext);
-                            $this->Crud_model->img_thumb("blog", $id . '_' . $ib, $ext);
+
+                    if(!demo()){
+                        $img_features = array();
+                        foreach ($_FILES['nimg']['name'] as $i => $row) {
+                            if ($_FILES['nimg']['name'][$i] !== '') {
+                                $ib = $i + 1;
+                                $path = $_FILES['nimg']['name'][$i];
+                                $ext = pathinfo($path, PATHINFO_EXTENSION);
+                                $img = 'blog_' . $id . '_' . $ib . '.' . $ext;
+                                $img_thumb = 'blog_' . $id . '_' . $ib . '_thumb.' . $ext;
+                                $img_features[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
+                                move_uploaded_file($_FILES['nimg']['tmp_name'][$i], 'uploads/' . 'blog' . '_image/' . 'blog' . '_' . $id . '_' . $ib .'.'. $ext);
+                                $this->Crud_model->img_thumb("blog", $id . '_' . $ib, $ext);
+                            }
                         }
+
+                        $data1['img_features'] = json_encode($img_features);
+                        $this->db->where('blog_id', $id);
+                        $this->db->update('blog', $data1);
                     }
-
-                    //$this->Crud_model->file_up("nimg", "blog", $id, 'multi');
-                    $data1['img_features'] = json_encode($img_features);
-                    $this->db->where('blog_id', $id);
-                    $this->db->update('blog', $data1);
-
                     recache();
-                    echo "done";
                 }
             }
         }
@@ -1455,9 +1533,9 @@ class Admin extends CI_Controller {
             }
             if ($this->form_validation->run() == FALSE) {
                 echo "<br>".validation_errors();
-            } else {
+            }
+            else {
                 $user_id = $this->session->userdata('admin_id');
-
                 $data['title'] = $this->input->post('title');
                 $data['description'] = $this->input->post('description');
                 $data['status'] = 'published';
@@ -1470,77 +1548,83 @@ class Admin extends CI_Controller {
 
                 $this->db->insert('blog_photo', $data);
                 $id = $this->db->insert_id();
-               $img_features = array();
-                foreach ($_FILES['nimg']['name'] as $i => $row) {
-                    if ($_FILES['nimg']['name'][$i] !== '') {
-                        $ib = $i + 1;
-                        $path = $_FILES['nimg']['name'][$i];
-                        $ext = pathinfo($path, PATHINFO_EXTENSION);
-                        $img = 'blog_photo_' . $id . '_' . $ib . '.' . $ext;
-                        $img_thumb = 'blog_photo_' . $id . '_' . $ib . '_thumb.' . $ext;
-                        $img_features[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
-                    }
-                }
-                $this->Crud_model->file_up("nimg", "blog_photo", $id, 'multi');
-                $data1['img_features'] = json_encode($img_features);
-                $this->db->where('blog_photo_id', $id);
-                $this->db->update('blog_photo', $data1);
 
+                if(!demo()){
+                    $img_features = array();
+                    foreach ($_FILES['nimg']['name'] as $i => $row) {
+                        if ($_FILES['nimg']['name'][$i] !== '') {
+                            $ib = $i + 1;
+                            $path = $_FILES['nimg']['name'][$i];
+                            $ext = pathinfo($path, PATHINFO_EXTENSION);
+                            $img = 'blog_photo_' . $id . '_' . $ib . '.' . $ext;
+                            $img_thumb = 'blog_photo_' . $id . '_' . $ib . '_thumb.' . $ext;
+                            $img_features[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
+                        }
+                    }
+                    $this->Crud_model->file_up("nimg", "blog_photo", $id, 'multi');
+                    $data1['img_features'] = json_encode($img_features);
+                    $this->db->where('blog_photo_id', $id);
+                    $this->db->update('blog_photo', $data1);
+                }
                 recache();
                 echo "done";
             }
         }
         else if($para1 ==  'blog_video_post')
         {
+            if(!demo()){
+                $this->form_validation->set_rules('title', translate('video_title'), 'required');
+                $this->form_validation->set_rules('summary', translate('video_description'), 'required');
 
-            $this->form_validation->set_rules('title', translate('video_title'), 'required');
-            $this->form_validation->set_rules('summary', translate('video_description'), 'required');
-
-            if ($this->form_validation->run() == FALSE) {
-                echo "<br>".validation_errors();
-            } else {
-                $user_id = $this->session->userdata('admin_id');
-
-                $data['title'] = $this->input->post('title');
-                $data['description'] = $this->input->post('summary');
-                $data['status'] = 'published';
-                $data['hide_status'] = 'false';
-                $data['timestamp'] = time();
-                $data['blog_video_uploader_type'] = 'admin';
-                $data['blog_video_uploader_id'] = $user_id;
-                $data['edited_by'] = '[]';
-                if ($this->input->post('upload_method') == 'upload') {
-                    $data['type'] = 'upload';
-                    $data['from'] = 'local';
-                    $data['video_link'] = '';
-                    $data['video_src'] = '';
-                    $this->db->insert('blog_video', $data);
-                    $id = $this->db->insert_id();
-                    $video = $_FILES['upload_video']['name'];
-                    $ext = pathinfo($video, PATHINFO_EXTENSION);
-                    move_uploaded_file($_FILES['upload_video']['tmp_name'], 'uploads/blog_video/blog_video_' . $id . '.' . $ext);
-                    $data['video_src'] = 'uploads/blog_video/blog_video_' . $id . '.' . $ext;
-                    $this->db->where('blog_video_id', $id);
-                    $this->db->update('blog_video', $data);
-                } elseif ($this->input->post('upload_method') == 'share') {
-                    $data['type'] = 'share';
-                    $data['from'] = $this->input->post('site');
-                    $data['video_link'] = $this->input->post('video_link');
-                    $code = $this->input->post('vl');
-                    if ($this->input->post('site') == 'youtube') {
-                        $data['video_src'] = 'https://www.youtube.com/embed/' . $code;
-                    } else if ($this->input->post('site') == 'dailymotion') {
-                        $data['video_src'] = '//www.dailymotion.com/embed/video/' . $code;
-                    } else if ($this->input->post('site') == 'vimeo') {
-                        $data['video_src'] = 'https://player.vimeo.com/video/' . $code;
-                    }
-                    $this->db->insert('blog_video', $data);
-                    $id = $this->db->insert_id();
+                if ($this->form_validation->run() == FALSE) {
+                    echo "<br>".validation_errors();
                 }
+                else {
+                    $user_id = $this->session->userdata('admin_id');
 
-                recache();
-                echo "done";
+                    $data['title'] = $this->input->post('title');
+                    $data['description'] = $this->input->post('summary');
+                    $data['status'] = 'published';
+                    $data['hide_status'] = 'false';
+                    $data['timestamp'] = time();
+                    $data['blog_video_uploader_type'] = 'admin';
+                    $data['blog_video_uploader_id'] = $user_id;
+                    $data['edited_by'] = '[]';
+                    if ($this->input->post('upload_method') == 'upload') {
+                        $data['type'] = 'upload';
+                        $data['from'] = 'local';
+                        $data['video_link'] = '';
+                        $data['video_src'] = '';
+                        $this->db->insert('blog_video', $data);
+                        $id = $this->db->insert_id();
+                        $video = $_FILES['upload_video']['name'];
+                        $ext = pathinfo($video, PATHINFO_EXTENSION);
+                        move_uploaded_file($_FILES['upload_video']['tmp_name'], 'uploads/blog_video/blog_video_' . $id . '.' . $ext);
+                        $data['video_src'] = 'uploads/blog_video/blog_video_' . $id . '.' . $ext;
+                        $this->db->where('blog_video_id', $id);
+                        $this->db->update('blog_video', $data);
+                    }
+                    elseif ($this->input->post('upload_method') == 'share') {
+                        $data['type'] = 'share';
+                        $data['from'] = $this->input->post('site');
+                        $data['video_link'] = $this->input->post('video_link');
+                        $code = $this->input->post('vl');
+                        if ($this->input->post('site') == 'youtube') {
+                            $data['video_src'] = 'https://www.youtube.com/embed/' . $code;
+                        } else if ($this->input->post('site') == 'dailymotion') {
+                            $data['video_src'] = '//www.dailymotion.com/embed/video/' . $code;
+                        } else if ($this->input->post('site') == 'vimeo') {
+                            $data['video_src'] = 'https://player.vimeo.com/video/' . $code;
+                        }
+                        $this->db->insert('blog_video', $data);
+                        $id = $this->db->insert_id();
+                    }
+
+                    recache();
+                    echo "done";
+                }
             }
+            recache();
         }
         else if($para1 == '')
         {
@@ -1614,8 +1698,10 @@ class Admin extends CI_Controller {
             $this->db->update('poll', $data);
             recache();
         } elseif ($para1 == 'delete') {
-            $this->db->where('poll_id', $para2);
-            $this->db->delete('poll');
+            if(!demo()){
+                $this->db->where('poll_id', $para2);
+                $this->db->delete('poll');
+            }
             recache();
         } elseif ($para1 == 'list') {
             $this->db->order_by('poll_id', 'desc');
@@ -1660,77 +1746,82 @@ class Admin extends CI_Controller {
         } else if ($para1 == 'add') {
             $this->load->view('back/admin/video_add');
         } else if ($para1 == 'do_add') {
-            $data['title'] = $this->input->post('title');
-            $data['description'] = $this->input->post('vdo_desc');
-            $data['status'] = 'unpublished';
-            if ($this->input->post('upload_method') == 'upload') {
-                $data['type'] = 'upload';
-                $data['from'] = 'local';
-                $data['video_link'] = '';
-                $data['video_src'] = '';
-                $this->db->insert('video', $data);
-                $id = $this->db->insert_id();
-                $video = $_FILES['upload_video']['name'];
-                $ext = pathinfo($video, PATHINFO_EXTENSION);
-                move_uploaded_file($_FILES['upload_video']['tmp_name'], 'uploads/video/video_' . $id . '.' . $ext);
-                $data['video_src'] = 'uploads/video/video_' . $id . '.' . $ext;
-                $this->db->where('video_id', $id);
-                $this->db->update('video', $data);
-            } elseif ($this->input->post('upload_method') == 'share') {
-                $data['type'] = 'share';
-                $data['from'] = $this->input->post('site');
-                $data['video_link'] = $this->input->post('video_link');
-                $code = $this->input->post('vl');
-                if ($this->input->post('site') == 'youtube') {
-                    $data['video_src'] = 'https://www.youtube.com/embed/' . $code;
-                } else if ($this->input->post('site') == 'dailymotion') {
-                    $data['video_src'] = '//www.dailymotion.com/embed/video/' . $code;
-                } else if ($this->input->post('site') == 'vimeo') {
-                    $data['video_src'] = 'https://player.vimeo.com/video/' . $code;
-                }
-                $this->db->insert('video', $data);
-                $id = $this->db->insert_id();
-            }
-            recache();
-        } else if ($para1 == 'edit') {
-            $page_data['video_data'] = $this->db->get_where('video', array('video_id' => $para2))->result_array();
-            $this->load->view('back/admin/video_edit', $page_data);
-        } else if ($para1 == 'update') {
-            $type = $this->db->get_where('video', array('video_id' => $para2))->row()->type;
-            $data['title'] = $this->input->post('title');
-            $data['description'] = $this->input->post('vdo_desc');
-            if ($this->input->post('change_check') == 1) {
-                if ($type == 'upload') {
-                    $src = $this->db->get_where('video', array('video_id' => $para2))->row()->video_src;
-                    if (file_exists($src)) {
-                        unlink($src);
-                    }
-                }
+            if(!demo()){
+                $data['title'] = $this->input->post('title');
+                $data['description'] = $this->input->post('vdo_desc');
+                $data['status'] = 'unpublished';
                 if ($this->input->post('upload_method') == 'upload') {
                     $data['type'] = 'upload';
                     $data['from'] = 'local';
-                    if (!($_FILES['upload_video']['name'] == '')) {
-                        $video = $_FILES['upload_video']['name'];
-                        $ext = pathinfo($video, PATHINFO_EXTENSION);
-                        move_uploaded_file($_FILES['upload_video']['tmp_name'], 'uploads/video/video_' . $para2 . '.' . $ext);
-                        $data['video_src'] = 'uploads/video/video_' . $para2 . '.' . $ext;
-                    }
-                } else if ($this->input->post('upload_method') == 'share') {
+                    $data['video_link'] = '';
+                    $data['video_src'] = '';
+                    $this->db->insert('video', $data);
+                    $id = $this->db->insert_id();
+                    $video = $_FILES['upload_video']['name'];
+                    $ext = pathinfo($video, PATHINFO_EXTENSION);
+                    move_uploaded_file($_FILES['upload_video']['tmp_name'], 'uploads/video/video_' . $id . '.' . $ext);
+                    $data['video_src'] = 'uploads/video/video_' . $id . '.' . $ext;
+                    $this->db->where('video_id', $id);
+                    $this->db->update('video', $data);
+                } elseif ($this->input->post('upload_method') == 'share') {
                     $data['type'] = 'share';
                     $data['from'] = $this->input->post('site');
                     $data['video_link'] = $this->input->post('video_link');
-                    $data['video_code'] = $this->input->post('vl');
+                    $code = $this->input->post('vl');
                     if ($this->input->post('site') == 'youtube') {
-                        $data['video_src'] = 'https://www.youtube.com/embed/' . $data['video_code'];
+                        $data['video_src'] = 'https://www.youtube.com/embed/' . $code;
                     } else if ($this->input->post('site') == 'dailymotion') {
-                        $data['video_src'] = '//www.dailymotion.com/embed/video/' . $data['video_code'];
+                        $data['video_src'] = '//www.dailymotion.com/embed/video/' . $code;
                     } else if ($this->input->post('site') == 'vimeo') {
-                        $data['video_src'] = 'https://player.vimeo.com/video/' . $data['video_code'];
+                        $data['video_src'] = 'https://player.vimeo.com/video/' . $code;
                     }
+                    $this->db->insert('video', $data);
+                    $id = $this->db->insert_id();
                 }
             }
-            $this->db->where('video_id', $para2);
-            $this->db->update('video', $data);
+            recache();
+        }
+        else if ($para1 == 'edit') {
+            $page_data['video_data'] = $this->db->get_where('video', array('video_id' => $para2))->result_array();
+            $this->load->view('back/admin/video_edit', $page_data);
+        } else if ($para1 == 'update') {
+            if(!demo()){
+                $type = $this->db->get_where('video', array('video_id' => $para2))->row()->type;
+                $data['title'] = $this->input->post('title');
+                $data['description'] = $this->input->post('vdo_desc');
+                if ($this->input->post('change_check') == 1) {
+                    if ($type == 'upload') {
+                        $src = $this->db->get_where('video', array('video_id' => $para2))->row()->video_src;
+                        if (file_exists($src)) {
+                            unlink($src);
+                        }
+                    }
+                    if ($this->input->post('upload_method') == 'upload') {
+                        $data['type'] = 'upload';
+                        $data['from'] = 'local';
+                        if (!($_FILES['upload_video']['name'] == '')) {
+                            $video = $_FILES['upload_video']['name'];
+                            $ext = pathinfo($video, PATHINFO_EXTENSION);
+                            move_uploaded_file($_FILES['upload_video']['tmp_name'], 'uploads/video/video_' . $para2 . '.' . $ext);
+                            $data['video_src'] = 'uploads/video/video_' . $para2 . '.' . $ext;
+                        }
+                    } else if ($this->input->post('upload_method') == 'share') {
+                        $data['type'] = 'share';
+                        $data['from'] = $this->input->post('site');
+                        $data['video_link'] = $this->input->post('video_link');
+                        $data['video_code'] = $this->input->post('vl');
+                        if ($this->input->post('site') == 'youtube') {
+                            $data['video_src'] = 'https://www.youtube.com/embed/' . $data['video_code'];
+                        } else if ($this->input->post('site') == 'dailymotion') {
+                            $data['video_src'] = '//www.dailymotion.com/embed/video/' . $data['video_code'];
+                        } else if ($this->input->post('site') == 'vimeo') {
+                            $data['video_src'] = 'https://player.vimeo.com/video/' . $data['video_code'];
+                        }
+                    }
+                }
+                $this->db->where('video_id', $para2);
+                $this->db->update('video', $data);
+            }
             recache();
         } else if ($para1 == 'preview') {
             if ($para2 == 'youtube') {
@@ -1750,12 +1841,14 @@ class Admin extends CI_Controller {
             $this->db->update('video', $data);
             recache();
         } else if ($para1 == 'delete') {
-            $src = $this->db->get_where('video', array('video_id' => $para2))->row()->video_src;
-            if (file_exists($src)) {
-                unlink($src);
+            if(!demo()){
+                $src = $this->db->get_where('video', array('video_id' => $para2))->row()->video_src;
+                if (file_exists($src)) {
+                    unlink($src);
+                }
+                $this->db->where('video_id', $para2);
+                $this->db->delete('video');
             }
-            $this->db->where('video_id', $para2);
-            $this->db->delete('video');
             recache();
         } else {
             $page_data['page_name'] = 'video';
@@ -1801,12 +1894,14 @@ class Admin extends CI_Controller {
             $this->db->update('audio', $page_data);
             recache();
         } else if ($para1 == 'delete') {
-            $audio = $this->db->get_where('audio', array('audio_id' => $para2))->result_array();
-            if (file_exists($audio['audio_src'])) {
-                unlink($audio['audio_src']);
+            if(!demo()){
+                $audio = $this->db->get_where('audio', array('audio_id' => $para2))->result_array();
+                if (file_exists($audio['audio_src'])) {
+                    unlink($audio['audio_src']);
+                }
+                $this->db->where('audio_id', $para2);
+                $this->db->delete('audio');
             }
-            $this->db->where('audio_id', $para2);
-            $this->db->delete('audio');
             recache();
         } else {
             $page_data['page_name'] = 'audio';
@@ -1824,143 +1919,142 @@ class Admin extends CI_Controller {
         } else if ($para1 == 'add') {
             $this->load->view('back/admin/photo_add');
         } else if ($para1 == 'do_add') {
-            $data['title'] = $this->input->post('title');
-            $data['description'] = $this->input->post('description');
-            $data['status'] = 'unpublished';
-            $data['img_features'] = '[]';
+            if(!demo()){
+                $data['title'] = $this->input->post('title');
+                $data['description'] = $this->input->post('description');
+                $data['status'] = 'unpublished';
+                $data['img_features'] = '[]';
 
-            $this->db->insert('photo', $data);
-            $id = $this->db->insert_id();
-            $img_features = array();
-            foreach ($_FILES['nimg']['name'] as $i => $row) {
-                if ($_FILES['nimg']['name'][$i] !== '') {
-                    $ib = $i + 1;
-                    $path = $_FILES['nimg']['name'][$i];
-                    $ext = pathinfo($path, PATHINFO_EXTENSION);
-                    $img = 'photo_' . $id . '_' . $ib . '.' . $ext;
-                    $img_thumb = 'photo_' . $id . '_' . $ib . '_thumb.' . $ext;
-                    $img_features[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
-                    move_uploaded_file($_FILES['nimg']['tmp_name'][$i], 'uploads/' . 'photo' . '_image/' . 'photo' . '_' . $id . '_' . $ib .'_thumb'.'.'. $ext);
+                $this->db->insert('photo', $data);
+                $id = $this->db->insert_id();
+                $img_features = array();
+                $this->load->library('image_lib');
+                ini_set("memory_limit", "-1");
+                foreach ($_FILES['nimg']['name'] as $i => $row) {
+                    if ($_FILES['nimg']['name'][$i] !== '') {
+                        $ib = $i + 1;
+                        $path = $_FILES['nimg']['name'][$i];
+                        $ext = pathinfo($path, PATHINFO_EXTENSION);
+                        $img = 'photo_' . $id . '_' . $ib . '.' . $ext;
+                        $img_thumb = 'photo_' . $id . '_' . $ib . '_thumb.' . $ext;
+                        $img_features[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
+                        move_uploaded_file($_FILES['nimg']['tmp_name'][$i], 'uploads/photo_image/' . $img);
+
+                        $config1['image_library'] = 'gd2';
+                        $config1['create_thumb'] = TRUE;
+                        $config1['maintain_ratio'] = TRUE;
+                        $config1['width'] = '400';
+                        $config1['height'] = '400';
+                        $config1['source_image'] = 'uploads/photo_image/' . $img;
+
+                        $this->image_lib->initialize($config1);
+                        $this->image_lib->resize();
+                        $this->image_lib->clear();
+                    }
                 }
+                $data1['img_features'] = json_encode($img_features);
+                $this->db->where('photo_id', $id);
+                $this->db->update('photo', $data1);
             }
-            //$this->Crud_model->file_up("nimg", "photo", $id, 'multi');
-            $data1['img_features'] = json_encode($img_features);
-            $this->db->where('photo_id', $id);
-            $this->db->update('photo', $data1);
             recache();
         } else if ($para1 == 'edit') {
             $page_data['photo_data'] = $this->db->get_where('photo', array('photo_id' => $para2))->result_array();
             $this->load->view('back/admin/photo_edit', $page_data);
         } else if ($para1 == 'update') {
-            $id = $para2;
-            $data['title'] = $this->input->post('title');
-            $data['description'] = $this->input->post('description');
+            if(!demo()){
+                $id = $para2;
+                $data['title'] = $this->input->post('title');
+                $data['description'] = $this->input->post('description');
 
-            $img_features = json_decode($this->db->get_where('photo', array('photo_id' => $para2))->row()->img_features, true);
-            $last_index = 0;
-            $this->load->library('image_lib');
-            ini_set("memory_limit", "-1");
+                $img_features = json_decode($this->db->get_where('photo', array('photo_id' => $para2))->row()->img_features, true);
+                $last_index = 0;
+                $this->load->library('image_lib');
+                ini_set("memory_limit", "-1");
 
-            $totally_new = array();
-            $replaced_new = array();
-            $untouched = array();
+                $totally_new = array();
+                $replaced_new = array();
+                $untouched = array();
 
-            foreach ($_FILES['nimg']['name'] as $i => $row) {
-                if ($_FILES['nimg']['name'][$i] !== '') {
-                    $ib = $i + 1;
-                    $path = $_FILES['nimg']['name'][$i];
-                    $ext = pathinfo($path, PATHINFO_EXTENSION);
-                    $img = 'photo_' . $para2 . '_' . $ib . '.' . $ext;
-                    $img_thumb = 'photo_' . $para2 . '_' . $ib . '_thumb.' . $ext;
-                    $in_db = 'no';
-                    foreach ($img_features as $roww) {
-                        if($roww['index'] == $i){
-                            $replaced_new[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
-                            $in_db = 'yes';
+                foreach ($_FILES['nimg']['name'] as $i => $row) {
+                    if ($_FILES['nimg']['name'][$i] !== '') {
+                        $ib = $i + 1;
+                        $path = $_FILES['nimg']['name'][$i];
+                        $ext = pathinfo($path, PATHINFO_EXTENSION);
+                        $img = 'photo_' . $para2 . '_' . $ib . '.' . $ext;
+                        $img_thumb = 'photo_' . $para2 . '_' . $ib . '_thumb.' . $ext;
+                        $in_db = 'no';
+                        foreach ($img_features as $roww) {
+                            if($roww['index'] == $i){
+                                $replaced_new[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
+                                $in_db = 'yes';
+                            }
+                        }
+                        if ($in_db == 'no') {
+                            $totally_new[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
+                        }
+                        move_uploaded_file($_FILES['nimg']['tmp_name'][$i], 'uploads/photo_image/' . $img);
+
+                        $config1['image_library'] = 'gd2';
+                        $config1['create_thumb'] = TRUE;
+                        $config1['maintain_ratio'] = TRUE;
+                        $config1['width'] = '400';
+                        $config1['height'] = '400';
+                        $config1['source_image'] = 'uploads/photo_image/' . $img;
+
+                        $this->image_lib->initialize($config1);
+                        $this->image_lib->resize();
+                        $this->image_lib->clear();
+                    }
+                }
+
+                $touched = $replaced_new + $totally_new;
+                foreach ($img_features as $yy) {
+                    $is_touched = 'no';
+                    foreach ($touched as $rr) {
+                        if($yy['index'] == $rr['index']){
+                            $is_touched = 'yes';
                         }
                     }
-                    if ($in_db == 'no') {
-                        $totally_new[] = array('index' => $i, 'img' => $img, 'thumb' => $img_thumb);
-                    }
-                    move_uploaded_file($_FILES['nimg']['tmp_name'][$i], 'uploads/photo_image/' . $img);
-
-                    $config1['image_library'] = 'gd2';
-                    $config1['create_thumb'] = TRUE;
-                    $config1['maintain_ratio'] = TRUE;
-                    $config1['width'] = '400';
-                    $config1['height'] = '400';
-                    $config1['source_image'] = 'uploads/photo_image/' . $img;
-
-                    $this->image_lib->initialize($config1);
-                    $this->image_lib->resize();
-                    $this->image_lib->clear();
-                }
-            }
-
-            $touched = $replaced_new + $totally_new;
-            foreach ($img_features as $yy) {
-                $is_touched = 'no';
-                foreach ($touched as $rr) {
-                    if($yy['index'] == $rr['index']){
-                        $is_touched = 'yes';
+                    if($is_touched == 'no'){
+                        $untouched[] = $yy;
                     }
                 }
-                if($is_touched == 'no'){
-                    $untouched[] = $yy;
+                $new_img_features = array();
+                foreach ($replaced_new as $k) {
+                    $new_img_features[] = $k;
                 }
+                foreach ($totally_new as $k) {
+                    $new_img_features[] = $k;
+                }
+                foreach ($untouched as $k) {
+                    $new_img_features[] = $k;
+                }
+                sort_array_of_array($new_img_features, 'index'); // Sort the data with Index
+                $data['img_features'] = json_encode($new_img_features);
+                $this->db->where('photo_id', $para2);
+                $this->db->update('photo', $data);
             }
-            $new_img_features = array();
-            foreach ($replaced_new as $k) {
-                $new_img_features[] = $k;
-            }
-            foreach ($totally_new as $k) {
-                $new_img_features[] = $k;
-            }
-            foreach ($untouched as $k) {
-                $new_img_features[] = $k;
-            }
-            sort_array_of_array($new_img_features, 'index'); // Sort the data with Index
-            $data['img_features'] = json_encode($new_img_features);
-            $this->db->where('photo_id', $para2);
-            $this->db->update('photo', $data);
             recache();
         } elseif ($para1 == 'delete_img') {
-            $new_img_features = array();
-            $old_img_features = json_decode($this->db->get_where('photo', array('photo_id' => $para2))->row()->img_features, true);
-            foreach ($old_img_features as $row2) {
-                if ($row2['img'] == $para3) {
-                    if (file_exists('uploads/photo_image/' . $row2['img'])) {
-                        unlink('uploads/photo_image/' . $row2['img']);
+            if(!demo()){
+                $new_img_features = array();
+                $old_img_features = json_decode($this->db->get_where('photo', array('photo_id' => $para2))->row()->img_features, true);
+                foreach ($old_img_features as $row2) {
+                    if ($row2['img'] == $para3) {
+                        if (file_exists('uploads/photo_image/' . $row2['img'])) {
+                            unlink('uploads/photo_image/' . $row2['img']);
+                        }
+                        if (file_exists('uploads/photo_image/' . $row2['thumb'])) {
+                            unlink('uploads/photo_image/' . $row2['thumb']);
+                        }
+                    } else {
+                        $new_img_features[] = $row2;
                     }
-                    if (file_exists('uploads/photo_image/' . $row2['thumb'])) {
-                        unlink('uploads/photo_image/' . $row2['thumb']);
-                    }
-                } else {
-                    $new_img_features[] = $row2;
                 }
+                $data['img_features'] = json_encode($new_img_features);
+                $this->db->where('photo_id', $para2);
+                $this->db->update('photo', $data);
             }
-            $data['img_features'] = json_encode($new_img_features);
-            $this->db->where('photo_id', $para2);
-            $this->db->update('photo', $data);
-            recache();
-        } elseif ($para1 == 'delete_img') {
-            $new_img_features = array();
-            $old_img_features = json_decode($this->db->get_where('photo', array('photo_id' => $para2))->row()->img_features, true);
-            foreach ($old_img_features as $row2) {
-                if ($row2['img'] == $para3) {
-                    if (file_exists('uploads/photo_image/' . $row2['img'])) {
-                        unlink('uploads/photo_image/' . $row2['img']);
-                    }
-                    if (file_exists('uploads/photo_image/' . $row2['thumb'])) {
-                        unlink('uploads/photo_image/' . $row2['thumb']);
-                    }
-                } else {
-                    $new_img_features[] = $row2;
-                }
-            }
-            $data['img_features'] = json_encode($new_img_features);
-            $this->db->where('photo_id', $para2);
-            $this->db->update('photo', $data);
             recache();
         } else if ($para1 == 'status') {
             if ($para3 == 'true') {
@@ -1972,18 +2066,20 @@ class Admin extends CI_Controller {
             $this->db->update('photo', $data);
             recache();
         } elseif ($para1 == 'delete') {
-            $img_features = json_decode($this->db->get_where('photo', array('photo_id' => $para2))->row()->img_features, true);
-            foreach ($img_features as $row) {
-                if (file_exists('uploads/photo_image/' . $row['img'])) {
-                    unlink('uploads/photo_image/' . $row['img']);
+            if(!demo()){
+                $img_features = json_decode($this->db->get_where('photo', array('photo_id' => $para2))->row()->img_features, true);
+                foreach ($img_features as $row) {
+                    if (file_exists('uploads/photo_image/' . $row['img'])) {
+                        unlink('uploads/photo_image/' . $row['img']);
+                    }
+                    if (file_exists('uploads/photo_image/' . $row['thumb'])) {
+                        unlink('uploads/photo_image/' . $row['thumb']);
+                    }
                 }
-                if (file_exists('uploads/photo_image/' . $row['thumb'])) {
-                    unlink('uploads/photo_image/' . $row['thumb']);
-                }
-            }
 
-            $this->db->where('photo_id', $para2);
-            $this->db->delete('photo');
+                $this->db->where('photo_id', $para2);
+                $this->db->delete('photo');
+            }
             recache();
         } else {
             $page_data['page_name'] = 'photo';
@@ -2030,21 +2126,24 @@ class Admin extends CI_Controller {
 
             $this->db->insert('news_reporter', $data);
             $id = $this->db->insert_id();
-
-            $path = $_FILES['img']['name'];
-            $ext = '.' . pathinfo($path, PATHINFO_EXTENSION);
-            $this->Crud_model->file_up("img", "news_reporter", $id, '', '', $ext);
-            $images[] = array('img' => 'news_reporter_' . $id . '.' . $ext, 'thumb' => 'news_reporter_' . $id . '_thumb' . $ext);
-            $data1['image'] = json_encode($images);
-            $this->db->where('news_reporter_id', $id);
-            $this->db->update('news_reporter', $data1);
+            if(!demo()){
+                $path = $_FILES['img']['name'];
+                $ext = '.' . pathinfo($path, PATHINFO_EXTENSION);
+                $this->Crud_model->file_up("img", "news_reporter", $id, '', '', $ext);
+                $images[] = array('img' => 'news_reporter_' . $id . '.' . $ext, 'thumb' => 'news_reporter_' . $id . '_thumb' . $ext);
+                $data1['image'] = json_encode($images);
+                $this->db->where('news_reporter_id', $id);
+                $this->db->update('news_reporter', $data1);
+            }
             recache();
-        } else if ($para1 == 'edit') {
+        }
+        else if ($para1 == 'edit') {
             $page_data['news_reporter_data'] = $this->db->get_where('news_reporter', array(
                         'news_reporter_id' => $para2
                     ))->result_array();
             $this->load->view('back/admin/news_reporter_edit', $page_data);
-        } elseif ($para1 == "update") {
+        }
+        elseif ($para1 == "update") {
             $data['email'] = $this->input->post('email');
             $data['name'] = $this->input->post('name');
             $data['fathers_name'] = $this->input->post('fathers_name');
@@ -2067,26 +2166,30 @@ class Admin extends CI_Controller {
                 );
             }
             $data['social_account'] = json_encode($social_account);
-            if ($_FILES['img']['name'] !== '') {
-                $id = $para2;
-                $path = $_FILES['img']['name'];
-                $ext = '.' . pathinfo($path, PATHINFO_EXTENSION);
-                $this->Crud_model->file_up("img", "news_reporter", $id, '', '', $ext);
-                $images[] = array('img' => 'news_reporter_' . $id . '.' . $ext, 'thumb' => 'news_reporter_' . $id . '_thumb' . $ext);
-                $data['image'] = json_encode($images);
+            if(!demo()){
+                if ($_FILES['img']['name'] !== '') {
+                    $id = $para2;
+                    $path = $_FILES['img']['name'];
+                    $ext = '.' . pathinfo($path, PATHINFO_EXTENSION);
+                    $this->Crud_model->file_up("img", "news_reporter", $id, '', '', $ext);
+                    $images[] = array('img' => 'news_reporter_' . $id . '.' . $ext, 'thumb' => 'news_reporter_' . $id . '_thumb' . $ext);
+                    $data['image'] = json_encode($images);
+                }
             }
             $this->db->where('news_reporter_id', $para2);
             $this->db->update('news_reporter', $data);
             echo 'success';
             recache();
         } elseif ($para1 == 'delete') {
-            $images = json_decode($this->db->get_where('news_reporter', array('news_reporter_id' => $para2))->row()->image, true);
-            $img = $images[0]['img'];
-            $thumb = $images[0]['thumb'];
-            unlink('uploads/news_reporter_image/' . $thumb);
-            unlink('uploads/news_reporter_image/' . $img);
-            $this->db->where('news_reporter_id', $para2);
-            $this->db->delete('news_reporter');
+            if(!demo()){
+                $images = json_decode($this->db->get_where('news_reporter', array('news_reporter_id' => $para2))->row()->image, true);
+                $img = $images[0]['img'];
+                $thumb = $images[0]['thumb'];
+                unlink('uploads/news_reporter_image/' . $thumb);
+                unlink('uploads/news_reporter_image/' . $img);
+                $this->db->where('news_reporter_id', $para2);
+                $this->db->delete('news_reporter');
+            }
             recache();
         } elseif ($para1 == 'list') {
             $this->db->order_by('news_reporter_id', 'desc');
@@ -2211,8 +2314,10 @@ class Admin extends CI_Controller {
             redirect(base_url() . 'admin');
         }
         if ($para1 == 'delete') {
-            $this->db->where('contact_message_id', $para2);
-            $this->db->delete('contact_message');
+            if(!demo()){
+                $this->db->where('contact_message_id', $para2);
+                $this->db->delete('contact_message');
+            }
         } elseif ($para1 == 'list') {
             $this->db->order_by('contact_message_id', 'desc');
             $page_data['contact_messages'] = $this->db->get('contact_message')->result_array();
@@ -2347,8 +2452,9 @@ class Admin extends CI_Controller {
             $this->db->insert('language_list', $data);
 
             $id = $this->db->insert_id();
-            $this->Crud_model->file_up("icon", "language_list", $id, '', '', '', 'jpg');
-
+            if(!demo()){
+                $this->Crud_model->file_up("icon", "language_list", $id, '', '', '', 'jpg');
+            }
             $language = 'lang_' . $id;
 
             $this->db->where('language_list_id', $id);
@@ -2364,7 +2470,9 @@ class Admin extends CI_Controller {
             $this->db->update('language_list', array(
                 'name' => $this->input->post('language')
             ));
-            $this->Crud_model->file_up("icon", "language_list", $para2, '', '', '', 'jpg');
+            if(!demo()){
+                $this->Crud_model->file_up("icon", "language_list", $para2, '', '', '', 'jpg');
+            }
             recache();
         } else if ($para1 == "lang_set") {
             $val = '';
@@ -2385,14 +2493,18 @@ class Admin extends CI_Controller {
             $page_data['lang'] = $para2;
             $this->load->view('back/admin/language_select', $page_data);
         } elseif ($para1 == 'dlt_lang') {
-            $this->db->where('db_field', $para2);
-            $this->db->delete('language_list');
-            $this->load->dbforge();
-            $this->dbforge->drop_column('language', $para2);
+            if(!demo()){
+                $this->db->where('db_field', $para2);
+                $this->db->delete('language_list');
+                $this->load->dbforge();
+                $this->dbforge->drop_column('language', $para2);
+            }
             recache();
         } elseif ($para1 == 'dlt_word') {
-            $this->db->where('word_id', $para2);
-            $this->db->delete('language');
+            if(!demo()){
+                $this->db->where('word_id', $para2);
+                $this->db->delete('language');
+            }
             recache();
         } else {
             $page_data['page_name'] = "language";
@@ -2410,31 +2522,37 @@ class Admin extends CI_Controller {
             redirect(base_url() . 'admin');
         }
         if ($para1 == 'update_password') {
-            $user_data['password'] = $this->input->post('password');
-            $account_data = $this->db->get_where('admin', array(
-                        'admin_id' => $this->session->userdata('admin_id')
-                    ))->result_array();
-            foreach ($account_data as $row) {
-                if (sha1($user_data['password']) == $row['password']) {
-                    if ($this->input->post('password1') == $this->input->post('password2')) {
-                        $data['password'] = sha1($this->input->post('password1'));
-                        $this->db->where('admin_id', $this->session->userdata('admin_id'));
-                        $this->db->update('admin', $data);
-                        echo 'updated';
+            if(!demo()){
+                $user_data['password'] = $this->input->post('password');
+                $account_data = $this->db->get_where('admin', array(
+                            'admin_id' => $this->session->userdata('admin_id')
+                        ))->result_array();
+                foreach ($account_data as $row) {
+                    if (sha1($user_data['password']) == $row['password']) {
+                        if ($this->input->post('password1') == $this->input->post('password2')) {
+                            $data['password'] = sha1($this->input->post('password1'));
+                            $this->db->where('admin_id', $this->session->userdata('admin_id'));
+                            $this->db->update('admin', $data);
+                            echo 'updated';
+                        }
+                    } else {
+                        echo 'pass_prb';
                     }
-                } else {
-                    echo 'pass_prb';
                 }
             }
-        } else if ($para1 == 'update_profile') {
-            $this->db->where('admin_id', $this->session->userdata('admin_id'));
-            $this->db->update('admin', array(
-                'name' => $this->input->post('name'),
-                'email' => $this->input->post('email'),
-                'address' => $this->input->post('address'),
-                'phone' => $this->input->post('phone')
-            ));
-        } else {
+        }
+        else if ($para1 == 'update_profile') {
+            if(!demo()){
+                $this->db->where('admin_id', $this->session->userdata('admin_id'));
+                $this->db->update('admin', array(
+                    'name' => $this->input->post('name'),
+                    'email' => $this->input->post('email'),
+                    'address' => $this->input->post('address'),
+                    'phone' => $this->input->post('phone')
+                ));
+            }
+        }
+        else {
             $page_data['page_name'] = "manage_admin";
             $this->load->view('back/index', $page_data);
         }
@@ -2494,8 +2612,10 @@ class Admin extends CI_Controller {
             $this->db->update('page', $data);
             recache();
         } elseif ($para1 == 'delete') {
-            $this->db->where('page_id', $para2);
-            $this->db->delete('page');
+            if(!demo()){
+                $this->db->where('page_id', $para2);
+                $this->db->delete('page');
+            }
             recache();
         } elseif ($para1 == 'list') {
 
@@ -2578,13 +2698,15 @@ class Admin extends CI_Controller {
             $this->db->where('admin_id', $para2);
             $this->db->update('admin', $data);
         } elseif ($para1 == 'delete') {
-            $admin_email = $this->db->get_where('admin', array('admin_id' => $para2))->row()->email;
-            $this->db->where('admin_id', $para2);
-            $this->db->delete('admin');
+            if(!demo()){
+                $admin_email = $this->db->get_where('admin', array('admin_id' => $para2))->row()->email;
+                $this->db->where('admin_id', $para2);
+                $this->db->delete('admin');
 
-            $data1['admin_status'] = 0;
-            $this->db->where('email', $admin_email);
-            $this->db->update('news_reporter', $data1);
+                $data1['admin_status'] = 0;
+                $this->db->where('email', $admin_email);
+                $this->db->update('news_reporter', $data1);
+            }
         } elseif ($para1 == 'list') {
             $this->db->order_by('admin_id', 'desc');
             $page_data['all_admins'] = $this->db->get('admin')->result_array();
@@ -2619,8 +2741,10 @@ class Admin extends CI_Controller {
             $this->db->where('role_id', $para2);
             $this->db->update('role', $data);
         } elseif ($para1 == 'delete') {
-            $this->db->where('role_id', $para2);
-            $this->db->delete('role');
+            if(!demo()){
+                $this->db->where('role_id', $para2);
+                $this->db->delete('role');
+            }
         } elseif ($para1 == 'list') {
             $this->db->order_by('role_id', 'desc');
             $page_data['all_roles'] = $this->db->get('role')->result_array();
@@ -2700,9 +2824,10 @@ class Admin extends CI_Controller {
             $this->db->update('widget', $data);
             recache();
         } elseif ($para1 == 'delete') {
-
-            $this->db->where('widget_id', $para2);
-            $this->db->delete('widget');
+            if(!demo()){
+                $this->db->where('widget_id', $para2);
+                $this->db->delete('widget');
+            }
             recache();
         } else if ($para1 == 'edit') {
             $page_data['widget_data'] = $this->db->get_where('widget', array(
@@ -2760,11 +2885,13 @@ class Admin extends CI_Controller {
         if ($para1 == "select_logo") {
             $page_data['page_name'] = "select_logo";
         } elseif ($para1 == "delete_logo") {
-            if (file_exists("uploads/logo_image/logo_" . $para2 . ".png")) {
-                unlink("uploads/logo_image/logo_" . $para2 . ".png");
+            if(!demo()){
+                if (file_exists("uploads/logo_image/logo_" . $para2 . ".png")) {
+                    unlink("uploads/logo_image/logo_" . $para2 . ".png");
+                }
+                $this->db->where('logo_id', $para2);
+                $this->db->delete('logo');
             }
-            $this->db->where('logo_id', $para2);
-            $this->db->delete('logo');
             recache();
         } elseif ($para1 == "set_logo") {
             $type = $this->input->post('type');
@@ -2784,11 +2911,13 @@ class Admin extends CI_Controller {
                 $this->load->view('back/admin/select_logo', $page_data);
             }
         } elseif ($para1 == "upload_logo") {
-            $data['name'] = '';
-            $this->db->insert("logo", $data);
-            $id = $this->db->insert_id();
-            echo $_FILES["logo"]['name'];
-            move_uploaded_file($_FILES["logo"]['tmp_name'], 'uploads/logo_image/logo_' . $id . '.png');
+            if(!demo()){
+                $data['name'] = '';
+                $this->db->insert("logo", $data);
+                $id = $this->db->insert_id();
+                echo $_FILES["logo"]['name'];
+                move_uploaded_file($_FILES["logo"]['tmp_name'], 'uploads/logo_image/logo_' . $id . '.png');
+            }
         } else {
             $this->load->view('back/index', $page_data);
         }
@@ -2814,13 +2943,15 @@ class Admin extends CI_Controller {
         if (!$this->Crud_model->admin_permission('site_settings')) {
             redirect(base_url() . 'admin');
         }
-        $name = $_FILES["fav"]["name"];
-        $ext = end(explode(".", $name));
-        move_uploaded_file($_FILES["fav"]['tmp_name'], 'uploads/others/favicon.' . $ext);
-        $this->db->where('type', "fav_ext");
-        $this->db->update('ui_settings', array(
-            'value' => $ext
-        ));
+        if(!demo()){
+            $name = $_FILES["fav"]["name"];
+            $ext = end(explode(".", $name));
+            move_uploaded_file($_FILES["fav"]['tmp_name'], 'uploads/others/favicon.' . $ext);
+            $this->db->where('type', "fav_ext");
+            $this->db->update('ui_settings', array(
+                'value' => $ext
+            ));
+        }
         recache();
     }
 
@@ -3390,37 +3521,39 @@ class Admin extends CI_Controller {
             recache();
         }
         if ($para1 == "set") {
-            $this->db->where('type', "system_name");
-            $this->db->update('general_settings', array(
-                'value' => $this->input->post('system_name')
-            ));
-            $this->db->where('type', "system_email");
-            $this->db->update('general_settings', array(
-                'value' => $this->input->post('system_email')
-            ));
+            if(!demo()){
+                $this->db->where('type', "system_name");
+                $this->db->update('general_settings', array(
+                    'value' => $this->input->post('system_name')
+                ));
+                $this->db->where('type', "system_email");
+                $this->db->update('general_settings', array(
+                    'value' => $this->input->post('system_email')
+                ));
 
-            $this->db->where('type', "system_title");
-            $this->db->update('general_settings', array(
-                'value' => $this->input->post('system_title')
-            ));
-            $this->db->where('type', "cache_time");
-            $this->db->update('general_settings', array(
-                'value' => $this->input->post('cache_time')
-            ));
-            $this->db->where('type', "language");
-            $this->db->update('general_settings', array(
-                'value' => $this->input->post('language')
-            ));
-            $volume = $this->input->post('admin_notification_volume');
-            $this->db->where('type', "admin_notification_volume");
-            $this->db->update('general_settings', array(
-                'value' => $volume
-            ));
-            $volume = $this->input->post('homepage_notification_volume');
-            $this->db->where('type', "homepage_notification_volume");
-            $this->db->update('general_settings', array(
-                'value' => $volume
-            ));
+                $this->db->where('type', "system_title");
+                $this->db->update('general_settings', array(
+                    'value' => $this->input->post('system_title')
+                ));
+                $this->db->where('type', "cache_time");
+                $this->db->update('general_settings', array(
+                    'value' => $this->input->post('cache_time')
+                ));
+                $this->db->where('type', "language");
+                $this->db->update('general_settings', array(
+                    'value' => $this->input->post('language')
+                ));
+                $volume = $this->input->post('admin_notification_volume');
+                $this->db->where('type', "admin_notification_volume");
+                $this->db->update('general_settings', array(
+                    'value' => $volume
+                ));
+                $volume = $this->input->post('homepage_notification_volume');
+                $this->db->where('type', "homepage_notification_volume");
+                $this->db->update('general_settings', array(
+                    'value' => $volume
+                ));
+            }
             recache();
         }
         if ($para1 == 'faq_set') {
@@ -3532,6 +3665,20 @@ class Admin extends CI_Controller {
             ));
             recache();
         }
+        if ($para1 == "google_analytics_set") {
+            $val = '';
+            if ($para2 == 'true') {
+                $val = 'yes';
+            } else if ($para2 == 'false') {
+                $val = 'no';
+            }
+            echo $val;
+            $this->db->where('type', "google_analytics_set");
+            $this->db->update('general_settings', array(
+                'value' => $val
+            ));
+            recache();
+        }
     }
 
     /* Manage Email Template */
@@ -3559,6 +3706,24 @@ class Admin extends CI_Controller {
         $this->load->view('back/index', $page_data);
     }
 
+    // Manage google analytics
+    function google_analytics($para1 = "", $para2 = "") {
+        if (!$this->Crud_model->admin_permission('google_analytics')) {
+            redirect(base_url() . 'admin');
+        }
+
+        if ($para1 == "update") {
+            $data['value'] = $this->input->post('google_analytics_key');
+
+            $this->db->where('type','google_analytics_key');
+            $result = $this->db->update('third_party_settings', $data);
+            recache();
+        }
+
+        $page_data['page_name'] = "google_analytics";
+        $this->load->view('back/index', $page_data);
+    }
+
     function smtp_settings($para1 = "", $para2 = "") {
         if (!$this->Crud_model->admin_permission('site_settings')) {
             redirect(base_url() . 'admin');
@@ -3581,7 +3746,7 @@ class Admin extends CI_Controller {
     }
 
     function faqs() {
-        if (!$this->Crud_model->admin_permission('site_settings')) {
+        if (!$this->Crud_model->admin_permission('faq')) {
             redirect(base_url() . 'admin');
         }
         $page_data['page_name'] = "faq_settings";
@@ -3789,8 +3954,16 @@ class Admin extends CI_Controller {
             $this->db->where('user_id', $para2);
             $this->db->update('user', $data);
         } elseif ($para1 == 'delete') {
-            $this->db->where('user_id', $para2);
-            $this->db->delete('user');
+            if(!demo()){
+                if (file_exists('uploads/user_image/user_' . $para2 . '.jpg')) {
+                    unlink('uploads/user_image/user_' . $para2 . '.jpg');
+                }
+                if (file_exists('uploads/user_image/user_' .$para2 .'_thumb.jpg')) {
+                    unlink('uploads/user_image/user_' .$para2 .'_thumb.jpg');
+                }
+                $this->db->where('user_id', $para2);
+                $this->db->delete('user');
+            }
         } elseif ($para1 == 'list') {
             $this->db->order_by('user_id', 'desc');
             $page_data['all_users'] = $this->db->get('user')->result_array();
@@ -3985,13 +4158,13 @@ class Admin extends CI_Controller {
         recache();
     }
 
-    function google_map_api($para1 = "") {
+    function google_api_key($para1 = ""){
         if (!$this->Crud_model->admin_permission('site_settings')) {
             redirect(base_url() . 'admin');
         }
         $this->db->where('type', "g_map_api_key");
         $this->db->update('third_party_settings', array(
-            'value' => $this->input->post('g_map_api_key')
+            'value' => $this->input->post('api_key')
         ));
         recache();
     }
@@ -4001,7 +4174,9 @@ class Admin extends CI_Controller {
             redirect(base_url() . 'admin');
         }
         if ($para1 == "set_images") {
-            move_uploaded_file($_FILES[$para2]['tmp_name'], 'uploads/' . $para2 . '/default.jpg');
+            if(!demo()){
+                move_uploaded_file($_FILES[$para2]['tmp_name'], 'uploads/' . $para2 . '/default.jpg');
+            }
             recache();
         }
         $page_data['default_list'] = array('news_image' => 'news_images',
@@ -4015,47 +4190,7 @@ class Admin extends CI_Controller {
         $this->load->view('back/index', $page_data);
     }
 
-    /*
-     * News Advertisement related functionalities
-     */
 
-//    function post_ad($para1 = '', $para2 = '',$para3='') {
-//        if (!$this->Crud_model->admin_permission('ads_settings')) {
-//            redirect(base_url() . 'admin');
-//        }
-//        if($para1 == 'post'){
-//            //var_dump($_POST);
-//            $id = $this->input->post('position');
-//            $ad_posted_by = array();
-//            $ad_posted_by[] = array(
-//                    'id'    =>  $this->session->userdata('admin_id'),
-//                    'type'  =>  'admin'
-//                );
-//
-//
-//            $ext = pathinfo($_FILES['ad_img']['name'],PATHINFO_EXTENSION);
-//            $img_name = 'ad_img_'.$id.'.'.$ext;
-//            move_uploaded_file($_FILES['ad_img']['tmp_name'],'uploads/ad_image/'.$img_name);
-//            $post_details = array();
-//            $post_details[] = array(
-//                    'img'   =>  $img_name,
-//                    'url'   =>  $this->input->post('ad_url')
-//                );
-//            $data['ad_posted_by']   = json_encode($ad_posted_by);
-//            $data['availability']   = 'booked';
-//            $data['post_details']   = json_encode($post_details);
-//
-//            $this->db->where('advertisement_id',$id);
-//            $this->db->update('advertisement',$data);
-//        }
-//        elseif ($para1 == 'get_position') {
-//            echo $this->Crud_model->select_html('advertisement', 'position', 'position', 'add', 'demo-chosen-select required', '', 'page_id', $para2, 'show_ad_form');
-//        } else {
-//            $page_data['page_name'] = 'post_ad';
-//            $this->load->view('back/index', $page_data);
-//        }
-//    }
-//
     function payments($para1 = '', $para2 = '',$para3='') {
         if (!$this->Crud_model->admin_permission('ads_settings')) {
             redirect(base_url() . 'admin');
@@ -4101,18 +4236,20 @@ class Admin extends CI_Controller {
             $data['post_amount'] = $this->input->post('post_amount');
             $data['video_amount'] = $this->input->post('video_amount');
             $data['photo_amount'] = $this->input->post('photo_amount');
-            if ($_FILES['image']['name'] !== '') {
-                $id = $subscription_id;
-                $path = $_FILES['image']['name'];
-                $ext = '.' . pathinfo($path, PATHINFO_EXTENSION);
-                if ($ext==".jpg" || $ext==".JPG" || $ext==".jpeg" || $ext==".JPEG" || $ext==".png" || $ext==".PNG") {
-                    $this->Crud_model->file_up("image", "subscription", $id, '', '', $ext);
-                    $images[] = array('image' => 'subscription_' . $id . $ext, 'thumb' => 'subscription_' . $id . '_thumb' . $ext);
-                    $data['image'] = json_encode($images);
-                }
-                else {
-                    $this->session->set_flashdata('alert', 'failed_image');
-                    redirect(base_url().'admin/subscription', 'refresh');
+            if(!demo()){
+                if ($_FILES['image']['name'] !== '') {
+                    $id = $subscription_id;
+                    $path = $_FILES['image']['name'];
+                    $ext = '.' . pathinfo($path, PATHINFO_EXTENSION);
+                    if ($ext==".jpg" || $ext==".JPG" || $ext==".jpeg" || $ext==".JPEG" || $ext==".png" || $ext==".PNG") {
+                        $this->Crud_model->file_up("image", "subscription", $id, '', '', $ext);
+                        $images[] = array('image' => 'subscription_' . $id . $ext, 'thumb' => 'subscription_' . $id . '_thumb' . $ext);
+                        $data['image'] = json_encode($images);
+                    }
+                    else {
+                        $this->session->set_flashdata('alert', 'failed_image');
+                        redirect(base_url().'admin/subscription', 'refresh');
+                    }
                 }
             }
             $this->db->where('subscription_id', $subscription_id);
@@ -4156,16 +4293,25 @@ class Admin extends CI_Controller {
             $url    = $this->input->post('redirect_url');
             $previous_default = json_decode($this->db->get_where('advertisement',array('advertisement_id' => $para2))->row()->default_post,true);
             $default = array();
-            if($_FILES['default_image']['name'] !== ''){
-                $path   = $_FILES['default_image']['name'];
-                $ext    = pathinfo($path,PATHINFO_EXTENSION);
-                $img    = $type.'.'.$ext;
-                $default[] = array(
-                    'url'   => $url,
-                    'img'   => $img
-                );
-                move_uploaded_file($_FILES['default_image']['tmp_name'], 'uploads/default_banner/'.$img);
-            } else {
+            if(!demo()){
+                if($_FILES['default_image']['name'] !== ''){
+                    $path   = $_FILES['default_image']['name'];
+                    $ext    = pathinfo($path,PATHINFO_EXTENSION);
+                    $img    = $type.'.'.$ext;
+                    $default[] = array(
+                        'url'   => $url,
+                        'img'   => $img
+                    );
+                    move_uploaded_file($_FILES['default_image']['tmp_name'], 'uploads/default_banner/'.$img);
+                }
+                else {
+                    $default[] = array(
+                        'url'   => $url,
+                        'img'   => $previous_default[0]['img']
+                    );
+                }
+            }
+            else{
                 $default[] = array(
                     'url'   => $url,
                     'img'   => $previous_default[0]['img']
@@ -4188,6 +4334,35 @@ class Admin extends CI_Controller {
 
     }
 
+    // function google_adsense_settings($para1 = '', $para2 = '', $para3 = '') {
+    //     if (!$this->Crud_model->admin_permission('ads_settings')) {
+    //         redirect(base_url() . 'admin');
+    //     }
+    //     if($para1 == 'set_google_adsense'){
+    //         $type   = $this->db->get_where('advertisement',array('advertisement_id' => $para2))->row()->type;
+    //         $data['google_adsense_code']    = $this->input->post('google_adsense_code');
+    //         $google_adsense_set = $this->input->post('google_adsense');
+    //         if (isset($google_adsense_set)) {
+    //             $data['google_adsense']         = 'ok';
+    //             $data['availability']           = 'booked';
+    //
+    //         } else {
+    //             $data['google_adsense']         = '';
+    //             $data['availability']           = 'available';
+    //
+    //         }
+    //
+    //         $this->db->where('advertisement_id',$para2);
+    //         $this->db->update('advertisement',$data);
+    //         recache();
+    //     }
+    //     else {
+    //         $page_data['page_name'] = 'google_adsense_settings';
+    //         $this->load->view('back/index', $page_data);
+    //     }
+    //
+    // }
+
     function ads_log($para1 = '', $para2 = '', $para3 = '') {
         if (!$this->Crud_model->admin_permission('ads_log')) {
             redirect(base_url() . 'admin');
@@ -4195,6 +4370,89 @@ class Admin extends CI_Controller {
         else {
             $page_data['page_name'] = 'ads_log';
             $this->load->view('back/index',$page_data);
+        }
+    }
+
+    // Currency SETTINGS
+
+    function curency_settings(){
+        if (!$this->Crud_model->admin_permission('currency')) {
+            redirect(base_url() . 'admin');
+        }
+
+        $page_data['page_name'] = "curency_settings";
+        $this->load->view('back/index', $page_data);
+    }
+
+    function set_def_curr($para1 = '', $para2 = '',$para3 = '',$para4 = '')
+    {
+        if (!$this->Crud_model->admin_permission('currency')) {
+            redirect(base_url() . 'admin');
+        }
+        if($para1 == 'home'){
+            $this->db->where('type', "home_def_currency");
+            $this->db->update('business_settings', array(
+                'value' => $this->input->post('home_def_currency')
+            ));
+        }
+        if($para1 == 'system'){
+            $this->db->where('type', "currency");
+            $this->db->update('business_settings', array(
+                'value' => $this->input->post('currency')
+            ));
+
+            $this->db->where('currency_settings_id', $this->input->post('currency'));
+            $this->db->update('currency_settings', array(
+                'exchange_rate_def' => '1'
+            ));
+        }
+        recache();
+    }
+
+    /* Currency Format Settings */
+    function set_currency_format(){
+        if (!$this->Crud_model->admin_permission('currency')) {
+            redirect(base_url() . 'admin');
+        }
+
+        $this->db->where('type', 'currency_format');
+        $this->db->update('business_settings', array(
+            'value' => $this->input->post('currency_format')
+        ));
+
+        $this->db->where('type', 'symbol_format');
+        $this->db->update('business_settings', array(
+            'value' => $this->input->post('symbol_format')
+        ));
+
+        $this->db->where('type', 'no_of_decimals');
+        $this->db->update('business_settings', array(
+            'value' => $this->input->post('no_of_decimals')
+        ));
+
+        recache();
+    }
+
+    function set_currency_rate($para1 = "",$para2 = ""){
+        if (!$this->Crud_model->admin_permission('currency')) {
+            redirect(base_url() . 'admin');
+        }
+        if($para1 =='set_rate'){
+            if($this->input->post('exchange')){
+                echo $data['exchange_rate']         = $this->input->post('exchange');
+            }
+            if($this->input->post('exchange_def')){
+                echo $data['exchange_rate_def']     = $this->input->post('exchange_def');
+            }
+            if($this->input->post('name')){
+                echo $data['name']      = $this->input->post('name');
+            }
+            if($this->input->post('symbol')){
+                echo $data['symbol']        = $this->input->post('symbol');
+            }
+            $this->db->where('currency_settings_id', $para2);
+            $this->db->update('currency_settings', $data);
+            recache();
         }
     }
 
@@ -4226,5 +4484,10 @@ class Admin extends CI_Controller {
             $this->load->view('back/index', $page_data);
         }
     }
+
+     function test()
+     {
+
+     }
 
 }

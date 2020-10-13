@@ -28,6 +28,6 @@ $config['facebook_app_secret']          = $CI->db->get_where('third_party_settin
 $config['facebook_login_type']          = 'web';
 $config['facebook_login_redirect_url']  = 'home/login_set/back/fart';
 $config['facebook_logout_redirect_url'] = 'home/logout';
-$config['facebook_permissions']         = array('public_profile', 'publish_actions', 'email');
+$config['facebook_permissions']         = array('public_profile', 'email');
 $config['facebook_graph_version']       = 'v2.6';
 $config['facebook_auth_on_load']        = TRUE;

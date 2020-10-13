@@ -20,9 +20,9 @@
             <div class="col-md-3 col-lg-3 col-sm-6 col-sx-12">
                 <div class="package-list <?php if($package_id == $package['index']){echo 'package-selected';} ?>">
                     <div class="package-head text-center">
-                        <h4 class="text-center"><?php echo $package['name'];?></h4>
+                        <h4 class="text-center"><?php echo translate($package['name']);?></h4>
                     </div>
-                    
+
                     <div class="package-body">
                         <div class="package-price">
                             <span>
@@ -35,15 +35,15 @@
                         </div>
                         <div class="package-details">
                             <ul class="text-center">
-                                <li><b>Position:</b> <?php echo $ad_info->position;?></li>
-                                <li><b>Size:</b> <?php echo $ad_info->size;?></li>
-                                <li><b>Time:</b> <?php echo $time;?></li>
-                                <li><b>Price:</b> $<?php echo $package['price'];?></li>
+                                <li><b><?php echo translate('position') ?>: </b> <?php echo translate($ad_info->position);?></li>
+                                <li><b><?php echo translate('size') ?>: </b> <?php echo translate($ad_info->size);?></li>
+                                <li><b><?php echo translate('time') ?>: </b> <?php echo translate($time);?></li>
+                                <li><b><?php echo translate('price') ?>: </b> <?php echo currency($package['price']);?></li>
                             </ul>
                         </div>
                     </div>
                     <div class="package-footer">
-                        <label for="package-<?php echo $package['index'];?>" id="select-<?php echo $package['index'];?>" class="btn btn-block btn-package" onclick="package_check('package-<?php echo $package["index"];?>',$(this))">
+                        <label for="package-<?php echo $package['index'];?>" id="select-<?php echo $package['index'];?>" class="btn btn-block btn-package package_check" onclick="package_check('package-<?php echo $package["index"];?>',$(this))">
                             <?php echo translate('select');?>
                         </label>
                         <input type="radio" name="package" <?php if($package_id == $package['index']){echo 'checked';} ?> value="<?php echo $package['index'];?>" data-amount="<?php echo $package['price'];?>" id="package-<?php echo $package['index'];?>" style="display:none;" />
@@ -57,6 +57,8 @@
 <input type="hidden" name="advertisement_id" value="<?php echo $ad_info->advertisement_id;?>"/>
 
 <script>
+    $(".package_check:first").click();
+
     function package_check(id,now){
         for(var i=1; i<5; i++){
             $("#package-"+i).prop("checked", false );

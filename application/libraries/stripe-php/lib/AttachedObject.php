@@ -3,7 +3,7 @@
 namespace Stripe;
 
 // e.g. metadata on Stripe objects.
-class AttachedObject extends Object
+class AttachedObject extends Stripeobject
 {
     /**
      * Updates this object.

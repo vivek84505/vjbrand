@@ -6,7 +6,7 @@
  *
  * This content is released under the MIT License (MIT)
  *
- * Copyright (c) 2014 - 2017, British Columbia Institute of Technology 
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,8 +29,8 @@
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
- * @license	http://opensource.org/licenses/MIT	MIT License
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
  * @since	Version 1.0.0
  * @filesource
@@ -73,43 +73,6 @@ class CI_Benchmark {
 	}
 
 	// --------------------------------------------------------------------
-	/**
-	 * Set a benchmark marker
-	 *
-	 * Multiple calls to this function can be made so that several
-	 * execution points can be timed.
-	 *
-	 * @param	string	$name	Marker name
-	 * @return	void
-	 */
-	public function mark_time($point1='')
-	{
-		$this->marker[$point1] = microtime(TRUE);
-	}
-
-	// --------------------------------------------------------------------
-	/**
-	 * Set a benchmark marker
-	 *
-	 * Multiple calls to this function can be made so that several
-	 * execution points can be timed.
-	 *
-	 * @param	string	$name	Marker name
-	 * @return	void
-	 */
-	public function get_lang($point1='')
-	{
-		//$CI =& get_instance();
-		if(isset($_COOKIE['lang'])) {
-			$lang = $_COOKIE['lang'];
-		} else {
-			$lang = '';
-		}
-		return $lang;
-	
-	}
-	
-	// --------------------------------------------------------------------
 
 	/**
 	 * Elapsed time
@@ -129,6 +92,23 @@ class CI_Benchmark {
 	 *			an '{elapsed_string}' if $point1 is empty
 	 *			or an empty string if $point1 is not found.
 	 */
+
+	public function mark_time($point1='')
+ 	{
+ 		$this->marker[$point1] = microtime(TRUE);
+ 	}
+	public function get_lang($point1='')
+	{
+		//$CI =& get_instance();
+		if(isset($_COOKIE['lang'])) {
+			$lang = $_COOKIE['lang'];
+		} else {
+			$lang = '';
+		}
+		return $lang;
+
+	}
+
 	public function elapsed_time($point1 = '', $point2 = '', $decimals = 4)
 	{
 		if ($point1 === '')

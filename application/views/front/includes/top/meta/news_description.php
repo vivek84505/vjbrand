@@ -1,6 +1,7 @@
-<?php 	
+<?php
 	foreach ($news_description as $row) {
 	    $img = json_decode($row['img_features'], true);
+		$main = "";
 	    foreach ($img as $rows) {
 	    	if($rows['index'] == 0){
 		        $main = $rows['img'];

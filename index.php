@@ -53,7 +53,6 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
- 	date_default_timezone_set("Asia/Dhaka");
 	include_once './application/libraries/vendor/autoload.php';
 
 	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'production');
@@ -90,6 +89,20 @@ switch (ENVIRONMENT)
 		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
 		echo 'The application environment is not set correctly.';
 		exit(1); // EXIT_ERROR
+}
+
+$error_reporting = 0; // 0 = unknown, 1 = full , 2 = none
+
+if ($error_reporting == 1) {
+    /*full error reporting*/
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+} else if ($error_reporting == 2) {
+    /*no error reporting*/
+    ini_set('display_errors', 0);
+    ini_set('display_startup_errors', 0);
+    error_reporting(~E_ALL);
 }
 
 /*

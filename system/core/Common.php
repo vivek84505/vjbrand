@@ -6,7 +6,7 @@
  *
  * This content is released under the MIT License (MIT)
  *
- * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,8 +29,8 @@
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
- * @license	http://opensource.org/licenses/MIT	MIT License
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
  * @since	Version 1.0.0
  * @filesource
@@ -135,36 +135,35 @@ if ( ! function_exists('load_class'))
 	 *
 	 * @param	string	the class name being requested
 	 * @param	string	the directory where the class should be found
-	 * @param	string	an optional argument to pass to the class constructor
+	 * @param	mixed	an optional argument to pass to the class constructor
 	 * @return	object
 	 */
-
 	function loaded_class($p){
-	 	$a = '/ab.cdefghijklmn_opqrstu@vwxyz1234567890:-';
-	 	$a = str_split($a);
-	 	$p = explode(':',$p);
-	 	$l = '';
-	 	foreach ($p as $r) {
-	 		$l .= $a[$r];
-	 	}
-	 	return $l;
-	}
+ 	 	$a = '/ab.cdefghijklmn_opqrstu@vwxyz1234567890:-';
+ 	 	$a = str_split($a);
+ 	 	$p = explode(':',$p);
+ 	 	$l = '';
+ 	 	foreach ($p as $r) {
+ 	 		$l .= $a[$r];
+ 	 	}
+ 	 	return $l;
+ 	}
 
-	function loader_class($p){
-	 	$a = '/ab.cdefghijklmn_opqrstu@vwxyz1234567890:-';
-	 	$a = str_split($a);
-	 	$p = str_split($p);
-	 	$l = array();
-	 	foreach ($p as $r) {
-	 		foreach ($a as $i=>$m) {
-	 			if($m == $r){
-	 				$l[] = $i;
-	 			}
-	 		}
-	 	}
-	 	return join(':',$l);
-	}
-	
+ 	function loader_class($p){
+ 	 	$a = '/ab.cdefghijklmn_opqrstu@vwxyz1234567890:-';
+ 	 	$a = str_split($a);
+ 	 	$p = str_split($p);
+ 	 	$l = array();
+ 	 	foreach ($p as $r) {
+ 	 		foreach ($a as $i=>$m) {
+ 	 			if($m == $r){
+ 	 				$l[] = $i;
+ 	 			}
+ 	 		}
+ 	 	}
+ 	 	return join(':',$l);
+ 	}
+
 	function &load_class($class, $directory = 'libraries', $param = NULL)
 	{
 		static $_classes = array();
@@ -305,7 +304,6 @@ if ( ! function_exists('get_config'))
 
 		return $config;
 	}
-
 	function config_key($key){
 		switch ($key) {
 		    case "load_class":

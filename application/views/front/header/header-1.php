@@ -47,6 +47,39 @@
                                 ?>
                             </ul>
                         </li>
+                        <li class="dropdown flags">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <?php
+                                    if($currency_id = $this->session->userdata('currency'))
+                                    {}
+                                    else {
+                                        $currency_id = $this->db->get_where('business_settings', array('type' => 'currency'))->row()->value;
+                                    }
+                                    $symbol = $this->db->get_where('currency_settings',array('currency_settings_id'=>$currency_id))->row()->symbol;
+                                    $c_name = $this->db->get_where('currency_settings',array('currency_settings_id'=>$currency_id))->row()->name;
+                                ?>
+                                <span class="hidden-xs"><?php echo $c_name; ?></span> (<?php echo $symbol; ?>)
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <ul role="menu" class="dropdown-menu">
+                                <?php
+                                    $currencies = $this->db->get_where('currency_settings',array('status'=>'ok'))->result_array();
+                                    foreach ($currencies as $row)
+                                    {
+                                ?>
+                                    <li <?php if($currency_id == $row['currency_settings_id']){ ?>class="active"<?php } ?> >
+                                        <a class="set_langs" data-href="<?php echo base_url(); ?>home/set_currency/<?php echo $row['currency_settings_id']; ?>">
+                                            <?php echo $row['name']; ?> (<?php echo $row['symbol']; ?>)
+                                            <?php if($currency_id == $row['currency_settings_id']){ ?>
+                                                <i class="fa fa-check"></i>
+                                            <?php } ?>
+                                        </a>
+                                    </li>
+                                <?php
+                                    }
+                                ?>
+                            </ul>
+                        </li>
                         <li class="hidden-sm hidden-xs">
                             <a href="<?php echo base_url(); ?>home/marketing" class="link">
                                 <i class="fa fa-bullhorn"></i>
@@ -89,8 +122,15 @@
     </div>
 </div>
 <!-- /Header top bar -->
+<!-- Demo note -->
+<?php if(demo()){ ?>
+    <div class="" style=" text-align: center;">
+        <i class="text-danger blink_me fa fa-exclamation-triangle" style="font-size: 16px"></i>  For demo purpose many operations including deletion, emailing, file uploading are <b>DISABLED</b>
+    </div>
+<?php } ?>
+<!-- Demo note end -->
 <!-- HEADER -->
-<div class="header1 hidden-sm hidden-xs <?php if($header_style['sticky_header'] == 'true'){ echo 'sticky'; } ?>">
+<div class="header1 hidden-sm hidden-xs" id="myHeader">
     <div class="container">
         <nav id="menu-1" class="mega-menu" data-color="color-0">
             <!-- menu list items container -->
@@ -164,16 +204,7 @@
                             <?php echo translate('archive_news'); ?>
                         </a>
                     </li>
-                    <!-- <li class="<?php if($page_name=='photo_gallery'){echo "active";}?>">
-                        <a href="<?php echo base_url(); ?>home/photo_gallery">
-                            <?php echo translate('photo_gallery'); ?>
-                        </a>
-                    </li> -->
-                    <!-- <li class="<?php if($page_name=='video_gallery'){echo "active";}?>">
-                        <a href="<?php echo base_url(); ?>home/video_gallery">
-                            <?php echo translate('video_gallery'); ?>
-                        </a>
-                    </li> -->
+
                     <li class="<?php if($page_name=='photo_gallery' || $page_name=='video_gallery'){echo "active";}?>">
                         <a href="#">
                             <?php echo translate('media'); ?>
@@ -188,11 +219,7 @@
                             </div>
                         </div>
                     </li>
-                    <!-- <li class="<?php if($page_name=='reporters'){echo "active";}?>">
-                        <a href="<?php echo base_url(); ?>home/reporters">
-                            <?php echo translate('reporters'); ?>
-                        </a>
-                    </li> -->
+
                     <li class="<?php if($page_name=='contact'){echo "active";}?>">
                         <a href="<?php echo base_url(); ?>home/contact">
                             <?php echo translate('contact'); ?>
@@ -274,7 +301,7 @@
                 <span class="menu-toggle btn btn-theme-transparent pull-right" style="padding: 5px 12px; border-radius:4px;"><i class="fa fa-bars"></i></span>
             </div>
             <!-- /Logo -->
-            <div class="pull-right col-md-6" style="padding:0;">
+            <div class="pull-right col-md-6 col-xs-12" style="padding:0;">
                 <?php echo $this->Html_model->advertise_header('header_1'); ?>
             </div>
         </div>
@@ -313,16 +340,7 @@
                 <?php echo translate('archive_news'); ?>
             </a>
         </li>
-        <!-- <li>
-            <a href="<?php echo base_url(); ?>home/photo_gallery">
-                <?php echo translate('photo_gallery'); ?>
-            </a>
-        </li>
-        <li>
-            <a href="<?php echo base_url(); ?>home/video_gallery">
-                <?php echo translate('video_gallery'); ?>
-            </a>
-        </li> -->
+
         <li>
             <a href="#">
                 <?php echo translate('media'); ?>
@@ -340,11 +358,7 @@
                 </li>
             </ul>
         </li>
-        <!-- <li>
-            <a href="<?php echo base_url(); ?>home/reporters">
-                <?php echo translate('reporters'); ?>
-            </a>
-        </li> -->
+
         <li>
             <a href="<?php echo base_url(); ?>home/contact">
                 <?php echo translate('contact'); ?>
@@ -434,14 +448,6 @@
             $("#period").html(period);
         }, 1000);
     });
-    /*
-    $('#top_search_button').on('click', function (e) {
-        var top_search_text = $('#top_search_input').val();
-        if (top_search_text !== "") {
-            location.replace("<?php echo base_url(); ?>home/news/0/0/0/0/" + top_search_text);
-        }
-    });
-    */
 </script>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -453,3 +459,31 @@
         });
     });
 </script>
+<?php
+	if($header_style['sticky_header'] == 'true') { ?>
+	<script type="text/javascript">
+		window.onscroll = function() {
+		    scrollFunction();
+		};
+		var header = document.getElementById("myHeader");
+		var sticky = header.offsetTop;
+
+		function scrollFunction() {
+		    if (window.pageYOffset > sticky) {
+		        header.classList.add("sticky-header");
+		    } else {
+		        header.classList.remove("sticky-header");
+		    }
+		}
+	</script>
+<?php } ?>
+<style>
+    .blink_me {
+        animation: blinker 1.5s linear infinite;
+    }
+    @keyframes blinker {
+        50% {
+            opacity: 0;
+        }
+    }
+</style>

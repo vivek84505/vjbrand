@@ -126,7 +126,7 @@
                             </div>
                             <div class="post-control">
                                 <div class="visitor">
-                                    <?php echo translate('total_views'); ?> : 
+                                    <?php echo translate('total_views'); ?> :
                                     <?php echo number_format($rows['view_count']); ?>
                                 </div>
                                 <div class="controls">
@@ -158,7 +158,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="post-body social_share"> 
+                            <div class="post-body social_share">
                                 <div id="share"></div>
                             </div>
                         </article>
@@ -221,19 +221,19 @@
                     <!-- /advertisement space -->
                     <div class="advertise_space2">
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-<?php echo $this->Html_model->advertise_rect('news_description_2'); ?>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad-t-15">
+                                <?php echo $this->Html_model->advertise_rect('news_description_2'); ?>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-<?php echo $this->Html_model->advertise_rect('news_description_3'); ?>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad-t-15">
+                                <?php echo $this->Html_model->advertise_rect('news_description_3'); ?>
                             </div>
                         </div>
                     </div>
                     <!-- /advertisement space -->
                     <div class="bottom_part">
-<?php
-echo $this->Html_model->bottom_part($news_description_data['page_bottom']);
-?>
+                        <?php
+                        echo $this->Html_model->bottom_part($news_description_data['page_bottom']);
+                        ?>
                     </div>
                 </div>
                 <!-- /CONTENT -->
@@ -317,7 +317,7 @@ echo $this->Html_model->bottom_part($news_description_data['page_bottom']);
         window.print();
     }
 </script>
-<style type="text/css">    
+<style type="text/css">
     @media print {
         .top-bar,
         header,
@@ -332,7 +332,7 @@ echo $this->Html_model->bottom_part($news_description_data['page_bottom']);
         .social_share,
         #marquee_section,
         .post-meta.to_show,
-        .advertise_space2, 
+        .advertise_space2,
         .mob-con{
             display: none !important;
         }

@@ -25,7 +25,10 @@
                                     <?php
                                         $total = $this->db->get('news')->num_rows();
                                         $published = $this->db->get_where('news',array('status'=>'published'))->num_rows();
-                                        $unpublished = $this->db->get_where('news',array('status !='=>'published'))->num_rows();
+
+                                        $this->db->where('status',NULL);
+                                        $this->db->or_where('status','unpublished');
+                                        $unpublished = $this->db->get('news')->num_rows();
                                         echo $total;
                                     ?>
                                 </p>
@@ -56,7 +59,12 @@
                                     <?php
                                         $total = $this->db->get('news_archive')->num_rows();
                                         $published = $this->db->get_where('news_archive',array('status'=>'published'))->num_rows();
-                                        $unpublished = $this->db->get_where('news_archive',array('status !='=>'published'))->num_rows();
+
+                                        $this->db->where('status',NULL);
+                                        $this->db->or_where('status','unpublished');
+                                        $unpublished = $this->db->get('news_archive')->num_rows();
+
+                                        //$unpublished = $this->db->get_where('news_archive',array('status !='=>'published'))->num_rows();
                                         echo $total;
                                     ?>
                                 </p>

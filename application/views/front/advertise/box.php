@@ -1,10 +1,10 @@
-<?php 
+<?php
     $i = 0;
     $count = count($ad_element);
     foreach($ad_element as $ad){
 ?>
     <div class="col-md-6 pad-lr-5 thumbnail photo_box_1">
-        <div class="media">
+        <div class="media" style="width:100%">
             <img class="media-object img-responsive image_delay" src="<?php echo img_loading(); ?>" data-src="<?php echo base_url();?>uploads/banner_demo/<?php echo $ad['type']?>.jpg">
         </div>
         <div class="col-md-12 pad-lr-0">
@@ -15,7 +15,7 @@
             </span>
         </div>
         <div class="col-md-12 pad-lr-0" style="padding: 5px 0px;">
-            <?php             	                 
+            <?php
 	            $packages = json_decode($ad['package'],true);
 	            $num_packages = 0;
 	            if (!empty($packages)) {

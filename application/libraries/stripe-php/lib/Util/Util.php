@@ -2,7 +2,7 @@
 
 namespace Stripe\Util;
 
-use Stripe\Object;
+use Stripe\Stripeobject;
 
 abstract class Util
 {
@@ -92,7 +92,7 @@ abstract class Util
             if (isset($resp['object']) && is_string($resp['object']) && isset($types[$resp['object']])) {
                 $class = $types[$resp['object']];
             } else {
-                $class = 'Stripe\\Object';
+                $class = 'Stripe\\Stripeobject';
             }
             return $class::constructFrom($resp, $opts);
         } else {

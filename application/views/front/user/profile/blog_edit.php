@@ -19,14 +19,14 @@
                 ?>
                     <?php
                     foreach ($get_blog as $value) {
-                    ?> 
+                    ?>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-12 col-sm-12">
                                     <span class="inputt custom-input-1 input-filled">
                                         <input class="custom-input-field-1" type="text" id="input-1" name="title" value="<?=$value->title?>" required/>
                                         <input class="custom-input-field-1" type="hidden" name="blog_id" value="<?=$value->blog_id?>" required/>
-                                        <label class="input-label custom-input-label-1" for="input-1">
+                                        <label class="input-label custom-input-label-1" for="input-1" style="left:0;">
                                             <span class="input-label-content custom-input-label-content" data-content="<?php echo translate('title');?>"><?php echo translate('title');?></span>
                                         </label>
                                     </span>
@@ -34,7 +34,7 @@
                                 <div class="col-md-12 col-sm-12">
                                     <span class="inputt custom-input-1 input-filled">
                                         <textarea class="custom-input-field-1" cols="25" id="input-2" name="summary" required><?=$value->summary?></textarea>
-                                        <label class="input-label custom-input-label-1" for="input-2">
+                                        <label class="input-label custom-input-label-1" for="input-2" style="left:0;">
                                             <span class="input-label-content custom-input-label-content" data-content="<?php echo translate('summary');?>"><?php echo translate('summary');?></span>
                                         </label>
                                     </span>
@@ -42,7 +42,7 @@
                                 <div class="col-md-12 col-sm-12">
                                     <span class="inputt custom-input-1 input-filled">
                                         <textarea class="custom-input-field-1 txt_editor" cols="25" id="input-3" name="description" required><?=$value->description?></textarea>
-                                        <label class="input-label custom-input-label-1" for="input-3">
+                                        <label class="input-label custom-input-label-1" for="input-3" style="left:0;">
                                             <span class="input-label-content custom-input-label-content" data-content="<?php echo translate('description');?>"><?php echo translate('description');?></span>
                                         </label>
                                     </span>
@@ -50,7 +50,7 @@
                                 <div class="col-md-12 col-sm-12">
                                     <span class="inputt custom-input-1 input-filled">
                                         <?php echo $this->Crud_model->select_html('blog_category', 'blog_category', 'name', 'edit', 'custom-input-field-1',$value->blog_category_id, '', '', 'get_cat') ?>
-                                        <label class="input-label custom-input-label-1" for="input-3">
+                                        <label class="input-label custom-input-label-1" for="input-3" style="left:0;">
                                             <span class="input-label-content custom-input-label-content" data-content="<?php echo translate('category');?>"><?php echo translate('category');?></span>
                                         </label>
                                     </span>
@@ -60,7 +60,7 @@
                                         <div id="sub_cat_name">
                                             <?=$this->Crud_model->select_html('blog_sub_category', 'blog_sub_category', 'name', 'edit', 'custom-input-field-1', $value->blog_sub_category_id, 'parent_category_id', $value->blog_category_id, '');?>
                                         </div>
-                                        <label class="input-label custom-input-label-1" for="input-4">
+                                        <label class="input-label custom-input-label-1" for="input-4" style="left:0;">
                                             <span class="input-label-content custom-input-label-content" data-content="<?php echo translate('sub-category');?>"><?php echo translate('sub-category');?></span>
                                         </label>
                                     </span>
@@ -143,8 +143,8 @@
                                                         }
                                                         ?>
                                                     <!-- </div> -->
-                                                </div>               
-                                            </div>    
+                                                </div>
+                                            </div>
                                         <?php
                                         $count = $row['index'];
                                         }
@@ -161,7 +161,7 @@
 
                                 <div class="col-md-12 col-sm-12">
                                     <!-- <button type="button" onclick="pfp_submit()">click</button> -->
-                                    <span id="pfp_submit" class="button-custom-btn-1 signup_btn enterer pull-right custom-btn-1-round-l custom-btn-1 custom-btn-1-text-thick custom-btn-1-text-upper custom-btn-1-size-s" data-unsuccessful='<?php echo translate('submit_unsuccessful!'); ?>' data-success='<?php echo translate('submitted_successfully!'); ?>' data-reload="blog_list" data-ing='<?php echo translate('submitting..') ?>' data-text="<?php echo translate('submit');?>">       
+                                    <span id="pfp_submit" class="button-custom-btn-1 signup_btn enterer pull-right custom-btn-1-round-l custom-btn-1 custom-btn-1-text-thick custom-btn-1-text-upper custom-btn-1-size-s" data-unsuccessful='<?php echo translate('submit_unsuccessful!'); ?>' data-success='<?php echo translate('submitted_successfully!'); ?>' data-reload="blog_list" data-ing='<?php echo translate('submitting..') ?>' data-text="<?php echo translate('submit');?>">
                                         <span><i class="fa fa-check"></i></span>
                                     </span>
                                 </div>
@@ -169,12 +169,12 @@
                         </div>
                     <?php
                     }
-                    ?>                  
+                    ?>
                 </form>
             </div>
         </div>
     </div>
-</div>  
+</div>
 <div id="blog_image_dummy" style="display:none; margin-top:10px">
     <div class="rem">
         <div class="col-sm-4" style="margin-bottom:10px;">
@@ -263,13 +263,13 @@ $(document).ready(function(e) {
     ( function( window ) {
 
         'use strict';
-        
+
         function classReg( className ) {
           return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
         }
-        
+
         var hasClass, addClass, removeClass;
-        
+
         if ( 'classList' in document.documentElement ) {
           hasClass = function( elem, c ) {
             return elem.classList.contains( c );
@@ -294,13 +294,13 @@ $(document).ready(function(e) {
             elem.className = elem.className.replace( classReg( c ), ' ' );
           };
         }
-        
+
         function toggleClass( elem, c ) {
           var fn = hasClass( elem, c ) ? removeClass : addClass;
           fn( elem, c );
         }
-        
-        
+
+
         var classie = {
           hasClass: hasClass,
           addClass: addClass,
@@ -311,14 +311,14 @@ $(document).ready(function(e) {
           remove: removeClass,
           toggle: toggleClass
         };
-        
+
         if ( typeof define === 'function' && define.amd ) {
           define( classie );
         } else {
           window.classie = classie;
         }
         })( window );
-    
+
 });
 </script>
 

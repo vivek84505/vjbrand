@@ -1,54 +1,52 @@
 <div class="modal_wrap">
     <div class="row get_into" id="ad_info">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<div class="row box_shape2">
+			<div class="box_shape2">
                 <div class="title">
                     <?php echo translate('adverisement_information');?>
                 </div>
                 <hr>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                	<center>
-                        <div class="form-group">
-                            <label class="col-sm-5 control-label text-right"><?php echo translate('page_name');?></label>
-                            <label class="col-sm-1 control-label text-center">:</label>
-                            <label class="col-sm-6 control-label text-left"><?php echo $this->db->get_where('ad_page',array('ad_page_id' => $ad_info->page_id))->row()->name;?></label>
+                <div class="">
+                        <div class="form-group row">
+                            <label class="col-xs-5 control-label text-right"><?php echo translate('page_name');?></label>
+                            <label class="col-xs-2 control-label text-center">:</label>
+                            <label class="col-xs-5 control-label text-left"><?php echo $this->db->get_where('ad_page',array('ad_page_id' => $ad_info->page_id))->row()->name;?></label>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-5 control-label text-right"><?php echo translate('position');?></label>
-                            <label class="col-sm-1 control-label text-center">:</label>
-                            <label class="col-sm-6 control-label text-left"><?php echo $ad_info->position;?></label>
+                        <div class="form-group row">
+                            <label class="col-xs-5 control-label text-right"><?php echo translate('position');?></label>
+                            <label class="col-xs-2 control-label text-center">:</label>
+                            <label class="col-xs-5 control-label text-left"><?php echo $ad_info->position;?></label>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-5 control-label text-right"><?php echo translate('size');?></label>
-                            <label class="col-sm-1 control-label text-center">:</label>
-                            <label class="col-sm-6 control-label text-left"><?php echo $ad_info->size;?></label>
+                        <div class="form-group row">
+                            <label class="col-xs-5 control-label text-right"><?php echo translate('size');?></label>
+                            <label class="col-xs-2 control-label text-center">:</label>
+                            <label class="col-xs-5 control-label text-left"><?php echo $ad_info->size;?></label>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-5 control-label text-right"><?php echo translate('format');?></label>
-                            <label class="col-sm-1 control-label text-center">:</label>
-                            <label class="col-sm-6 control-label text-left"><?php echo $ad_info->format;?></label>
+                        <div class="form-group row">
+                            <label class="col-xs-5 control-label text-right"><?php echo translate('format');?></label>
+                            <label class="col-xs-2 control-label text-center">:</label>
+                            <label class="col-xs-5 control-label text-left"><?php echo $ad_info->format;?></label>
                         </div>
-                        <div class="form-group">
-                        	<label class="col-sm-5 control-label text-right"><?php echo translate('payment_getway');?></label>
-                            <label class="col-sm-1 control-label text-center">:</label>
-                            <label class="col-sm-6 control-label text-left">
+                        <div class="form-group row">
+                        	<label class="col-xs-5 control-label text-right"><?php echo translate('payment_getway');?></label>
+                            <label class="col-xs-2 control-label text-center">:</label>
+                            <label class="col-xs-5 control-label text-left">
                             	<img class="thumbnail image_delay" src="<?php echo img_loading(); ?>" data-src="<?php echo base_url();?>uploads/others/paypal_icon.png" style="display: -webkit-inline-box;">
                                 <img class="thumbnail image_delay" src="<?php echo img_loading(); ?>" data-src="<?php echo base_url();?>uploads/others/stripe_icon.png" style="display: -webkit-inline-box;">
                             </label>
                         </div>
-                    </center>
                 </div>
                 <hr>
-                <div class="col-lg-8 col-md-8 col-md-offset-2 col-sm-8 col-xs-12">
+                <div class="text-center clearfix">
                     <?php if($ad_info->availability == 'available'){?>
-                    <span  class="button-custom-btn-1 btn-block custom-btn-1 custom-btn-1-text-thick custom-btn-1-round-s custom-btn-1-text-upper custom-btn-1-size-s pull-right" data-text="<?php echo translate('apply_for_advertisement');?>"
-                    onClick="apply_ad('<?php echo $ad_info->advertisement_id;?>')">		
+                    <button  class="button-custom-btn-1 btn-block custom-btn-1 custom-btn-1-text-thick custom-btn-1-round-s custom-btn-1-text-upper custom-btn-1-size-s" data-text="<?php echo translate('apply_for_advertisement');?>"
+                    onClick="apply_ad('<?php echo $ad_info->advertisement_id;?>')">
                         <span><?php echo translate('apply_for_advertisement');?></span>
-                    </span>
+                    </button>
                     <?php } else { ?>
-                    <span class="btn btn-block btn-readmore disabled" href="#">
+                    <button class="btn btn-block btn-readmore disabled" href="#">
                         <?php echo translate('booked!')?>
-                    </span>
+                    </button>
                     <?php } ?>
                 </div>
             </div>

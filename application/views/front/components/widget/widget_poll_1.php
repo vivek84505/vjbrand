@@ -1,3 +1,3 @@
-<?php
-	$this->load->view('front/components/poll/poll_option');
+<?php
+	$this->load->view('front/components/poll/poll_option');
 ?>

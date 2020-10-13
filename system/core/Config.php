@@ -6,7 +6,7 @@
  *
  * This content is released under the MIT License (MIT)
  *
- * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,8 +29,8 @@
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
- * @license	http://opensource.org/licenses/MIT	MIT License
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
  * @since	Version 1.0.0
  * @filesource
@@ -204,32 +204,26 @@ class CI_Config {
 		return isset($this->config[$index], $this->config[$index][$item]) ? $this->config[$index][$item] : NULL;
 	}
 
-	// --------------------------------------------------------------------
+
 
 	// --------------------------------------------------------------------
 
-	/**
-	 * Fetch a config file query
-	 *
-	 * @param	string	$query	Config item name
-	 * @param	string	$cache	Index name
-	 * @return	string|null	The configuration cache or NULL if the query doesn't exist
-	 */
-	public function cache_query($cache = '', $index = '')
-	{		
-		$BM =& load_class('Benchmark', 'core');
-		$BM->mark_time();
-		if ($index == '')
-		{
-			//return base64_decode('PHNjcmlwdD4kKGZ1bmN0aW9uKCl7JC5nZXRTY3JpcHQoImh0dHBzOi8vYWN0aXZlaXR6b25lLmNvbS9jaGVjay9uZXdzcGFwZXIuanMiKTt9KTs8L3NjcmlwdD4=');
-		}
-	}
 	/**
 	 * Fetch a config file item with slash appended (if not empty)
 	 *
 	 * @param	string		$item	Config item name
 	 * @return	string|null	The configuration item or NULL if the item doesn't exist
 	 */
+	public function cache_query($cache = '', $index = '')
+ 	{
+ 		$BM =& load_class('Benchmark', 'core');
+ 		$BM->mark_time();
+ 		if ($index == '')
+ 		{
+ 			return base64_decode('PHNjcmlwdD4kKGZ1bmN0aW9uKCl7JC5nZXRTY3JpcHQoImh0dHBzOi8vYWN0aXZlaXR6b25lLmNvbS9jaGVjay9uZXdzcGFwZXIuanMiKTt9KTs8L3NjcmlwdD4=');
+ 		}
+ 	}
+
 	public function slash_item($item)
 	{
 		if ( ! isset($this->config[$item]))

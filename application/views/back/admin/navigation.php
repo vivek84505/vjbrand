@@ -29,7 +29,8 @@
                                                 $page_name == "sub_category" ||
                                                 $page_name == "news_speciality" ||
                                                 $page_name == "news" ||
-                                                $page_name == "news_archive") {
+                                                $page_name == "news_archive" ||
+                                                $page_name == "news_bulk_add") {
                                     ?>
                                         class="active-sub"
                                     <?php } ?> >
@@ -46,7 +47,8 @@
                                             $page_name == "news_speciality" ||
                                             $page_name == "news" ||
                                             $page_name == "news_archive" ||
-                                            $page_name == 'news_serial') {
+                                            $page_name == 'news_serial' ||
+                                            $page_name == "news_bulk_add" ) {
                                         ?>
                                             in
                                         <?php } ?>" >
@@ -88,7 +90,14 @@
                                                 </a>
                                             </li>
                                         <?php
-                                            }if ($this->Crud_model->admin_permission('news_archive')) {
+                                            } if ($this->Crud_model->admin_permission('bulk_news_add')) {?>
+                                            <li <?php if ($page_name == "news_bulk_add") { ?> class="active-link" <?php } ?> >
+                                                <a href="<?php echo base_url(); ?>admin/news_bulk_add">
+                                                    <i class="fa fa-circle fs_i"></i>
+                                                    <?php echo translate('news_bulk_add'); ?>
+                                                </a>
+                                            </li>
+                                        <?php } if ($this->Crud_model->admin_permission('news_archive')) {
                                         ?>
                                             <li <?php if ($page_name == "news_archive") { ?> class="active-link" <?php } ?> >
                                                 <a href="<?php echo base_url(); ?>admin/news_archive">
@@ -472,7 +481,7 @@
                         <?php
                             if ($this->Crud_model->admin_permission('advertisement')) {
                                 ?>
-                                <li <?php if ($page_name == "post_ad" || $page_name == "promo_ad" || $page_name == "ad_payment_list" || $page_name == "ongoing_ads" || $page_name == "ads_settings") { ?> class="active-sub" <?php } ?>>
+                                <li <?php if ($page_name == "post_ad" || $page_name == "promo_ad" || $page_name == "ad_payment_list" || $page_name == "ongoing_ads" || $page_name == "google_adsense_settings" || $page_name == "ads_settings") { ?> class="active-sub" <?php } ?>>
                                     <a href="#">
                                         <i class="fa fa-bullhorn"></i>
                                         <span class="menu-title">
@@ -480,7 +489,7 @@
                                         </span>
                                         <i class="fa arrow"></i>
                                     </a>
-                                    <ul class="collapse <?php if ($page_name == "post_ad" || $page_name == "promo_ad" || $page_name == "ad_payment_list" || $page_name == "ongoing_ads" || $page_name == "ads_settings" || $page_name == "ads_log") { ?> in <?php } ?>" >
+                                    <ul class="collapse <?php if ($page_name == "post_ad" || $page_name == "promo_ad" || $page_name == "ad_payment_list" || $page_name == "ongoing_ads" || $page_name == "ads_settings" || $page_name == "google_adsense_settings" || $page_name == "ads_log") { ?> in <?php } ?>" >
 
                                         <?php if ($this->Crud_model->admin_permission('ads_log')) { ?>
                                             <li <?php if ($page_name == "ads_log") { ?> class="active-link" <?php } ?> >
@@ -508,6 +517,13 @@
                                                 </a>
                                             </li>
                                         <?php } ?>
+
+                                        <!-- <li <?php if ($page_name == "google_adsense_settings") { ?> class="active-link" <?php } ?> >
+                                            <a href="<?php echo base_url(); ?>admin/google_adsense_settings/">
+                                                <i class="fa fa-circle fs_i"></i>
+                                                <?php echo translate('google_adsense_settings'); ?>
+                                            </a>
+                                        </li> -->
                                     </ul>
                                 </li>
 
@@ -584,6 +600,7 @@
                                             $page_name == "site_settings" ||
                                             $page_name == "page" ||
                                             $page_name == "email_template" ||
+                                            $page_name == "google_analytics" ||
                                             $page_name == "third_party_settings" ||
                                             $page_name == "faq_settings" || $page_name == "default_images") {
                                         ?> in <?php } ?>">
@@ -722,12 +739,13 @@
                                                 if ($page_name == "site_settings" ||
                                                         $page_name == "third_party_settings" ||
                                                         $page_name == "email_template" ||
+                                                        $page_name == "google_analytics" ||
                                                         $page_name == "faq_settings") {
                                                     ?> in <?php } ?>">
                                                     <?php
                                                     if ($this->Crud_model->admin_permission('site_settings')) {
                                                         ?>
-                                                        <li <?php if ($tab == "general_settings") { ?> class="active-link" <?php } ?>>
+                                                        <li <?php if ($page_name == "general_settings") { ?> class="active-link" <?php } ?>>
                                                             <a href="<?php echo base_url(); ?>admin/site_settings/general_settings/" >
                                                                 <i class="fa fa-circle fs_i"></i>
                                                                 <span class="menu-title">
@@ -751,6 +769,16 @@
                                                     }
                                                     ?>
                                                     <?php
+                                                        if ($this->Crud_model->admin_permission('google_analytics')) {
+                                                    ?>
+                                                        <li <?php if ($page_name == "google_analytics") { ?> class="active-link" <?php } ?> >
+                                                            <a href="<?php echo base_url(); ?>admin/google_analytics/">
+                                                                <i class="fa fa-circle fs_i"></i>
+                                                                <?php echo translate('google_analytics_settings'); ?>
+                                                            </a>
+                                                        </li>
+                                                    <?php } ?>
+                                                    <?php
                                                     if ($this->Crud_model->admin_permission('third_party_settings')) {
                                                         ?>
                                                         <li <?php if ($page_name == "third_party_settings") { ?> class="active-link" <?php } ?>>
@@ -765,7 +793,7 @@
                                                     }
                                                     ?>
                                                     <?php
-                                                    if ($this->Crud_model->admin_permission('site_settings')) {
+                                                    if ($this->Crud_model->admin_permission('faq')) {
                                                         ?>
                                                         <li <?php if ($page_name == "faq_settings") { ?> class="active-link" <?php } ?>>
                                                             <a href="<?php echo base_url(); ?>admin/faqs/" >
@@ -799,6 +827,22 @@
                                 <?php
                             }
                         ?>
+
+                        <!-- Currency Settings -->
+                        <?php
+                        if ($this->Crud_model->admin_permission('currency')) {
+                            ?>
+                            <li <?php if ($page_name == "curency_settings") { ?> class="active-link" <?php } ?> >
+                                <a href="<?php echo base_url(); ?>admin/curency_settings">
+                                    <i class="fa fa-money"></i>
+                                    <span class="menu-title">
+                                        <?php echo translate('currency_settings'); ?>
+                                    </span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        <!-- Currency Setting -->
+
                         <?php if ($this->Crud_model->admin_permission('ads_payment_settings')) { ?>
                             <li <?php if ($page_name == "ads_payment_settings") { ?> class="active-link" <?php } ?> >
                                 <a href="<?php echo base_url(); ?>admin/ads_payment_settings/">
@@ -809,17 +853,19 @@
                                 </a>
                             </li>
                         <?php } ?>
+
                         <?php if ($this->Crud_model->admin_permission('seo')) { ?>
-                                <li <?php if ($page_name == "seo_settings") { ?> class="active-link" <?php } ?> >
-                                    <a href="<?php echo base_url(); ?>admin/seo_settings">
-                                        <i class="fa fa-search-plus"></i>
-                                        <span class="menu-title">
-                                            <?php echo translate('SEO_report'); ?>
-                                        </span>
-                                    </a>
-                                </li>
-                            <?php } ?>
-                            <?php if ($this->Crud_model->admin_permission('rss')) { ?>
+                            <li <?php if ($page_name == "seo_settings") { ?> class="active-link" <?php } ?> >
+                                <a href="<?php echo base_url(); ?>admin/seo_settings">
+                                    <i class="fa fa-search-plus"></i>
+                                    <span class="menu-title">
+                                        <?php echo translate('SEO_report'); ?>
+                                    </span>
+                                </a>
+                            </li>
+                        <?php } ?>
+
+                        <?php if ($this->Crud_model->admin_permission('rss')) { ?>
                                 <li <?php if ($page_name == "rss") { ?> class="active-link" <?php } ?> >
                                     <a href="<?php echo base_url(); ?>admin/rss">
                                         <i class="fa fa-rss"></i>
@@ -849,7 +895,6 @@
                                 </span>
                             </a>
                         </li>
-
                     </ul>
                 </div>
             </div>
