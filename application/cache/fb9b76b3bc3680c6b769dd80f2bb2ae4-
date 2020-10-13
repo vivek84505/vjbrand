@@ -1,0 +1,3181 @@
+a:2:{s:6:"expire";i:1602334736;s:7:"headers";a:6:{i:0;a:2:{i:0;s:15:"HTTP/1.0 200 OK";i:1;b:1;}i:1;a:2:{i:0;s:15:"HTTP/1.1 200 OK";i:1;b:1;}i:2;a:2:{i:0;s:44:"Last-Modified: Sat, 10 Oct 2020 12:48:53 GMT";i:1;b:1;}i:3;a:2:{i:0;s:50:"Cache-Control: no-store, no-cache, must-revalidate";i:1;b:1;}i:4;a:2:{i:0;s:40:"Cache-Control: post-check=0, pre-check=0";i:1;b:1;}i:5;a:2:{i:0;s:16:"Pragma: no-cache";i:1;b:1;}}}ENDCI---><!DOCTYPE html>
+<html lang="en">
+    <head>
+    	
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Together we prosper.">
+<meta name="keywords" content="social,digital,group,network,beproud,proud women,proud,women,kids,children">
+<meta name="author" content="BeProud">
+<meta name="revisit-after" content="1 days">
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content="Home || BeProud">
+<meta itemprop="description" content="Together we prosper.">
+<meta itemprop="image" content="http://localhost/newsproud/uploads/logo_image/logo_42.png">
+
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@publisher_handle">
+<meta name="twitter:title" content="Home || BeProud">
+<meta name="twitter:description" content="Together we prosper.">
+<!-- Twitter summary card with large image must be at least 280x150px -->
+<meta name="twitter:image:src" content="http://localhost/newsproud/uploads/logo_image/logo_42.png">
+
+<!-- Open Graph data -->
+<meta property="og:title" content="Home || BeProud" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost/newsproud/index.php/home" />
+<meta property="og:image" content="http://localhost/newsproud/uploads/logo_image/logo_42.png" />
+<meta property="og:description" content="Together we prosper." />
+<meta property="og:site_name" content="Home || BeProud" />
+
+<title>Home || BeProud </title>
+
+<!-- Favicon -->
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost/newsproud/uploads/others/favicon.png">
+<link rel="shortcut icon" href="http://localhost/newsproud/uploads/others/favicon.png">
+<!-- Favicon Ends -->
+
+<!-- CSS Global -->
+<link href="http://localhost/newsproud/template/front/assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+<link href="http://localhost/newsproud/template/front/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="http://localhost/newsproud/template/front/assets/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet">
+<link href="http://localhost/newsproud/template/front/assets/plugins/fontawesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="http://localhost/newsproud/template/front/assets/modal/css/sm.css" rel="stylesheet">
+
+<link href="http://localhost/newsproud/template/front/assets/plugins/animate/animate.min.css" rel="stylesheet">
+<!-- CSS Global Ends -->
+
+<!-- Theme CSS -->
+<link href="http://localhost/newsproud/template/front/assets/css/theme.css" rel="stylesheet">
+<link href="http://localhost/newsproud/template/front/assets/css/custom-theme.css" rel="stylesheet">
+<link href="http://localhost/newsproud/template/front/assets/custom/buttons/custom-1.css" rel="stylesheet">
+<link href="http://localhost/newsproud/template/front/assets/custom/buttons/bootstrap-social.css" rel="stylesheet">
+<link href="http://localhost/newsproud/template/front/assets/custom/input-form/custom-1.css" rel="stylesheet">
+<link href="http://localhost/newsproud/template/front/assets/custom/smedia/custom-1.css" rel="stylesheet">
+<link href="http://localhost/newsproud/template/front/assets/custom/checkbox_radio/custom-1.css" rel="stylesheet">
+<link href="http://localhost/newsproud/template/front/assets/custom/tab_menu/tab_menu-1.css" rel="stylesheet">
+
+<link href="http://localhost/newsproud/template/front/assets/css/theme-green-1.css" rel="stylesheet">
+<!-- Theme CSS Ends -->
+
+	
+<link href='https://fonts.googleapis.com/css?family=Fjord+One:400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+<style>
+	*{
+		font-family: 'Fjord One', sans-serif;
+	}
+	.remove_one{
+		cursor:pointer;
+		padding-left:5px;	
+	}
+</style>
+
+		<link href="http://localhost/newsproud/template/front/assets/plugins/owl-carousel2/assets/owl.carousel.min.css" rel="stylesheet">
+		<link href="http://localhost/newsproud/template/front/assets/plugins/owl-carousel2/assets/owl.theme.default.min.css" rel="stylesheet">
+		<link href="http://localhost/newsproud/template/front/assets/plugins/countdown/jquery.countdown.css" rel="stylesheet">
+
+<!-- Head Libs -->
+<script src="http://localhost/newsproud/template/front/assets/plugins/jquery/jquery-1.11.1.min.js"></script>
+<script src="http://localhost/newsproud/template/front/assets/plugins/modernizr.custom.js"></script>
+
+<!--[if lt IE 9]>
+<script src="http://localhost/newsproud/template/front/assets/plugins/iesupport/html5shiv.js"></script>
+<script src="http://localhost/newsproud/template/front/assets/plugins/iesupport/respond.min.js"></script>
+<![endif]-->
+
+    </head>
+    <body id="home" class="wide">
+        <!-- PRELOADER -->
+        <link href="http://localhost/newsproud/template/front/assets/preloader/css/Icomoon/style.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+	//$(window).load(function() {
+	$(document).ready(function(e) {
+		$("#loading").delay(500).fadeOut(500);
+		$("#loading-center").click(function() {
+			$("#loading").fadeOut(500);
+		});
+		setTimeout(function(){ load_iamges(); }, 1000);	
+	});
+</script>
+
+
+
+<style>
+
+#loading-center{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	}
+#loading-center-absolute {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	height: 200px;
+	width: 200px;
+	margin-top: -100px;
+	margin-left: -100px;
+	-ms-transform: rotate(-135deg); 
+   	-webkit-transform: rotate(-135deg); 
+    transform: rotate(-135deg);
+
+}
+.object{
+
+	-moz-border-radius: 50% 50% 50% 50%;
+	-webkit-border-radius: 50% 50% 50% 50%;
+	border-radius: 50% 50% 50% 50%;
+	position: absolute;
+	border-top: 5px solid rgba(0,0,0,1);
+	border-bottom: 5px solid transparent;
+	border-left:  5px solid rgba(0,0,0,1);
+	border-right: 5px solid transparent;
+	
+	-webkit-animation: animate 2s infinite;
+	animation: animate 2s infinite;	
+
+	}
+
+
+#object_one{
+	left: 75px;
+	top: 75px;
+	width: 50px;
+	height: 50px;
+	}
+							
+#object_two{
+	left: 65px;
+	top: 65px;
+	width: 70px;
+	height: 70px;
+	-webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+	}
+		
+#object_three{
+	left: 55px;
+	top: 55px;
+	width: 90px;
+	height: 90px;
+	-webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+	}
+#object_four{
+	left: 45px;
+	top: 45px;
+	width: 110px;
+	height: 110px;
+	-webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+	
+	}	
+
+@-webkit-keyframes animate {
+ 
+
+50% {
+
+	-ms-transform: rotate(360deg) scale(0.8); 
+   	-webkit-transform: rotate(360deg) scale(0.8); 
+    transform: rotate(360deg) scale(0.8); 
+  }
+	  
+  
+
+}
+
+@keyframes animate {
+	
+50% {
+
+	-ms-transform: rotate(360deg) scale(0.8); 
+   	-webkit-transform: rotate(360deg) scale(0.8); 
+    transform: rotate(360deg) scale(0.8); 
+  }	
+	
+	}
+
+
+
+
+</style>
+<div id="loading">
+    <div id="loading-center">
+        <div id="loading-center-absolute">
+            <div class="object" id="object_four"></div>
+            <div class="object" id="object_three"></div>
+            <div class="object" id="object_two"></div>
+            <div class="object" id="object_one"></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<style>
+
+#loading{
+	background-color: rgba(235,81,136,1);
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	z-index: 1050;
+	margin-top: 0px;
+	top: 0px;
+}
+</style>
+
+        <!-- /PRELOADER -->
+
+        <!-- WRAPPER -->
+        <div class="wrapper">
+			<link href="http://localhost/newsproud/template/front/assets/custom/mega_menu/mega_menu.css" rel="stylesheet">
+<script src="http://localhost/newsproud/template/front/assets/custom/mega_menu/mega_menu.js"></script>
+<!-- Header top bar -->
+<div class="top-bar">
+    <div class="container">
+        <div style="display:table; width:100%;">
+            <div style="display:table-row;">
+                <div class="top-bar-left" style="display:table-cell; float:none; text-align:left;">
+                    <ul class="list-inline">
+                        <li class="dropdown flags">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                                <img src="http://localhost/newsproud/uploads/language_list_image/language_list_1.jpg" width="20px;" alt=""/>
+                                <span class="hidden-xs">English</span>
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <ul role="menu" class="dropdown-menu">
+                                                                    <li class="active" >
+                                        <a class="set_langs" data-href="http://localhost/newsproud/home/set_language/english">
+                                            <img src="http://localhost/newsproud/uploads/language_list_image/language_list_1.jpg" width="20px;" alt=""/>
+                                            English                                                                                            <i class="fa fa-check"></i>
+                                                                                    </a>
+                                    </li>
+                                                            </ul>
+                        </li>
+                        <li class="hidden-sm hidden-xs">
+                            <a href="http://localhost/newsproud/home/marketing" class="link">
+                                <i class="fa fa-bullhorn"></i>
+                                Apply For Advertise                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <div class="top-bar-middle" style="display:table-cell; float:none; text-align:center;">
+                    <ul class="list-inline">
+                        <li class="header_clock hidden-sm  hidden-xs">
+                            <ul>
+                                <li class="number" id="hours"></li>
+                                <li id="point">:</li>
+                                <li class="number" id="min"></li>
+                                <li id="point">:</li>
+                                <li class="number" id="sec"></li>
+                                <li id="period"></li>
+                            </ul>
+                        </li>
+                        <li class="hidden-sm hidden-xs">
+                            <div id="Date" class="date"></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="top-bar-right" style="display:table-cell; float:none; text-align:right;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Header top bar -->
+<!-- HEADER -->
+<div class="header1 hidden-sm hidden-xs sticky">
+    <div class="container">
+        <nav id="menu-1" class="mega-menu" data-color="color-0">
+            <!-- menu list items container -->
+            <section class="menu-list-items">
+                <!-- menu links -->
+                <ul class="menu-links"> <!-- active class -->
+                    <li class="active">
+                        <a href="http://localhost/newsproud/home">
+                            <i class="fa fa-home"></i>
+                            Home                        </a>
+                    </li>
+                    <li class="">
+                        <a href="http://localhost/newsproud/home/news/0/0">
+                            News                            <i class="fa fa-caret-down fa-indicator"></i>
+                        </a> <!-- drop down full width -->
+                        <div class="drop-down grid-col-12">
+                                                                    <div class="grid-row">
+                                                                            <div class="grid-col-2">
+                                            <a href="http://localhost/newsproud/home/news/1/0">
+                                                <h4>Other</h4>
+                                            </a>
+                                                                                    </div>
+                                                                        <div class="grid-col-2">
+                                            <a href="http://localhost/newsproud/home/news/2/0">
+                                                <h4>Proud Professional</h4>
+                                            </a>
+                                                                                            <ul>
+                                                                                                            <li>
+                                                            <a href="http://localhost/newsproud/home/news/2/16">
+                                                                <i class="fa fa-caret-right"></i>
+                                                                Hightlight                                                            </a>
+                                                        </li>
+                                                                                                    </ul>
+                                                                                    </div>
+                                                                        <div class="grid-col-2">
+                                            <a href="http://localhost/newsproud/home/news/3/0">
+                                                <h4>Proud Entrepreneur </h4>
+                                            </a>
+                                                                                    </div>
+                                                                        <div class="grid-col-2">
+                                            <a href="http://localhost/newsproud/home/news/4/0">
+                                                <h4>Proud Kid</h4>
+                                            </a>
+                                                                                    </div>
+                                                                        <div class="grid-col-2">
+                                            <a href="http://localhost/newsproud/home/news/5/0">
+                                                <h4>Proud Youth</h4>
+                                            </a>
+                                                                                    </div>
+                                                                        <div class="grid-col-2">
+                                            <a href="http://localhost/newsproud/home/news/6/0">
+                                                <h4>Proud Women</h4>
+                                            </a>
+                                                                                    </div>
+                                                                    </div>
+                                                                    <div class="grid-row">
+                                                                            <div class="grid-col-2">
+                                            <a href="http://localhost/newsproud/home/news/7/0">
+                                                <h4>Be Proud Community</h4>
+                                            </a>
+                                                                                    </div>
+                                </div>                        </div>
+                    </li>
+                    <li class="">
+                        <a href="http://localhost/newsproud/home/archive_news/0/0">
+                            Archives                        </a>
+                    </li>
+                    <!-- <li class="">
+                        <a href="http://localhost/newsproud/home/photo_gallery">
+                            Photo Gallery                        </a>
+                    </li> -->
+                    <!-- <li class="">
+                        <a href="http://localhost/newsproud/home/video_gallery">
+                            Video Gallery                        </a>
+                    </li> -->
+                    <li class="">
+                        <a href="#">
+                            Media                            <i class="fa fa-caret-down fa-indicator"></i>
+                        </a> <!-- drop down full width -->
+                        <div class="drop-down grid-col-2">
+                            <div class="grid-row">
+                                <ul>
+                                    <li><a href="http://localhost/newsproud/home/photo_gallery"><i class="fa fa-caret-right"></i>Photo Gallery</a></li>
+                                    <li><a href="http://localhost/newsproud/home/video_gallery"><i class="fa fa-caret-right"></i>Video Gallery</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- <li class="">
+                        <a href="http://localhost/newsproud/home/reporters">
+                            Associates                        </a>
+                    </li> -->
+                    <li class="">
+                        <a href="http://localhost/newsproud/home/contact">
+                            Contact                        </a>
+                    </li>
+                    <li class="">
+                        <a href="http://localhost/newsproud/home/blog">
+                            Blog                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#">
+                            Blog Media                            <i class="fa fa-caret-down fa-indicator"></i>
+                        </a> <!-- drop down full width -->
+                        <div class="drop-down grid-col-2">
+                            <div class="grid-row">
+                                <ul>
+                                    <li><a href="http://localhost/newsproud/home/blog_photo_gallery"><i class="fa fa-caret-right"></i>Photo Gallery</a></li>
+                                    <li><a href="http://localhost/newsproud/home/blog_video_gallery"><i class="fa fa-caret-right"></i>Video Gallery</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="">
+                        <a href="#">
+                            More                            <i class="fa fa-caret-down fa-indicator"></i>
+                        </a> <!-- drop down full width -->
+                        <div class="drop-down grid-col-2">
+                            <div class="grid-row">
+                                <ul>
+                                    <li><a href="http://localhost/newsproud/home/reporters"><i class="fa fa-caret-right"></i>Associates</a></li>
+                                    <li><a href="http://localhost/newsproud/home/bloggers"><i class="fa fa-caret-right"></i>Bloggers</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <!-- menu social bar -->
+                <ul class="menu-links signup pull-right">
+                </ul>
+                <!-- menu search bar -->
+                <ul class="menu-search-bar">
+                    <li>
+                        <form action="http://localhost/newsproud/home/top_search/" class="form-horizontal" method="post" id="top_search_form" accept-charset="utf-8">
+<input type="hidden" name="csrf_test_name" value="6e8c25696597d7afbd49202224fbbe11" />                                 
+                            <label>
+                                <input name="menu_search_bar" id="top_search_input" placeholder="Search..." type="search">
+                                <i id="top_search_button" class="fa fa-search enterer" style="cursor:pointer; margin-right:0px;"></i>
+                            </label>
+                        </form>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+    </div>
+</div>
+<header class="header">
+    <div class="header-wrapper">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo pull-left hidden-sm hidden-xs">
+                <a href="http://localhost/newsproud/">
+                    <img class="img-responsive" src="http://localhost/newsproud/uploads/logo_image/logo_42.png" >
+                </a>
+            </div>
+            <div class="logo hidden-lg hidden-md" style="max-width: 60%; width: 60%; display:inline-block; float:left;">
+                <a href="http://localhost/newsproud/">
+                    <img class="img-responsive" src="http://localhost/newsproud/uploads/logo_image/logo_42.png" >
+                </a>
+            </div>
+            <div class="logo hidden-lg hidden-md" style="max-width: 15%; width: 15%; display:inline-block; float:right;">
+                <span class="menu-toggle btn btn-theme-transparent pull-right" style="padding: 5px 12px; border-radius:4px;"><i class="fa fa-bars"></i></span>
+            </div>
+            <!-- /Logo -->
+            <div class="pull-right col-md-6" style="padding:0;">
+                
+            
+    
+            <a href="https://beproud.in/">
+                <div class="img-bg img-responsive image_delay" style="height:60px;background-image: url(http://localhost/newsproud/uploads/others/image_loading.gif);" data-src="http://localhost/newsproud/uploads/default_banner/header_1.jpg" alt="advertise" ></div>
+            </a>
+            </div>
+        </div>
+    </div>
+</header>
+<nav class="navigation closed clearfix hidden-lg hidden-md">
+    <a href="#" class="menu-toggle-close btn"><i class="fa fa-times"></i></a>
+    <ul class="nav sf-menu">
+        <li class="active">
+            <a href="http://localhost/newsproud/home">
+                <i class="fa fa-home"></i>
+                Home            </a>
+        </li>
+        <li>
+            <a href="http://localhost/newsproud/home/news/0/0">
+                News            </a> <!-- drop down full width -->
+            <ul>
+                                    <li>
+                        <a href="http://localhost/newsproud/home/news/1/0">
+                            Other                        </a>
+                    </li>
+                                    <li>
+                        <a href="http://localhost/newsproud/home/news/2/0">
+                            Proud Professional                        </a>
+                    </li>
+                                    <li>
+                        <a href="http://localhost/newsproud/home/news/3/0">
+                            Proud Entrepreneur                         </a>
+                    </li>
+                                    <li>
+                        <a href="http://localhost/newsproud/home/news/4/0">
+                            Proud Kid                        </a>
+                    </li>
+                                    <li>
+                        <a href="http://localhost/newsproud/home/news/5/0">
+                            Proud Youth                        </a>
+                    </li>
+                                    <li>
+                        <a href="http://localhost/newsproud/home/news/6/0">
+                            Proud Women                        </a>
+                    </li>
+                                    <li>
+                        <a href="http://localhost/newsproud/home/news/7/0">
+                            Be Proud Community                        </a>
+                    </li>
+                            </ul>
+        </li>
+        <li>
+            <a href="http://localhost/newsproud/home/archive_news/0/0">
+                Archives            </a>
+        </li>
+        <!-- <li>
+            <a href="http://localhost/newsproud/home/photo_gallery">
+                Photo Gallery            </a>
+        </li>
+        <li>
+            <a href="http://localhost/newsproud/home/video_gallery">
+                Video Gallery            </a>
+        </li> -->
+        <li>
+            <a href="#">
+                Media            </a> <!-- drop down full width -->
+            <ul>
+                <li>
+                    <a href="http://localhost/newsproud/home/photo_gallery">
+                        Photo Gallery                    </a>
+                </li>
+                <li>
+                    <a href="http://localhost/newsproud/home/video_gallery">
+                        Video Gallery                    </a>
+                </li>
+            </ul>
+        </li>
+        <!-- <li>
+            <a href="http://localhost/newsproud/home/reporters">
+                Associates            </a>
+        </li> -->
+        <li>
+            <a href="http://localhost/newsproud/home/contact">
+                Contact            </a>
+        </li>
+        <li>
+            <a href="http://localhost/newsproud/home/blog">
+                Blog            </a>
+        </li>
+        <li>
+            <a href="#">
+                Blog Media            </a> <!-- drop down full width -->
+            <ul>
+                <li>
+                    <a href="http://localhost/newsproud/home/blog_photo_gallery">
+                        Photo Gallery                    </a>
+                </li>
+                <li>
+                    <a href="http://localhost/newsproud/home/blog_video_gallery">
+                        Video Gallery                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">
+                More            </a> <!-- drop down full width -->
+            <ul>
+                <li>
+                    <a href="http://localhost/newsproud/home/reporters">
+                        Associates                    </a>
+                </li>
+                <li>
+                    <a href="http://localhost/newsproud/home/bloggers">
+                        Bloggers                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+<!-- /HEADER -->
+<script type="text/javascript">
+    $('#top_search_button').on('click', function (e){
+        var top_search_text = $('#top_search_input').val();
+        if (top_search_text !== "") {
+            $('#top_search_form').submit();
+            //location.replace("http://localhost/newsproud/home/news/0/0/0/0/" + top_search_text);
+        }
+    });
+</script>
+
+<script>
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
+        var newDate = new Date();
+        newDate.setDate(newDate.getDate());
+        $('#Date').html(dayNames[newDate.getDay()] + ", " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
+
+        setInterval(function () {
+            var seconds = new Date().getSeconds();
+            $("#sec").html((seconds < 10 ? "0" : "") + seconds);
+        }, 1000);
+
+        setInterval(function () {
+            var minutes = new Date().getMinutes();
+            $("#min").html((minutes < 10 ? "0" : "") + minutes);
+        }, 1000);
+
+        setInterval(function () {
+            var hours = new Date().getHours();
+            var period = 'am';
+            if (hours >= 12) {
+                hours = hours - 12;
+                period = 'pm';
+            }
+            $("#hours").html((hours < 10 ? "0" : "") + hours);
+            $("#period").html(period);
+        }, 1000);
+    });
+    /*
+    $('#top_search_button').on('click', function (e) {
+        var top_search_text = $('#top_search_input').val();
+        if (top_search_text !== "") {
+            location.replace("http://localhost/newsproud/home/news/0/0/0/0/" + top_search_text);
+        }
+    });
+    */
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.set_langs').on('click', function () {
+            var lang_url = $(this).data('href');
+            $.ajax({url: lang_url, success: function (result) {
+                    location.reload();
+                }});
+        });
+    });
+</script>
+
+            
+            
+
+<section class="page-section marquee" id="marquee_section">
+    <div class="container">
+    	<div class="row">
+        	<div class="col-md-12 col-sm-12 col-xs-12 custom-marquee">
+        		<div class="marquee1">
+                    <div class="heading">
+                        <span class="hidden-xs hidden-sm">Upcomings</span>
+                        <span class="hidden-lg hidden-md">
+                        	<i class="fa fa-bullhorn"></i>
+                        </span>
+                    </div>
+                    <div class="marquee_body">
+                        <marquee behavior="scroll" direction="left" id="marquee1" onmouseover="this.stop();" onmouseout="check_switch_onmouseout();" style="display:inline-block;overflow: hidden;text-align: initial;white-space: nowrap;">
+                            
+                            <div class="marquee_items">
+                                <a href="http://localhost/newsproud/home/news_description/101/Be-Proud-Magazine-Launch-in-July-2020-the-Journey" data-title="Be Proud Magazine Launch in July 2020 "the Journey"">
+                                    <i class="fa fa-angle-double-right"></i>
+                                    Be Proud Magazine Launch in July 2020 "the Journey"
+                                </a>
+                            </div>
+                            
+                            <div class="marquee_items">
+                                <a href="http://localhost/newsproud/home/news_description/100/Be-Proud-Magazine-Launch-in-July-2020-the-Journey" data-title="Be Proud Magazine Launch in July 2020 "the Journey"">
+                                    <i class="fa fa-angle-double-right"></i>
+                                    Be Proud Magazine Launch in July 2020 "the Journey"
+                                </a>
+                            </div>
+                            
+                            <div class="marquee_items">
+                                <a href="http://localhost/newsproud/home/news_description/99/Lets-be-acquainted-with-our-Rising-Proud-Woman-MsAshwini-Lunawat-driving-head-of-BE-PROUD-COMPANY-a-global-business-network" data-title="Let’s be acquainted with our Rising Proud Woman Ms.Ashwini Lunawat, driving head of BE PROUD COMPANY - a global business network">
+                                    <i class="fa fa-angle-double-right"></i>
+                                    Let’s be acquainted with our Rising Proud Woman Ms.Ashwini Lunawat, driving head of BE PROUD COMPANY - a global business network
+                                </a>
+                            </div>
+                            
+                            <div class="marquee_items">
+                                <a href="http://localhost/newsproud/home/news_description/98/Be-proud-company-is-a-social-group-created-to-make-active-platform-for-business-entertainment-education-learning-etc" data-title="Be proud company is a social group created to make active platform for business, entertainment, education, learning, etc">
+                                    <i class="fa fa-angle-double-right"></i>
+                                    Be proud company is a social group created to make active platform for business, entertainment, education, learning, etc
+                                </a>
+                            </div>
+                            
+                            
+                        </marquee>
+                    </div>
+                    <div class="buttons">
+                        <span id="btn-switch" class="hidden-xs">
+                            <i class="fa fa-pause"></i>
+                        </span>
+                        <span id="btn-close">
+                            <i class="fa fa-times"></i>
+                        </span>
+                    </div>
+                </div>
+        	</div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+$('#btn-switch').on('click',function(e){
+	if($(this).find('.fa').hasClass('fa-pause')){
+		$(this).find('.fa').removeClass('fa-pause');
+		$(this).find('.fa').addClass('fa-play');
+		document.getElementById('marquee1').stop();
+	}else if($(this).find('.fa').hasClass('fa-play')){
+		$(this).find('.fa').removeClass('fa-play');
+		$(this).find('.fa').addClass('fa-pause');
+		document.getElementById('marquee1').start();
+	}
+});
+
+function check_switch_onmouseout(){
+	if($('#btn-switch').find('.fa').hasClass('fa-play')){
+		document.getElementById('marquee1').stop();
+	}else if($('#btn-switch').find('.fa').hasClass('fa-pause')){
+		document.getElementById('marquee1').start();
+	}
+	$('.popover').hide('slow');
+	$('.popover').popover("destroy");
+}
+
+$('#btn-close').on('click',function(e){
+	$('#marquee_section').hide('slow');
+});
+</script>
+
+            
+            <!-- CONTENT AREA -->
+
+<div class="content-area">
+	
+<section class="page-section pad-tb-5">
+    <div class="container">
+        <div class="row mar-lr--5">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+				
+
+<div class="thumbnail news_box_sqr_2 image_delay" data-src="http://localhost/newsproud/uploads/news_image/news_101_1.jpg" style="background-image:url('http://localhost/newsproud/uploads/others/image_loading.gif');">
+    <div class="caption">
+        <h4 class="caption-title">
+            <a href="http://localhost/newsproud/home/news_description/101/Be-Proud-Magazine-Launch-in-July-2020-the-Journey">
+                Be Proud Magazine Launch in July 2020 "the Journey"
+            </a>
+        </h4>
+        <div class="media-meta">
+            <a href="http://localhost/newsproud/home/reporter_description/11/Ashwini-Lunawat">
+            	<i class="fa fa-user"></i>
+				Ashwini Lunawat
+            </a>
+            <span class="divider">|</span>
+            <a href="http://localhost/newsproud/home/news/0/0/2020-08-16/2020-08-16"><i class="fa fa-clock-o"></i>August 16, 2020</a>
+            <span class="divider">|</span>
+            <span class="read_later" onclick="to_readlater(101,event)" data-toggle="tooltip" title="Read Later" data-placement="bottom">
+            	<i class="fa fa-bookmark"></i>
+           	</span>
+        </div>
+    </div>
+</div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            	<div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        				
+
+<div class="thumbnail news_box_sqr_2 sm image_delay" data-src="http://localhost/newsproud/uploads/news_image/news_100_1.jpg"  style="background-image:url('http://localhost/newsproud/uploads/others/image_loading.gif');">
+    <div class="caption">
+        <h4 class="caption-title">
+            <a href="http://localhost/newsproud/home/news_description/100/Be-Proud-Magazine-Launch-in-July-2020-the-Journey">
+                Be Proud Magazine Launch in July 2020 "the Journey"
+            </a>
+        </h4>
+        <div class="media-meta">
+            
+            <a href="http://localhost/newsproud/home/news/0/0/2020-08-16/2020-08-16"><i class="fa fa-clock-o"></i>August 16, 2020</a>
+            <span class="divider">|</span>
+            <span class="read_later" onclick="to_readlater(100,event)" data-toggle="tooltip" title="Read Later" data-placement="bottom">
+            	<i class="fa fa-bookmark"></i>
+           	</span>
+        </div>
+    </div>
+</div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        
+
+<div class="thumbnail news_box_sqr_2 sm image_delay" data-src="http://localhost/newsproud/uploads/news_image/news_98_1.jpg"  style="background-image:url('http://localhost/newsproud/uploads/others/image_loading.gif');">
+    <div class="caption">
+        <h4 class="caption-title">
+            <a href="http://localhost/newsproud/home/news_description/98/Be-proud-company-is-a-social-group-created-to-make-active-platform-for-business-entertainment-education-learning-etc">
+                Be proud company is a social group created to make&#8230;
+            </a>
+        </h4>
+        <div class="media-meta">
+            
+            <a href="http://localhost/newsproud/home/news/0/0/2020-08-16/2020-08-16"><i class="fa fa-clock-o"></i>August 16, 2020</a>
+            <span class="divider">|</span>
+            <span class="read_later" onclick="to_readlater(98,event)" data-toggle="tooltip" title="Read Later" data-placement="bottom">
+            	<i class="fa fa-bookmark"></i>
+           	</span>
+        </div>
+    </div>
+</div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mar-t-10">
+        				
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mar-t-10">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <section class="page-section with-sidebar pad-tb-5">
+    	<div class="container">
+            <!-- /advertisement space -->
+            <div class="advertise_space2">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        
+            
+    
+            <a href="https://www.google.com">
+                <div class="img-bg img-responsive image_delay" style="height:75px;background-image: url(http://localhost/newsproud/uploads/others/image_loading.gif);" data-src="http://localhost/newsproud/uploads/default_banner/home_1.jpg" alt="advertise"  ></div>
+            </a>
+
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        
+            
+    
+            <a href="https://www.google.com">
+                <div class="img-bg img-responsive image_delay" style="height:75px;background-image: url(http://localhost/newsproud/uploads/others/image_loading.gif);" data-src="http://localhost/newsproud/uploads/default_banner/home_2.jpg" alt="advertise"  ></div>
+            </a>
+
+                    </div>
+                </div>
+            </div>
+			<!-- /advertisement space -->
+        </div>
+    </section>
+    <section class="page-section pad-tb-5 top_slider">
+    <div class="container gallery_slider">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Top Stories
+            </div>
+            <div class="panel-body">
+                <div class="featured-products-carousel">
+                    <div class="owl-carousel" id="top-slider-carousel">
+                        
+
+<div class="thumbnail news_box_sqr_2 xs image_delay" data-src="http://localhost/newsproud/uploads/news_image/news_99_1_thumb.jpg"  style="background-image:url('http://localhost/newsproud/uploads/others/image_loading.gif');">
+    <div class="caption">
+        <h4 class="caption-title">
+            <a href="http://localhost/newsproud/home/news_description/99/Lets-be-acquainted-with-our-Rising-Proud-Woman-MsAshwini-Lunawat-driving-head-of-BE-PROUD-COMPANY-a-global-business-network">
+                Let’s be acquainted with our&#8230;
+            </a>
+        </h4>
+        <div class="media-meta">
+            <a href="http://localhost/newsproud/home/news/0/0/2020-08-16/2020-08-16"><i class="fa fa-clock-o"></i>August 16, 2020</a>
+        </div>
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <section class="page-section with-sidebar pad-tb-5">
+    	<div class="container">	
+            <!-- /advertisement space -->
+            <div class="advertise_space2">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        
+            
+    
+            <a href="https://www.google.com">
+                <div class="img-bg img-responsive image_delay" style="height:75px;background-image: url(http://localhost/newsproud/uploads/others/image_loading.gif);" data-src="http://localhost/newsproud/uploads/default_banner/home_3.jpg" alt="advertise"  ></div>
+            </a>
+
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        
+            
+    
+            <a href="https://www.google.com">
+                <div class="img-bg img-responsive image_delay" style="height:75px;background-image: url(http://localhost/newsproud/uploads/others/image_loading.gif);" data-src="http://localhost/newsproud/uploads/default_banner/home_4.jpg" alt="advertise"  ></div>
+            </a>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /advertisement space -->
+        </div>
+    </section>
+    
+<section class="page-section with-sidebar pad-tb-5">
+    <div class="container">
+        <div class="row mar-lr--5">
+            <!-- SIDEBAR -->
+            <aside class="col-md-3 hidden-sm hidden-xs sidebar pull-right" id="sidebar">
+                <div class="box_shadow">
+                    <div class="widget_box archive_search">
+
+    <form action="http://localhost/newsproud/home/widget_archive_search/" method="post" id="widget_archive_search_form" accept-charset="utf-8">
+                                                             <input type="hidden" name="csrf_test_name" value="6e8c25696597d7afbd49202224fbbe11" />
+
+        <h4 class="widget-title" style="margin-bottom:10px; margin-left: 5px;">
+            Archive Search
+        </h4>
+        <div class="form-group selectpicker-wrapper">
+            <select class="selectpicker" name="category" data-live-search="true" data-width="100%" id="archive_category">
+                <option disabled="" selected="" value="0">Categories....</option>
+                
+                        <option value="1" 
+                                data-sub="0">Other</option>
+                                
+                        <option value="2" 
+                                data-sub="16">Proud Professional</option>
+                                
+                        <option value="3" 
+                                data-sub="0">Proud Entrepreneur </option>
+                                
+                        <option value="4" 
+                                data-sub="0">Proud Kid</option>
+                                
+                        <option value="5" 
+                                data-sub="0">Proud Youth</option>
+                                
+                        <option value="6" 
+                                data-sub="0">Proud Women</option>
+                                
+                        <option value="7" 
+                                data-sub="0">Be Proud Community</option>
+                                
+            </select>
+        </div>
+        <div class="form-group selectpicker-wrapper" id="archive_subcat_place">
+            <select class="selectpicker" name="sub_category" data-live-search="true" data-width="100%" id="archive_sub_category">
+                <option disabled="" selected="" value="0">Sub-categories....</option>
+            </select>
+        </div>
+        <div class="widget">
+            <div class="widget-search">
+                <input class="form-control" name="text_search" id="archive_text_search" type="text" placeholder="Search">
+            </div>
+        </div>
+        <div class="date_portion">
+            <div class="input-group" id="datepicker" style="width:100%;">
+                <input type="date" class="form-control" name="start_date" id="archive_start_date" style="border-radius: 4px;" placeholder="From:" />
+                <input type="date" class="form-control" name="end_date" id="archive_end_date" style="border-radius: 4px;" placeholder="To:" />
+                <button class="button-custom-btn-1 btn-block custom-btn-1 custom-btn-1-round-s letter-spacing-none custom-btn-1-text-thick custom-btn-1-text-upper custom-btn-1-size-s" data-text="Search">		
+                    <span id="archive_date_search_btn">Search</span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    $(document).ready(function (e) {
+        $('.selectpicker').selectpicker();
+    });
+    $('#archive_category').on('change', function (e) {
+        var cat = $(this).find('option:selected').val();
+        var subcats = [$(this).find('option:selected').data('sub')];
+        $('#archive_subcat_place').load('http://localhost/newsproud/home/get_subcat_archive/' + subcats, function (e) {
+            $('#archive_sub_category').selectpicker();
+        });
+    });
+    function subwise_search(now) {
+    }
+    ;
+    $('#archive_date_search_btn').on('click', function (e) {
+        var category = $('#archive_category').find('option:selected').val();
+        var sub_category = $('#archive_sub_category').find('option:selected').val();
+        var text_search = $('#archive_text_search').val();
+        var start_date = $('#archive_start_date').val();
+        var end_date = $('#archive_end_date').val();
+        if (sub_category == null) {
+            sub_category = '0';
+        }
+        if (start_date.length == '') {
+            start_date = '0';
+        }
+        if (end_date == '') {
+            end_date = '0';
+        }
+        $('#widget_archive_search_form').submit();
+        setTimeout(function () {
+            //location.replace('http://localhost/newsproud/home/archive_news/' + category + '/' + sub_category + '/' + start_date + '/' + end_date + '/' + text_search);
+        }, 500);
+    });
+</script>    
+                </div>
+            </aside>
+            <!-- /SIDEBAR -->
+            <!-- CONTENT -->
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 content" id="content">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                
+                            </div>
+                            <div class="col-md-12 mar-t-5">
+                                
+                            </div>
+                            <div class="col-md-12 mar-t-5">
+                                
+                            </div>
+                            <div class="col-md-12 mar-t-5">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                
+                            </div>
+                            <div class="col-md-12 mar-t-5">
+                                
+                            </div>
+                            <div class="col-md-12 mar-t-5">
+                                
+                            </div>
+                            <div class="col-md-12 mar-t-5">
+                                
+                            </div>
+                            <div class="col-md-12 mar-t-5">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /CONTENT -->
+        </div>
+    </div>
+</section>	
+    <section class="page-section with-sidebar pad-tb-5">
+    	<div class="container">
+            <!-- /advertisement space -->
+            <div class="advertise_space2">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        
+            
+    
+            <a href="https://www.google.com">
+                <div class="img-bg img-responsive image_delay" style="height:95px;background-image: url(http://localhost/newsproud/uploads/others/image_loading.gif);" data-src="http://localhost/newsproud/uploads/default_banner/home_5.jpg" alt="advertise"  ></div>
+            </a>
+
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        
+            
+    
+            <a href="https://www.google.com">
+                <div class="img-bg img-responsive image_delay" style="height:95px;background-image: url(http://localhost/newsproud/uploads/others/image_loading.gif);" data-src="http://localhost/newsproud/uploads/default_banner/home_6.jpg" alt="advertise"  ></div>
+            </a>
+
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        
+            
+    
+            <a href="https://www.google.com">
+                <div class="img-bg img-responsive image_delay" style="height:95px;background-image: url(http://localhost/newsproud/uploads/others/image_loading.gif);" data-src="http://localhost/newsproud/uploads/default_banner/home_7.jpg" alt="advertise"  ></div>
+            </a>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /advertisement space -->
+        </div>
+    </section>
+    
+<section class="page-section pad-tb-5 gallery_slider">
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Photo Gallery
+                <a href="http://localhost/newsproud/home/photo_gallery" class="btn_seeMore">
+                    See More
+                </a>
+            </div>
+            <div class="panel-body">
+                <div class="featured-products-carousel">
+                    <div class="owl-carousel" id="gallery-slider-carousel">
+                        <div class="thumbnail photo_box_2">
+    <div class="media">
+        <div class="media-object img-responsive image_delay" data-src="http://localhost/newsproud/uploads/photo_image/photo_37_1.jpeg" style="height: 180px; background-image: url('http://localhost/newsproud/uploads/others/image_loading.gif');background-repeat: no-repeat; background-position: center; background-size: cover;"></div>
+        <div class="caption hovered">
+            <div class="caption-wrapper div-table">
+                <div class="caption-inner div-cell">
+                    <p class="caption-buttons hidden-xs">
+                        <span class="btn caption-zoom" onClick="image_modal('http://localhost/newsproud/uploads/photo_image/photo_37_1.jpeg');">
+                            <i class="fa fa-search"></i>
+                        </span>
+                        <a href="http://localhost/newsproud/home/photo_description/37/Be-Proud-past-events-with-our-patron-members" class="btn caption-link"><i class="fa fa-link"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="caption title">
+        <h3 class="caption-title">
+            <a href="http://localhost/newsproud/home/photo_description/37/Be-Proud-past-events-with-our-patron-members">
+                Be Proud past events with&#8230;            </a>
+        </h3>
+    </div>
+</div>
+<div class="thumbnail photo_box_2">
+    <div class="media">
+        <div class="media-object img-responsive image_delay" data-src="http://localhost/newsproud/uploads/photo_image/photo_36_1.jpeg" style="height: 180px; background-image: url('http://localhost/newsproud/uploads/others/image_loading.gif');background-repeat: no-repeat; background-position: center; background-size: cover;"></div>
+        <div class="caption hovered">
+            <div class="caption-wrapper div-table">
+                <div class="caption-inner div-cell">
+                    <p class="caption-buttons hidden-xs">
+                        <span class="btn caption-zoom" onClick="image_modal('http://localhost/newsproud/uploads/photo_image/photo_36_1.jpeg');">
+                            <i class="fa fa-search"></i>
+                        </span>
+                        <a href="http://localhost/newsproud/home/photo_description/36/Be-Proud-past-events-with-our-patron-members" class="btn caption-link"><i class="fa fa-link"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="caption title">
+        <h3 class="caption-title">
+            <a href="http://localhost/newsproud/home/photo_description/36/Be-Proud-past-events-with-our-patron-members">
+                Be Proud past events with&#8230;            </a>
+        </h3>
+    </div>
+</div>
+<div class="thumbnail photo_box_2">
+    <div class="media">
+        <div class="media-object img-responsive image_delay" data-src="http://localhost/newsproud/uploads/photo_image/photo_35_1.jpeg" style="height: 180px; background-image: url('http://localhost/newsproud/uploads/others/image_loading.gif');background-repeat: no-repeat; background-position: center; background-size: cover;"></div>
+        <div class="caption hovered">
+            <div class="caption-wrapper div-table">
+                <div class="caption-inner div-cell">
+                    <p class="caption-buttons hidden-xs">
+                        <span class="btn caption-zoom" onClick="image_modal('http://localhost/newsproud/uploads/photo_image/photo_35_1.jpeg');">
+                            <i class="fa fa-search"></i>
+                        </span>
+                        <a href="http://localhost/newsproud/home/photo_description/35/Be-Proud-past-events-with-our-patron-members" class="btn caption-link"><i class="fa fa-link"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="caption title">
+        <h3 class="caption-title">
+            <a href="http://localhost/newsproud/home/photo_description/35/Be-Proud-past-events-with-our-patron-members">
+                Be Proud past events with&#8230;            </a>
+        </h3>
+    </div>
+</div>
+<div class="thumbnail photo_box_2">
+    <div class="media">
+        <div class="media-object img-responsive image_delay" data-src="http://localhost/newsproud/uploads/photo_image/photo_34_1.jpeg" style="height: 180px; background-image: url('http://localhost/newsproud/uploads/others/image_loading.gif');background-repeat: no-repeat; background-position: center; background-size: cover;"></div>
+        <div class="caption hovered">
+            <div class="caption-wrapper div-table">
+                <div class="caption-inner div-cell">
+                    <p class="caption-buttons hidden-xs">
+                        <span class="btn caption-zoom" onClick="image_modal('http://localhost/newsproud/uploads/photo_image/photo_34_1.jpeg');">
+                            <i class="fa fa-search"></i>
+                        </span>
+                        <a href="http://localhost/newsproud/home/photo_description/34/Be-Proud-past-events-with-our-patron-members" class="btn caption-link"><i class="fa fa-link"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="caption title">
+        <h3 class="caption-title">
+            <a href="http://localhost/newsproud/home/photo_description/34/Be-Proud-past-events-with-our-patron-members">
+                Be Proud past events with&#8230;            </a>
+        </h3>
+    </div>
+</div>
+<div class="thumbnail photo_box_2">
+    <div class="media">
+        <div class="media-object img-responsive image_delay" data-src="http://localhost/newsproud/uploads/photo_image/photo_33_1.jpeg" style="height: 180px; background-image: url('http://localhost/newsproud/uploads/others/image_loading.gif');background-repeat: no-repeat; background-position: center; background-size: cover;"></div>
+        <div class="caption hovered">
+            <div class="caption-wrapper div-table">
+                <div class="caption-inner div-cell">
+                    <p class="caption-buttons hidden-xs">
+                        <span class="btn caption-zoom" onClick="image_modal('http://localhost/newsproud/uploads/photo_image/photo_33_1.jpeg');">
+                            <i class="fa fa-search"></i>
+                        </span>
+                        <a href="http://localhost/newsproud/home/photo_description/33/Be-Proud-past-events-with-our-patron-members" class="btn caption-link"><i class="fa fa-link"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="caption title">
+        <h3 class="caption-title">
+            <a href="http://localhost/newsproud/home/photo_description/33/Be-Proud-past-events-with-our-patron-members">
+                Be Proud past events with&#8230;            </a>
+        </h3>
+    </div>
+</div>
+<div class="thumbnail photo_box_2">
+    <div class="media">
+        <div class="media-object img-responsive image_delay" data-src="http://localhost/newsproud/uploads/photo_image/photo_32_1.jpeg" style="height: 180px; background-image: url('http://localhost/newsproud/uploads/others/image_loading.gif');background-repeat: no-repeat; background-position: center; background-size: cover;"></div>
+        <div class="caption hovered">
+            <div class="caption-wrapper div-table">
+                <div class="caption-inner div-cell">
+                    <p class="caption-buttons hidden-xs">
+                        <span class="btn caption-zoom" onClick="image_modal('http://localhost/newsproud/uploads/photo_image/photo_32_1.jpeg');">
+                            <i class="fa fa-search"></i>
+                        </span>
+                        <a href="http://localhost/newsproud/home/photo_description/32/Be-Proud-past-events-with-our-patron-members" class="btn caption-link"><i class="fa fa-link"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="caption title">
+        <h3 class="caption-title">
+            <a href="http://localhost/newsproud/home/photo_description/32/Be-Proud-past-events-with-our-patron-members">
+                Be Proud past events with&#8230;            </a>
+        </h3>
+    </div>
+</div>
+<div class="thumbnail photo_box_2">
+    <div class="media">
+        <div class="media-object img-responsive image_delay" data-src="http://localhost/newsproud/uploads/photo_image/photo_31_1.jpeg" style="height: 180px; background-image: url('http://localhost/newsproud/uploads/others/image_loading.gif');background-repeat: no-repeat; background-position: center; background-size: cover;"></div>
+        <div class="caption hovered">
+            <div class="caption-wrapper div-table">
+                <div class="caption-inner div-cell">
+                    <p class="caption-buttons hidden-xs">
+                        <span class="btn caption-zoom" onClick="image_modal('http://localhost/newsproud/uploads/photo_image/photo_31_1.jpeg');">
+                            <i class="fa fa-search"></i>
+                        </span>
+                        <a href="http://localhost/newsproud/home/photo_description/31/Be-Proud-past-events-with-our-patron-members" class="btn caption-link"><i class="fa fa-link"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="caption title">
+        <h3 class="caption-title">
+            <a href="http://localhost/newsproud/home/photo_description/31/Be-Proud-past-events-with-our-patron-members">
+                Be Proud past events with&#8230;            </a>
+        </h3>
+    </div>
+</div>
+<div class="thumbnail photo_box_2">
+    <div class="media">
+        <div class="media-object img-responsive image_delay" data-src="http://localhost/newsproud/uploads/photo_image/photo_30_1.jpeg" style="height: 180px; background-image: url('http://localhost/newsproud/uploads/others/image_loading.gif');background-repeat: no-repeat; background-position: center; background-size: cover;"></div>
+        <div class="caption hovered">
+            <div class="caption-wrapper div-table">
+                <div class="caption-inner div-cell">
+                    <p class="caption-buttons hidden-xs">
+                        <span class="btn caption-zoom" onClick="image_modal('http://localhost/newsproud/uploads/photo_image/photo_30_1.jpeg');">
+                            <i class="fa fa-search"></i>
+                        </span>
+                        <a href="http://localhost/newsproud/home/photo_description/30/Be-Proud-past-events-with-our-patron-members" class="btn caption-link"><i class="fa fa-link"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="caption title">
+        <h3 class="caption-title">
+            <a href="http://localhost/newsproud/home/photo_description/30/Be-Proud-past-events-with-our-patron-members">
+                Be Proud past events with&#8230;            </a>
+        </h3>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <section class="page-section with-sidebar pad-tb-5">
+    	<div class="container">	
+            <!-- /advertisement space -->
+            <div class="advertise_space2">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        
+            
+    
+            <a href="https://www.google.com">
+                <div class="img-bg img-responsive image_delay" style="height:75px;background-image: url(http://localhost/newsproud/uploads/others/image_loading.gif);" data-src="http://localhost/newsproud/uploads/default_banner/home_8.jpg" alt="advertise"  ></div>
+            </a>
+
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        
+            
+    
+            <a href="https://www.google.com">
+                <div class="img-bg img-responsive image_delay" style="height:75px;background-image: url(http://localhost/newsproud/uploads/others/image_loading.gif);" data-src="http://localhost/newsproud/uploads/default_banner/home_9.jpg" alt="advertise"  ></div>
+            </a>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /advertisement space -->
+        </div>
+    </section>
+    
+<section class="page-section with-sidebar pad-tb-5">
+    <div class="container">
+        <div class="row mar-lr--5">
+            <!-- SIDEBAR -->
+            <aside class="col-md-3 hidden-sm hidden-xs sidebar pull-right" id="sidebar">
+                <div class="box_shadow">
+                	<div class="widget_box advance_search">
+
+    <form action="http://localhost/newsproud/home/widget_search/" method="post" id="widget_search_form" accept-charset="utf-8">
+<input type="hidden" name="csrf_test_name" value="6e8c25696597d7afbd49202224fbbe11" />                              
+
+        <h4 class="widget-title" style="margin-bottom: 10px; margin-left: 5px;">
+            Advance Search
+        </h4>
+        <div class="widget">
+        	<div class="form-group selectpicker-wrapper">
+                <select class="selectpicker" name="category" data-live-search="true" data-width="100%" id="advance_category">
+                    <option disabled="" selected="" value="0">Categories....</option>
+                    
+                    <option value="1" 
+                        data-sub="0">Other</option>
+                    
+                    <option value="2" 
+                        data-sub="16">Proud Professional</option>
+                    
+                    <option value="3" 
+                        data-sub="0">Proud Entrepreneur </option>
+                    
+                    <option value="4" 
+                        data-sub="0">Proud Kid</option>
+                    
+                    <option value="5" 
+                        data-sub="0">Proud Youth</option>
+                    
+                    <option value="6" 
+                        data-sub="0">Proud Women</option>
+                    
+                    <option value="7" 
+                        data-sub="0">Be Proud Community</option>
+                    
+                </select>
+            </div>
+        </div>
+        <div class="form-group selectpicker-wrapper" id="advance_subcat_place">
+            <select class="selectpicker" name="sub_category" data-live-search="true" data-width="100%" id="advance_sub_category">
+                <option disabled="" selected="" value="0">Sub-categories....</option>
+            </select>
+        </div>
+        <div class="widget">
+            <div class="widget-search">
+                <input class="form-control" name="text_search" id="advance_text_search" type="text" placeholder="Search">
+            </div>
+        </div>
+        <div class="date_portion">
+            <div class="input-group" id="datepicker" style="width:100%;">
+                <input type="date" class="form-control" name="start_date" id="advance_start_date" style="border-radius: 4px" placeholder="From:"/>
+                <input type="date" class="form-control" name="end_date" id="advance_end_date" style="border-radius: 4px" placeholder="To:"/>
+                <button type="button" class="button-custom-btn-1 btn-block custom-btn-1-round-s custom-btn-1 letter-spacing-none custom-btn-1-text-thick custom-btn-1-text-upper custom-btn-1-size-s" data-text="Search">		
+                    <span id="advance_search_btn">Search</span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    
+
+$(document).ready(function(e) {
+    $('.selectpicker').selectpicker();
+});
+$('#advance_category').on('change',function(e){
+	var cat = $(this).find('option:selected').val();
+	var subcats = [$(this).find('option:selected').data('sub')];
+	$('#advance_subcat_place').load('http://localhost/newsproud/home/get_subcat_advance/'+subcats,function(e){
+		$('#advance_sub_category').selectpicker();
+	});
+});
+$('#advance_search_btn').on('click',function(e){
+	var category = $('#advance_category').find('option:selected').val();
+	var sub_category = $('#advance_sub_category').find('option:selected').val();
+	var text_search = $('#advance_text_search').val();
+	var start_date = $('#advance_start_date').val();
+	var end_date = $('#advance_end_date').val();
+	if(sub_category == null){
+		sub_category = '0';
+	}
+	if(start_date.length == ''){
+		start_date = '0';
+	}
+	if(end_date == ''){
+		end_date = '0';
+	}
+    $('#widget_search_form').submit();
+	setTimeout(function(){
+		//location.replace('http://localhost/newsproud/home/news/'+category+'/'+sub_category+'/'+start_date+'/'+end_date+'/'+text_search);
+	},500);
+});
+</script><div class="widget widget_box poll_box">
+	
+	<input type="hidden" value="4" id="poll_id"/>
+	<div class="thumbnail box" id="poll_form">
+    	<div class="caption">
+            <h3 class="caption-title">
+                Have You Registered On The Portal ?
+            </h3>
+        </div>
+		<div class="inner_div" id="poll_vote">
+			
+                <div class="radio">
+                    <input type="radio" name="answer" value="1" id="poll1"/>
+                    <label for="poll1">Yes</label>
+                </div>
+			
+                <div class="radio">
+                    <input type="radio" name="answer" value="2" id="poll2"/>
+                    <label for="poll2">Not</label>
+                </div>
+			
+                <div class="radio">
+                    <input type="radio" name="answer" value="3" id="poll3"/>
+                    <label for="poll3">Processing</label>
+                </div>
+			
+                <div class="radio">
+                    <input type="radio" name="answer" value="4" id="poll4"/>
+                    <label for="poll4">Error Encountered</label>
+                </div>
+			
+			<div class="btns" style="display: flex;">
+				<button class="btn btn-info col-md-6" type="submit" id="vote_poll" onClick="vote_poll()">Vote</button>
+				<button class="btn btn-primary col-md-6" id="poll_res_btn" onClick="result_show()">Result</button>
+			</div>
+		</div>
+		<div class="inner_div" id="poll_res" style="display:none;">
+			
+	   </div>
+	</div>
+
+</div>
+<script>
+function vote_poll(){
+	var poll_id = $("#poll_id").val();
+	var index=$('input[name="answer"]:checked').val();
+	$.ajax({
+		url: 'http://localhost/newsproud/home/poll/vote/'+poll_id+'/'+index
+	});
+	if(typeof(index) !== "undefined"){
+		if (typeof(Storage) !== "undefined") {
+			var poll_list=localStorage.getItem("poll_storage");
+			if(poll_list == null){
+			var set=['0'];
+				localStorage.setItem("poll_storage",JSON.stringify(set));
+				poll_list=localStorage.getItem("poll_storage");
+			}
+			var poll= JSON.parse(poll_list);
+			if(jQuery.inArray(poll_id, poll) == -1)
+			{
+				poll.push(poll_id);
+			}
+			localStorage.setItem("poll_storage",JSON.stringify(poll));
+		}
+		setTimeout(function() {
+			result_show();
+			setTimeout(function() {
+				$('#back_to_option').hide();
+			},300);
+		},500);
+	}
+}
+function result_show(){
+	$('#poll_vote').hide();
+	$('#poll_res').show();
+	var poll_id = $("#poll_id").val();
+	$('#poll_res').load('http://localhost/newsproud/home/poll/res/'+poll_id);
+}
+function option_show(){
+	$('#poll_res').hide();
+	$('#poll_vote').show();
+}
+function display(){
+	var poll_list=localStorage.getItem("poll_storage");
+	if(poll_list == null){
+		var set=['0'];
+		localStorage.setItem("poll_storage",JSON.stringify(set));
+		poll_list=localStorage.getItem("poll_storage");
+	}
+	var poll_id = $("#poll_id").val();
+	var polls= JSON.parse(poll_list);
+	if(jQuery.inArray(poll_id, polls) !== -1){
+		var user_ext= "true";
+	}
+	else{
+		var user_ext= "false";
+	}
+	if(user_ext=="true"){
+		$('#poll_vote').hide();
+		result_show();
+		setTimeout(function() {
+			$('#back_to_option').hide();
+		},1000);
+		
+	}
+	else if(user_ext=="false"){
+		$('#poll_res').hide();
+		$('#poll_vote').show();
+	}
+}
+$(document).ready(function() {
+	display();
+});
+</script>     
+                </div>
+                <!-- /widget shop categories -->
+            </aside>
+            <!-- /SIDEBAR -->
+            <!-- CONTENT -->
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 content" id="content">
+                <div class="row">
+                	<div class="col-md-6 col-sm-6 col-xs-12">
+                    	<h2 class="block-title">
+                        	<span>
+								Be Proud Community
+                            </span>
+                        </h2>
+                        <div class="row">
+                        
+                            <div class="col-md-12">
+                                <div class="thumbnail news_box_sqr_1 hover2">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="media">
+                <span class="media-link">
+                    
+                        <img class="img-thumbnail img-responsive image_delay" src="http://localhost/newsproud/uploads/others/image_loading.gif" data-src="http://localhost/newsproud/uploads/news_image/news_101_1_thumb.jpg" alt=""/>
+                    
+                </span> 
+            </div>
+        </div>
+    </div>
+    <div class="caption">
+        <h4 class="caption-title">
+            <a href="http://localhost/newsproud/home/news_description/101/Be-Proud-Magazine-Launch-in-July-2020-the-Journey">
+                Be Proud Magazine Launch in July 2020 "the Journey"
+            </a>
+        </h4>
+        <div class="media-meta">
+            <a href="http://localhost/newsproud/home/reporter_description/11/Ashwini-Lunawat">
+            	<i class="fa fa-user"></i>
+				Ashwini Lunawat
+            </a>
+            <span class="divider">|</span>
+            <a href="http://localhost/newsproud/home/news/0/0/2020-08-16/2020-08-16"><i class="fa fa-clock-o"></i>August 16, 2020</a>
+            <span class="divider">|</span>
+            <span class="read_later" onclick="to_readlater(101,event)" data-toggle="tooltip" title="Read Later" data-placement="bottom">
+            	<i class="fa fa-bookmark"></i>
+           	</span>
+        </div>
+    </div>
+</div>
+                            </div>
+                            
+                            <div class="col-md-12 mar-t-5">
+                                <div class="thumbnail news_box_rect_1 sm hover2">
+    <div class="caption top">
+        <h4 class="caption-title">
+            <a href="http://localhost/newsproud/home/news_description/100/Be-Proud-Magazine-Launch-in-July-2020-the-Journey">
+                Be Proud Magazine Launch in July 2020 "the Journey"
+            </a>
+        </h4>
+        <div class="media-meta sm">
+            <a href="http://localhost/newsproud/home/reporter_description/11/Ashwini-Lunawat">
+            	<i class="fa fa-user"></i>
+				Ashwini Lunawat
+            </a>
+            <span class="divider">|</span>
+            <a href="http://localhost/newsproud/home/news/0/0/2020-08-16/2020-08-16"><i class="fa fa-clock-o"></i>August 16, 2020</a>
+            <span class="divider">|</span>
+            <span class="read_later" onclick="to_readlater(100,event)" data-toggle="tooltip" title="Read Later" data-placement="bottom">
+            	<i class="fa fa-bookmark"></i>
+           	</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="media">
+                <span class="media-link">
+                    
+                        <img class="img-thumbnail img-responsive image_delay" src="http://localhost/newsproud/uploads/others/image_loading.gif" data-src="http://localhost/newsproud/uploads/news_image/news_100_1_thumb.jpg" alt=""/>
+                    
+                </span> 
+            </div>
+        </div>
+        <div class="col-md-8 pad-l-0 hidden-sm hidden-xs">
+            <div class="caption down">
+                <div class="caption-text">
+                    Hello Proud Member!!
+
+We are happy to tell you that we are launching our Be&#8230;
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                    	<h2 class="block-title">
+                        	<span>
+								Other
+                            </span>
+                        </h2>
+                        <div class="row">
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /CONTENT -->
+        </div>
+    </div>
+</section>
+<!-- /PAGE WITH SIDEBAR -->
+<style>
+.block-title{
+	margin-bottom:10px;
+}
+</style>	
+    <section class="page-section with-sidebar pad-tb-5">
+    	<div class="container">
+            <!-- /advertisement space -->
+            <div class="advertise_space2">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        
+            
+    
+            <a href="https://www.google.com">
+                <div class="img-bg img-responsive image_delay" style="height:95px;background-image: url(http://localhost/newsproud/uploads/others/image_loading.gif);" data-src="http://localhost/newsproud/uploads/default_banner/home_10.jpg" alt="advertise"  ></div>
+            </a>
+
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        
+            
+    
+            <a href="https://www.google.com">
+                <div class="img-bg img-responsive image_delay" style="height:95px;background-image: url(http://localhost/newsproud/uploads/others/image_loading.gif);" data-src="http://localhost/newsproud/uploads/default_banner/home_11.jpg" alt="advertise"  ></div>
+            </a>
+
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        
+            
+    
+            <a href="https://www.google.com">
+                <div class="img-bg img-responsive image_delay" style="height:95px;background-image: url(http://localhost/newsproud/uploads/others/image_loading.gif);" data-src="http://localhost/newsproud/uploads/default_banner/home_12.jpg" alt="advertise"  ></div>
+            </a>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /advertisement space -->
+        </div>
+    </section>
+    
+<section class="page-section with-sidebar pad-tb-5 gallery_slider hidden-sm hidden-xs">
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Video Gallery
+                <a href="http://localhost/newsproud/home/video_gallery" class="btn_seeMore">
+                    See More
+                </a>
+            </div>
+            <div class="panel-body">
+                <div class="row mar-lr--5 mar-t-0 parent">
+                    <div class="col-md-6 pad-lr-5 mar-t-0 pull-right">
+                        <div class="row mar-lr--5 mar-t-0">
+                            <div class="col-md-6 pad-lr-5 mar-t-0">
+                                
+                            </div>
+                            <div class="col-md-6 pad-lr-5 mar-t-0">
+                                
+                            </div>
+                            <div class="col-md-6 mar-t-5 pad-lr-5">
+                                
+                            </div>
+                            <div class="col-md-6 mar-t-5 pad-lr-5">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pad-lr-5 mar-t-0">
+                        <div class="row mar-lr--5 mar-t-0">
+                            <div class="col-md-12 pad-lr-5 mar-t-0">
+                                <div class="thumbnail video_box_2 hover2">
+    <div class="media">
+        
+            <iframe height="350" width="550" src="https://www.youtube.com/embed/Oe2LbqBkFnI" frameborder="0" >
+            </iframe>
+        
+    </div>
+    <div class="caption">
+        <h6 class="caption-title">
+        	<a href="http://localhost/newsproud/home/video_description/34/Be-Proud">
+				Be Proud
+            </a>
+        </h6>
+    </div>
+</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /PAGE WITH SIDEBAR -->
+<script>
+$(document).ready(function(){
+	setTimeout(function(){
+		set_video_frame();
+		set_video_box();
+	},500);
+});
+function set_video_box(){
+	var max_height = 0;
+	$('.video_box_3').each(function(){
+        var current_height= parseInt($(this).css('height'));
+		if(current_height >= max_height){
+			max_height = current_height;
+		}
+    });
+	$('.video_box_3').css('height',max_height);
+}
+function set_video_frame(){
+	var total_space = parseInt($('.parent').css('width'));
+	var main_frame_width = total_space/2;
+	var sm_frame_width = main_frame_width/2;
+	
+	$('.video_box_2').each(function(){
+        $(this).find('iframe').attr('width',main_frame_width);
+		$(this).find('video').attr('width',main_frame_width);
+    });
+	$('.video_box_3').each(function(){
+        $(this).find('iframe').attr('width',sm_frame_width);
+		$(this).find('video').attr('width',sm_frame_width);
+    });
+}
+</script>
+    <section class="page-section with-sidebar pad-tb-5">
+    	<div class="container">
+            <!-- /advertisement space -->
+            <div class="advertise_space2">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        
+            
+    
+            <a href="https://www.google.com">
+                <div class="img-bg img-responsive image_delay" style="height:75px;background-image: url(http://localhost/newsproud/uploads/others/image_loading.gif);" data-src="http://localhost/newsproud/uploads/default_banner/home_13.jpg" alt="advertise"  ></div>
+            </a>
+
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        
+            
+    
+            <a href="https://www.google.com">
+                <div class="img-bg img-responsive image_delay" style="height:75px;background-image: url(http://localhost/newsproud/uploads/others/image_loading.gif);" data-src="http://localhost/newsproud/uploads/default_banner/home_14.jpg" alt="advertise"  ></div>
+            </a>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /advertisement space -->
+       	</div>
+    </section>
+    
+<section class="page-section with-sidebar pad-tb-5">
+    <div class="container">
+        <h2 class="block-title">
+            <span>
+                Proud Women
+            </span>
+        </h2>
+        <div class="row mar-lr--5">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                        <div class="thumbnail news_box_sqr_1 hover2">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="media">
+                <span class="media-link">
+                    
+                        <img class="img-thumbnail img-responsive image_delay" src="http://localhost/newsproud/uploads/others/image_loading.gif" data-src="http://localhost/newsproud/uploads/news_image/news_99_1_thumb.jpg" alt=""/>
+                    
+                </span> 
+            </div>
+        </div>
+    </div>
+    <div class="caption">
+        <h4 class="caption-title">
+            <a href="http://localhost/newsproud/home/news_description/99/Lets-be-acquainted-with-our-Rising-Proud-Woman-MsAshwini-Lunawat-driving-head-of-BE-PROUD-COMPANY-a-global-business-network">
+                Let’s be acquainted with our Rising Proud Woman Ms.Ashwini Lunawat, driving head of BE PROUD COMPANY - a global business&#8230;
+            </a>
+        </h4>
+        <div class="media-meta">
+            <a href="http://localhost/newsproud/home/reporter_description/11/Ashwini-Lunawat">
+            	<i class="fa fa-user"></i>
+				Ashwini Lunawat
+            </a>
+            <span class="divider">|</span>
+            <a href="http://localhost/newsproud/home/news/0/0/2020-08-16/2020-08-16"><i class="fa fa-clock-o"></i>August 16, 2020</a>
+            <span class="divider">|</span>
+            <span class="read_later" onclick="to_readlater(99,event)" data-toggle="tooltip" title="Read Later" data-placement="bottom">
+            	<i class="fa fa-bookmark"></i>
+           	</span>
+        </div>
+    </div>
+</div>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                    	<div class="row">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="thumbnail news_box_rect_1 sm hover2">
+    <div class="caption top">
+        <h4 class="caption-title">
+            <a href="http://localhost/newsproud/home/news_description/98/Be-proud-company-is-a-social-group-created-to-make-active-platform-for-business-entertainment-education-learning-etc">
+                Be proud company is a social group created to make&#8230;
+            </a>
+        </h4>
+        <div class="media-meta sm">
+            <a href="http://localhost/newsproud/home/reporter_description/11/Ashwini-Lunawat">
+            	<i class="fa fa-user"></i>
+				Ashwini Lunawat
+            </a>
+            <span class="divider">|</span>
+            <a href="http://localhost/newsproud/home/news/0/0/2020-08-16/2020-08-16"><i class="fa fa-clock-o"></i>August 16, 2020</a>
+            <span class="divider">|</span>
+            <span class="read_later" onclick="to_readlater(98,event)" data-toggle="tooltip" title="Read Later" data-placement="bottom">
+            	<i class="fa fa-bookmark"></i>
+           	</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="media">
+                <span class="media-link">
+                    
+                        <img class="img-thumbnail img-responsive image_delay" src="http://localhost/newsproud/uploads/others/image_loading.gif" data-src="http://localhost/newsproud/uploads/news_image/news_98_1_thumb.jpg" alt=""/>
+                    
+                </span> 
+            </div>
+        </div>
+        <div class="col-md-8 pad-l-0 hidden-sm hidden-xs">
+            <div class="caption down">
+                <div class="caption-text">
+                    Be proud company is a social group created to make active platform for business, entertainment,&#8230;
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                                    </div>
+                                    <div class="col-md-12 mar-t-5">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        
+                                    </div>
+                                    <div class="col-md-12 mar-t-5">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /PAGE WITH SIDEBAR -->
+<section class="page-section with-sidebar pad-tb-5">
+    <div class="container">
+        <h2 class="block-title">
+            <span>
+                Be Proud Community
+            </span>
+        </h2>
+        <div class="row mar-lr--5">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                    	<div class="row">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="thumbnail news_box_rect_1 sm hover2">
+    <div class="caption top">
+        <h4 class="caption-title">
+            <a href="http://localhost/newsproud/home/news_description/100/Be-Proud-Magazine-Launch-in-July-2020-the-Journey">
+                Be Proud Magazine Launch in July 2020 "the Journey"
+            </a>
+        </h4>
+        <div class="media-meta sm">
+            <a href="http://localhost/newsproud/home/reporter_description/11/Ashwini-Lunawat">
+            	<i class="fa fa-user"></i>
+				Ashwini Lunawat
+            </a>
+            <span class="divider">|</span>
+            <a href="http://localhost/newsproud/home/news/0/0/2020-08-16/2020-08-16"><i class="fa fa-clock-o"></i>August 16, 2020</a>
+            <span class="divider">|</span>
+            <span class="read_later" onclick="to_readlater(100,event)" data-toggle="tooltip" title="Read Later" data-placement="bottom">
+            	<i class="fa fa-bookmark"></i>
+           	</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="media">
+                <span class="media-link">
+                    
+                        <img class="img-thumbnail img-responsive image_delay" src="http://localhost/newsproud/uploads/others/image_loading.gif" data-src="http://localhost/newsproud/uploads/news_image/news_100_1_thumb.jpg" alt=""/>
+                    
+                </span> 
+            </div>
+        </div>
+        <div class="col-md-8 pad-l-0 hidden-sm hidden-xs">
+            <div class="caption down">
+                <div class="caption-text">
+                    Hello Proud Member!!
+
+We are happy to tell you that we are launching our Be&#8230;
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                                    </div>
+                                    <div class="col-md-12 mar-t-5">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        
+                                    </div>
+                                    <div class="col-md-12 mar-t-5">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                        <div class="thumbnail news_box_sqr_1 hover2">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="media">
+                <span class="media-link">
+                    
+                        <img class="img-thumbnail img-responsive image_delay" src="http://localhost/newsproud/uploads/others/image_loading.gif" data-src="http://localhost/newsproud/uploads/news_image/news_101_1_thumb.jpg" alt=""/>
+                    
+                </span> 
+            </div>
+        </div>
+    </div>
+    <div class="caption">
+        <h4 class="caption-title">
+            <a href="http://localhost/newsproud/home/news_description/101/Be-Proud-Magazine-Launch-in-July-2020-the-Journey">
+                Be Proud Magazine Launch in July 2020 "the Journey"
+            </a>
+        </h4>
+        <div class="media-meta">
+            <a href="http://localhost/newsproud/home/reporter_description/11/Ashwini-Lunawat">
+            	<i class="fa fa-user"></i>
+				Ashwini Lunawat
+            </a>
+            <span class="divider">|</span>
+            <a href="http://localhost/newsproud/home/news/0/0/2020-08-16/2020-08-16"><i class="fa fa-clock-o"></i>August 16, 2020</a>
+            <span class="divider">|</span>
+            <span class="read_later" onclick="to_readlater(101,event)" data-toggle="tooltip" title="Read Later" data-placement="bottom">
+            	<i class="fa fa-bookmark"></i>
+           	</span>
+        </div>
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /PAGE WITH SIDEBAR -->	
+    <section class="page-section with-sidebar pad-tb-5">
+    	<div class="container">
+            <!-- /advertisement space -->
+            <div class="advertise_space2">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        
+            
+    
+            <a href="https://www.google.com">
+                <div class="img-bg img-responsive image_delay" style="height:75px;background-image: url(http://localhost/newsproud/uploads/others/image_loading.gif);" data-src="http://localhost/newsproud/uploads/default_banner/home_15.jpg" alt="advertise"  ></div>
+            </a>
+
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        
+            
+    
+            <a href="https://www.google.com">
+                <div class="img-bg img-responsive image_delay" style="height:75px;background-image: url(http://localhost/newsproud/uploads/others/image_loading.gif);" data-src="http://localhost/newsproud/uploads/default_banner/home_16.jpg" alt="advertise"  ></div>
+            </a>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /advertisement space -->
+      	</div>
+  	</section>
+</div>
+<style>
+.block-title{
+	/*margin-left:-10px;*/
+	margin-bottom:10px;
+}
+</style>
+
+            
+<footer class="footer2">
+	<div class="footer2-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-2 col-sm-12 col-xs-12">
+                    <h4 class="widget-title tt-hover">
+                    	<a href="http://localhost/newsproud/home/marketing">
+							Apply For Advertisement
+                        </a>
+                    </h4>
+				</div>
+				<div class="col-lg-2 col-md-2 hidden-xs hidden-sm">
+					<h4 class="widget-title tt-hover">
+                    	<a href="http://localhost/newsproud/home/photo_gallery">
+							Photo Gallery
+                        </a>
+                    </h4>
+				</div>
+				<div class="col-lg-2 col-md-2 hidden-xs hidden-sm">
+					<h4 class="widget-title tt-hover">
+						<a href="http://localhost/newsproud/home/video_gallery">
+							Video Gallery
+                        </a>
+                    </h4>
+				</div>
+                <div class="col-lg-2 col-md-2 hidden-xs hidden-sm">
+					<h4 class="widget-title tt-hover">
+						<a href="http://localhost/newsproud/home/archive_news/0/0">
+							Archive Search
+                        </a>
+                    </h4>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+					<div class="widget">
+						<form action="http://localhost/newsproud/home/subscribe" class="" method="post" accept-charset="utf-8">
+                             <input type="hidden" name="csrf_test_name" value="6e8c25696597d7afbd49202224fbbe11" />
+    
+							<div class="form-group">
+                            	<div class="col-md-12" style="margin-top:15px;">
+                                    <div class="subscribe-div">
+                                        <input type="text" class="form-control col-md-8" name="email" id="subscr" placeholder="Email Address">
+                                        <span class="btn btn-subcribe subscriber enterer">Subscribe</span>
+                                   	</div>
+                                </div>
+							</div>                
+					   </form>
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div class="footer2-widgets">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-sm-3 col-xs-6">
+					<a href="http://localhost/newsproud/">
+                        <img class="img-responsive footer-logo" src="http://localhost/newsproud/uploads/logo_image/logo_44.png" alt="">
+                    </a>
+				</div>
+				<div class="col-md-2 col-sm-3 hidden-xs">
+					<div class="widget widget-categories">
+						<h4 class="widget-title">Categories</h4>
+						<ul>
+                        	
+                            <li>
+                                <a href="http://localhost/newsproud/home/news/1">
+                                    Other
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="http://localhost/newsproud/home/news/2">
+                                    Proud Professional
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="http://localhost/newsproud/home/news/3">
+                                    Proud Entrepreneur 
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="http://localhost/newsproud/home/news/4">
+                                    Proud Kid
+                                </a>
+                            </li>
+                            
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-2 col-sm-3 hidden-xs">
+					<div class="widget widget-categories">
+						<h4 class="widget-title">Useful Links</h4>
+						<ul>
+							<li>
+								<a href="http://localhost/newsproud/home/">Home
+								</a>
+							</li>
+							<li>
+								<a href="http://localhost/newsproud/home/news/0/0">All News
+								</a>
+							</li>
+							<li>
+								<a href="http://localhost/newsproud/home/contact/">Contact
+								</a>
+							</li>
+							<li>
+								<a href="http://localhost/newsproud/home/faq">FAQ
+								</a>
+							</li>
+							<li>
+								<a href="http://localhost/newsproud/home/rss_links">Rss
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-2 hidden-xs hidden-sm">
+					<div class="widget widget-categories">
+						<h4 class="widget-title">About Us</h4>
+						<p>BeProud is a social community to help each other and prosper.</p>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-6">
+					<div class="widget">
+						<div class="widget contact">
+                            <h4 class="widget-title">Contact Us</h4>
+                            <div class="media-list">
+                                <div class="media">
+                                    <i class="pull-left fa fa-home"></i>
+                                    <div class="media-body">
+                                        <strong>Address:</strong>
+                                        India
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <i class="pull-left fa fa-phone"></i>
+                                    <div class="media-body">
+                                        <strong>Phone:</strong>
+                                        +91 8459814426
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <i class="pull-left fa fa-globe"></i>
+                                    <div class="media-body">
+                                        <strong>Website:</strong>
+                                        <a href="https://beproud.in">beproud.in</a>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <i class="pull-left fa fa-envelope-o"></i>
+                                    <div class="media-body">
+                                        <strong>Email:</strong>
+                                        <a href="mailto:ranjana@vjbrand.com">
+                                            ranjana@vjbrand.com
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer1-meta">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-sm-6 col-xs-6">
+					<div class="copyright">
+						2020 &copy; 
+						All Rights Reserved @ 
+						<a href="http://localhost/newsproud/">
+							BeProud
+						</a> 
+							| 
+						<a href="http://localhost/newsproud/home/legal/terms_conditions" class="link">
+							Terms &amp; Condition
+						</a> 
+							| 
+						<a href="http://localhost/newsproud/home/legal/privacy_policy" class="link">
+							Privacy Policy
+						</a>
+					</div>
+				</div>
+                <div class="col-md-4 col-sm-6 col-xs-6">
+                	<div class="contact">
+                        <ul class="social-nav model-2">
+                            <li><a href="http://facebook.com" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="http://skype.com" class="skype"><i class="fa fa-skype"></i></a></li>
+                            <li><a href="http://youtube.com" class="youtube"><i class="fa fa-youtube"></i></a></li>
+                            <li><a href="http://pinterest.com" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
+                            <li><a href="http://google.com" class="google-plus"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="http://twitter.com" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="http://localhost/newsproud/home/rss_links" class="rss"><i class="fa fa-rss"></i></a></li>
+                        </ul>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<style>
+.link:hover{
+	text-decoration:underline;
+}
+@media (max-width: 992px) {
+	.subscribe-div{
+		display: flex;
+		margin-bottom: 15px !important;
+	}
+}
+</style>
+
+
+        </div>
+        <!-- /WRAPPER -->
+        <div class="login_modal" style="display:none;">
+	<span class="openactiveModal-6 manualLabel" id="login_modal" data-ajax=""></span>
+</div>
+<div id="popup-1" class="activeModal" style="z-index: 999990;">
+    <div class="window window1">
+        <div class="window_set row" >
+        
+        </div>
+    </div>
+</div>
+
+<div class="image_modal" style="display:none;">
+	<span class="openactiveModal-7 manualLabel" id="image_modal" data-ajax=""></span>
+</div>
+<div id="popup-2" class="activeModal" style="z-index: 999990;">
+    <div class="window window1 image_modal_window" style="max-height: 100vh; overflow-y:auto;">
+        <div class="window_set row">
+        
+        </div>
+    </div>
+</div>
+
+<div class="preview_ad_modal" >
+	<span class="openactiveModal-8 manualLabel" id="preview_ad_modal" data-ajax=""></span>
+</div>
+<div id="popup-3" class="activeModal" style="z-index: 999990;">
+    <div class="window window1">
+        <div class="window_set row">
+        
+        </div>
+    </div>
+</div>
+
+<div class="preview_package_modal" style="display:none;">
+	<span class="openactiveModal-9 manualLabel" id="preview_package_modal" data-ajax=""></span>
+</div>
+<div id="popup-4" class="activeModal" style="z-index: 999990;">
+    <div class="window window1">
+        <div class="window_set row">
+        
+        </div>
+    </div>
+</div>
+
+<div class="be_blogger_modal" style="display:none;">
+	<span class="openactiveModal-10 manualLabel" id="be_blogger_modal" data-ajax=""></span>
+</div>
+<div id="popup-5" class="activeModal" style="z-index: 999990;">
+    <div class="window window1">
+        <div class="window_set row">
+        
+        </div>
+    </div>
+</div>
+
+<div class="purchased_packages_modal" style="display:none;">
+	<span class="openactiveModal-11 manualLabel" id="purchased_packages_modal" data-ajax=""></span>
+</div>
+<div id="popup-6" class="activeModal" style="z-index: 999990;">
+    <div class="window window1">
+        <div class="window_set row">
+        
+        </div>
+    </div>
+</div>
+<style type="text/css">
+	.img-bg {
+		height: 100%;
+		width: 100%;
+		z-index: -1;
+		background-position: 50% 50%;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		background-size: cover;
+		-webkit-transition: all .5s;
+		-moz-transition: all .5s;
+		transition: all .5s;
+		-webkit-transform: scale(1);
+		-moz-transform: scale(1);
+		transform: scale(1);
+	}
+</style>
+<script>
+	var base_url = 'http://localhost/newsproud/'; 
+	var readlater_added = 'News Added To Readlater List';
+	var readlater_already = 'News Already In Readlater List';
+	var readlater_remove = 'News Removed From Readlater List';
+	var working = 'Working..';
+	var subscribe_already = 'You Already Subscribed';
+	var subscribe_success = 'You Subscribed Successfully';
+	var subscribe_sess = 'You Already Subscribed Thrice From This Browser';
+	var logging = 'Logging In..';
+	var login_success = 'You Logged In Successfully';
+	var login_fail = 'Login Failed! Try Again!';
+	var logup_success = 'You Have Registered Successfully';
+	var logup_fail = 'Registration Failed! Try Again!';
+	var logging = 'Logging In..';
+	var submitting = 'Submitting..';
+	var email_sent = 'Email Sent Successfully';
+	var email_noex = 'Email Does Not Exist!';
+	var email_fail = 'Email Sending Failed!';
+	var logging = 'Logging In';	
+	var required = 'The Field Is Required';
+	var mbn = 'Must Be A Number';
+	var mbe = 'Must Be A Valid Email Address';
+	var valid_email = 'Enter A Valid Email Address';
+	var applying = "Applying..";
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+
+		$('body').on('click','.pfp_submit',function(){
+	    	$('.closeModal').click();
+			$('#pfp_submit').click();
+	    });
+
+	    $('body').on('click','.pfp_image_submit',function(){
+	    	$('.closeModal').click();
+			$('#pfp_image_submit').click();
+	    });
+
+	    $('body').on('click','.pfp_video_submit',function(){
+	    	$('.closeModal').click();
+			$('#pfp_video_submit').click();
+	    });
+
+		$('.top-bar-right').load('http://localhost/newsproud/home/load_log_info');
+		$('.signup').load('http://localhost/newsproud/home/load_log_info_1');
+		window.addEventListener("keydown", checkKeyPressed, false);
+		function checkKeyPressed(e) {
+			if (e.keyCode == "13") {
+				$(":focus").each(function() {
+					event.preventDefault();
+					$(this).closest('form').find('.enterer').click();
+				});
+			}
+		}
+		
+		$('body').on('click','.logup_btn', function(){
+			var here = $(this); // alert div for show alert message
+			var form = here.closest('form');
+			var can = '';
+			var ing = here.data('ing');
+			var msg = here.data('msg');
+			var prv = here.html();
+			
+			//var form = $(this);
+			var formdata = false;
+			if (window.FormData){
+				formdata = new FormData(form[0]);
+			}
+			
+			$.ajax({
+				url: form.attr('action'), // form action url
+				type: 'POST', // form submit method get/post
+				dataType: 'html', // request type html/json/xml
+				data: formdata ? formdata : form.serialize(), // serialize form data 
+				cache       : false,
+				contentType : false,
+				processData : false,
+				beforeSend: function() {
+					here.html(ing); // change submit button text
+				},
+				success: function(data) {					
+					here.fadeIn();
+					here.html(prv);
+					if(data == 'done'){
+						notify(logup_success,'success','bottom','right'); 
+						setTimeout(
+							function() {
+								location.replace("http://localhost/newsproud/home/login_set/login");
+							}, 2000
+						);
+						//sound('successful_logup');  		
+					}else if(data == 'done_and_sent'){
+						notify(logup_success+'<br>'+email_sent,'success','bottom','right');
+						setTimeout(
+							function() {
+								location.replace("http://localhost/newsproud/home/login_set/login");
+							}, 2000
+						);
+					}else if(data == 'done_but_not_sent'){
+						notify(email_fail,'warning','bottom','right');
+						notify(logup_success,'success','bottom','right');
+						setTimeout(
+							function() {
+								location.replace("http://localhost/newsproud/home/login_set/login");
+							}, 2000
+						);
+					} else {
+						//here.closest('.modal-content').find('#close_logup_modal').click();
+						notify('Signup failed'+'<br>'+data,'warning','bottom','right');
+						//sound('unsuccessful_logup');
+					}
+				},
+				error: function(e) {
+					console.log(e)
+				}
+			});
+		});
+			
+		$("body").on('click','.login_btn',function(){
+			var here = $(this); // alert div for show alert message
+			var text = here.html(); // alert div for show alert message
+			var form = here.closest('form');
+			var logging = here.data('ing');
+			//var form = $(this);
+			var formdata = false;
+			if (window.FormData){
+				formdata = new FormData(form[0]);
+			}
+			$.ajax({
+				url: form.attr('action'), // form action url
+				type: 'POST', // form submit method get/post
+				dataType: 'html', // request type html/json/xml
+				data: formdata ? formdata : form.serialize(), // serialize form data 
+				cache       : false,
+				contentType : false,
+				processData : false,
+				beforeSend: function() {
+					here.addClass('disabled');
+					here.html(logging); // change submit button text
+				},
+				success: function(data) {
+					here.fadeIn();
+					here.html(text);
+					here.removeClass('disabled');
+					if(data == 'done'){
+						$('.closeModal').click();
+						notify('Successful Login','success','bottom','right');
+						setTimeout(function(){reload_page()}, 2000);
+						//sound('successful_login');
+					} else if(data == 'failed'){
+						notify('Login Failed','warning','bottom','right');
+						//sound('unsuccessful_login');
+					} else {
+						notify(data,'warning','bottom','right');
+					}
+				},
+				error: function(e) {
+					console.log(e)
+				}
+			});
+		});
+		
+		$("body").on('click','.forget_btn',function(){
+			var here = $(this); // alert div for show alert message
+			var text = here.html(); // alert div for show alert message
+			var form = here.closest('form');
+			var submitting = here.data('ing');
+			//var form = $(this);
+			var formdata = false;
+			if (window.FormData){
+				formdata = new FormData(form[0]);
+			}
+			$.ajax({
+				url: form.attr('action'), // form action url
+				type: 'POST', // form submit method get/post
+				dataType: 'html', // request type html/json/xml
+				data: formdata ? formdata : form.serialize(), // serialize form data 
+				cache       : false,
+				contentType : false,
+				processData : false,
+				beforeSend: function() {
+					here.addClass('disabled');
+					here.html(submitting); // change submit button text
+				},
+				success: function(data) {
+					here.fadeIn();
+					here.html(text);
+					here.removeClass('disabled');
+					if(data == 'email_sent'){
+						notify(email_sent,'info','bottom','right');
+						$(".closeModal").click();
+					} else if(data == 'email_nay'){
+						$(".closeModal").click();
+						notify(email_noex,'info','bottom','right');
+					} else if(data == 'email_not_sent'){
+						$(".closeModal").click();
+						notify(email_fail,'info','bottom','right');
+					} else {
+						notify(data,'warning','bottom','right');
+					}
+				},
+				error: function(e) {
+					console.log(e)
+				}
+			});
+		});
+	});
+	function reload_page(){
+		var loc = location.href;
+		location.replace(loc);
+	}
+	function check_login_stat(thing){
+		return $.ajax({
+			url: 'http://localhost/newsproud/home/check_login/'+thing
+		});
+	}
+	function signin(carry){
+		$('#login_modal').data('ajax','http://localhost/newsproud/home/login_set/login/modal/'+carry);
+		$('#login_modal').click();
+	}
+	function image_modal(image_link){
+		image_link = image_link.split('http://localhost/newsproud/');
+		var path   = image_link[1];
+		path 	   = path.split('/');
+		var folder = path[1];
+		var name   = path[2];
+		$('#image_modal').data('ajax','http://localhost/newsproud/home/image_modal/'+folder+'/'+name);
+		$('#image_modal').click();
+	}
+	function preview_ad_modal(id){
+		$('#preview_ad_modal').data('ajax','http://localhost/newsproud/home/marketing/preview/'+id);
+		$('#preview_ad_modal').click();
+	}
+	function preview_remainings(id){
+		$('#preview_ad_modal').data('ajax','http://localhost/newsproud/home/preview_package_remainings/'+id+'/blog');
+		$('#preview_ad_modal').click();
+	}
+
+	function preview_image_remainings(id){
+		$('#preview_ad_modal').data('ajax','http://localhost/newsproud/home/preview_package_remainings/'+id+'/image');
+		$('#preview_ad_modal').click();
+	}
+
+	function preview_video_remainings(id){
+		$('#preview_ad_modal').data('ajax','http://localhost/newsproud/home/preview_package_remainings/'+id+'/video');
+		$('#preview_ad_modal').click();
+	}
+
+	function preview_package(id){
+		$('#preview_package_modal').data('ajax','http://localhost/newsproud/home/marketing/preview_package/'+id);
+		$('#preview_package_modal').click();
+	}
+	function be_blogger(){
+		$('#be_blogger_modal').data('ajax','http://localhost/newsproud/home/be_blogger');
+		$('#be_blogger_modal').click();
+	}
+	function package_details(id){
+		$('#purchased_packages_modal').data('ajax','http://localhost/newsproud/home/purchased_packages/'+id);
+		$('#purchased_packages_modal').click();
+	}
+	function notify(message,type,from,align){		
+		$.notify({
+			// options
+			message: message 
+		},{
+			// settings
+			type: type,
+			placement: {
+				from: from,
+				align: align
+			}
+		});
+	}
+	$("body").on('click','.news_post',function(){
+		var here = $(this); 
+		var form = here.closest('form');
+		var formdata = false;
+		if (window.FormData){
+			formdata = new FormData(form[0]);
+		}
+		$.ajax({
+			url: form.attr('action'), // form action url
+			type: 'POST', // form submit method get/post
+			dataType: 'html', // request type html/json/xml
+			data: formdata ? formdata : form.serialize(), // serialize form data 
+			cache       : false,
+			contentType : false,
+			processData : false,
+			success: function() {
+				get_news('list');
+			},
+			error: function(e) {
+				console.log(e)
+			}
+		});
+	});
+	$('body').on('click','.signup_btn',function(event){
+		event.preventDefault();
+		var now = $(this);
+		var btntxt = now.html();
+		var form = now.closest('form');  
+		var ing = now.data('ing');
+		var success = now.data('success');
+		var unsuccessful = now.data('unsuccessful');
+		var rld = now.data('reload');
+		var formdata = false;
+		if (window.FormData){
+			formdata = new FormData(form[0]);
+		}
+
+		$.ajax({
+			url: form.attr('action'), // form action url
+			type: 'POST', // form submit method get/post
+			dataType: 'html', // request type html/json/xml
+			data: formdata ? formdata : form.serialize(), // serialize form data 
+			cache       : false,
+			contentType : false,
+			processData : false,
+			beforeSend: function() {
+				now.html(ing);
+			},
+			success: function(data) {
+				if(data == 'done'){
+					notify(success,'success','bottom','right');
+					if(rld == 'ok'){
+						setTimeout(function(){reload_page()}, 2000);
+					} else if (rld == 'blog_list'){
+						get_blog_list();
+					}
+					$(".closeModal").click();
+				} else {
+					var text = '<div>'+unsuccessful+'</div>'+data;
+					notify(text,'warning','bottom','right');
+				}
+				now.html(btntxt);
+			},
+			error: function(e) {
+				console.log(e)
+			}
+		});
+	});
+		
+	function form_submit(form_id){
+		var form = $('#'+form_id);
+		var button = form.find('.submit_button');
+		var prv = button.html();
+		var ing = button.data('ing');
+		var success = button.data('success');
+		var unsuccessful = button.data('unsuccessful');
+		var redirect_click = button.data('redirectclick');
+		form.find('.summernotes').each(function() {
+			var now = $(this);
+			now.closest('div').find('.val').val(now.code());
+		});
+		
+		//var form = $(this);
+		var formdata = false;
+		if (window.FormData){
+			formdata = new FormData(form[0]);
+		}
+		
+	
+		$.ajax({
+			url: form.attr('action'), // form action url
+			type: 'POST', // form submit method get/post
+			dataType: 'html', // request type html/json/xml
+			data: formdata ? formdata : form.serialize(), // serialize form data 
+			cache       : false,
+			contentType : false,
+			processData : false,
+			beforeSend: function() {
+				button.html(ing); // change submit button text
+			},
+			success: function(data) {
+				var alls = data.split('#-#-#');
+				var part1 = alls[0];
+				var part2 = alls[1];
+				if(part1 == 'success'){
+					notify(success,'success','bottom','right');
+					if(part2 == ''){
+						$(redirect_click).click();
+					} else {
+						location.replace(part2);
+					}
+					form.find('input').val('');
+					form.find('textarea').val('');
+					form.find('textarea').html('');
+				} else {
+					var text = '<div>'+unsuccessful+'</div>'+part2;
+					notify(text,'warning','bottom','right');
+				}
+				button.html(prv);
+				
+			},
+			error: function(e) {
+				console.log(e)
+			}
+		});		
+	}
+	
+	function to_readlater(id,e){	
+		e = e || window.event;
+		e = e.target || e.srcElement;
+		var state 		= check_login_stat('state');
+		var news 		= id;
+		var button 		= $(e);
+		var alread 		= button.html();
+		if(button.is("i")){
+			var alread_classes = button.attr('class');	
+		}		
+		if(button.is("i")){
+			button.attr('class','fa fa-spinner fa-spin fa-fw');	
+		} else {
+			button.find('i').attr('class','fa fa-spinner fa-spin fa-fw');	
+		}	
+		state.success(function (data) {
+			if(data == 'hypass'){
+				$.ajax({
+					url: base_url+'home/readlater/add/'+news,
+					beforeSend: function() {
+						if(button.is("i")){
+							button.attr('class','fa fa-spinner fa-spin fa-fw');	
+						} else {
+							button.find('i').attr('class','fa fa-spinner fa-spin fa-fw');	
+						}	
+					},
+					success: function(data) {
+						if(data == 'added'){
+							notify(readlater_added,'info','bottom','right');
+						}else if(data == 'already') {
+							notify(readlater_already,'warning','bottom','right');
+						}
+						if(button.is("i")){
+							button.attr('class',alread_classes);	
+						} else {
+							button.html(alread);	
+						}
+					},
+					error: function(e) {
+						console.log(e)
+					}
+				});
+			} else {
+				if(button.is("i")){
+					button.attr('class',alread_classes);	
+				} else {
+					button.html(alread);	
+				}
+				signin('quick');
+			}
+		});
+	}
+	function set_modal(){
+		$("#popup-1").activeModals({
+			// Functionality
+			popupType: "delayed",
+			delayTime: 1000,
+			exitTopDistance: 40,
+			scrollTopDistance: 400,
+			setCookie: false,
+			cookieDays: 0,
+			cookieTriggerClass: "setCookie-1",
+			cookieName: "activeModal-1",
+	
+			// Overlay options
+			overlayBg: true,
+			overlayBgColor: "rgba(255, 255, 255, 0.721569)",
+			overlayTransition: "ease",
+			overlayTransitionSpeed: "0.4",
+	
+			// Background effects
+			bgEffect: "scaled",
+			blurBgRadius: "2px",
+			scaleBgValue: "1",
+	
+			// Window options
+			windowWidth: "530px",
+			windowHeight: "580px",
+			windowLocation: "center",
+			windowTransition: "fadeIn",
+			windowTransitionSpeed: "0.4",
+			windowTransitionEffect: "fadeIn",
+			windowShadowOffsetX: "0",
+			windowShadowOffsetY: "0",
+			windowShadowBlurRadius: "20px",
+			windowShadowSpreadRadius: "0",
+			windowShadowColor: "none",
+			windowBackground: "none",
+			windowRadius: "0px",
+			windowMargin: "10px",
+			windowPadding: "10px",
+	
+			// Close and reopen button
+			closeButton: "icon",
+			reopenClass: "openactiveModal-6",
+		});
+		
+		$("#popup-2").activeModals({
+			// Functionality
+			popupType: "delayed",
+			delayTime: 1000,
+			exitTopDistance: 40,
+			scrollTopDistance: 0,
+			setCookie: false,
+			cookieDays: 0,
+			cookieTriggerClass: "setCookie-1",
+			cookieName: "activeModal-1",
+	
+			// Overlay options
+			overlayBg: false,
+			overlayBgColor: "rgba(255, 255, 255, 0.72)",
+			overlayTransition: "ease",
+			overlayTransitionSpeed: "0.4",
+	
+			// Background effects
+			bgEffect: "scaled",
+			blurBgRadius: "2px",
+			scaleBgValue: "1",
+	
+			// Window options
+			windowWidth: "auto",
+			windowHeight: "auto",
+			windowLocation: "center",
+			windowTransition: "ease",
+			windowTransitionSpeed: "0.4",
+			windowTransitionEffect: "fadeIn",
+			windowShadowOffsetX: "0",
+			windowShadowOffsetY: "0",
+			windowShadowBlurRadius: "20px",
+			windowShadowSpreadRadius: "0",
+			windowShadowColor: "rgba(0,0,0,.8)",
+			windowBackground: "rgba(0, 0, 0, 0.8)",
+			windowRadius: "0px",
+			windowMargin: "10px",
+			windowPadding: "30px",
+	
+			// Close and reopen button
+			closeButton: "icon no2",
+			reopenClass: "openactiveModal-7",
+		});
+		$("#popup-3").activeModals({
+			// Functionality
+			popupType: "delayed",
+			delayTime: 1000,
+			exitTopDistance: 40,
+			scrollTopDistance: 400,
+			setCookie: false,
+			cookieDays: 0,
+			cookieTriggerClass: "setCookie-1",
+			cookieName: "activeModal-1",
+	
+			// Overlay options
+			overlayBg: true,
+			overlayBgColor: "rgba(255, 255, 255, 0.721569)",
+			overlayTransition: "ease",
+			overlayTransitionSpeed: "0.4",
+	
+			// Background effects
+			bgEffect: "scaled",
+			blurBgRadius: "2px",
+			scaleBgValue: "1",
+	
+			// Window options
+			windowWidth: "530px",
+			windowHeight: "580px",
+			windowLocation: "center",
+			windowTransition: "fadeIn",
+			windowTransitionSpeed: "0.4",
+			windowTransitionEffect: "fadeIn",
+			windowShadowOffsetX: "0",
+			windowShadowOffsetY: "0",
+			windowShadowBlurRadius: "20px",
+			windowShadowSpreadRadius: "0",
+			windowShadowColor: "none",
+			windowBackground: "none",
+			windowRadius: "0px",
+			windowMargin: "10px",
+			windowPadding: "10px",
+	
+			// Close and reopen button
+			closeButton: "icon no3",
+			reopenClass: "openactiveModal-8",
+		});
+		$("#popup-4").activeModals({
+			// Functionality
+			popupType: "delayed",
+			delayTime: 1000,
+			exitTopDistance: 40,
+			scrollTopDistance: 400,
+			setCookie: false,
+			cookieDays: 0,
+			cookieTriggerClass: "setCookie-1",
+			cookieName: "activeModal-1",
+	
+			// Overlay options
+			overlayBg: true,
+			overlayBgColor: "rgba(255, 255, 255, 0.721569)",
+			overlayTransition: "ease",
+			overlayTransitionSpeed: "0.4",
+	
+			// Background effects
+			bgEffect: "scaled",
+			blurBgRadius: "2px",
+			scaleBgValue: "1",
+	
+			// Window options
+			windowWidth: "80%",
+			windowHeight: "580px",
+			windowLocation: "center",
+			windowTransition: "fadeIn",
+			windowTransitionSpeed: "0.4",
+			windowTransitionEffect: "fadeIn",
+			windowShadowOffsetX: "0",
+			windowShadowOffsetY: "0",
+			windowShadowBlurRadius: "20px",
+			windowShadowSpreadRadius: "0",
+			windowShadowColor: "none",
+			windowBackground: "none",
+			windowRadius: "0px",
+			windowMargin: "10px auto",
+			windowPadding: "10px",
+	
+			// Close and reopen button
+			closeButton: "icon no3",
+			reopenClass: "openactiveModal-9",
+		});
+		$("#popup-5").activeModals({
+			// Functionality
+			popupType: "delayed",
+			delayTime: 1000,
+			exitTopDistance: 40,
+			scrollTopDistance: 400,
+			setCookie: false,
+			cookieDays: 0,
+			cookieTriggerClass: "setCookie-1",
+			cookieName: "activeModal-1",
+	
+			// Overlay options
+			overlayBg: true,
+			overlayBgColor: "rgba(255, 255, 255, 0.721569)",
+			overlayTransition: "ease",
+			overlayTransitionSpeed: "0.4",
+	
+			// Background effects
+			bgEffect: "scaled",
+			blurBgRadius: "2px",
+			scaleBgValue: "1",
+	
+			// Window options
+			windowWidth: "530px",
+			windowHeight: "580px",
+			windowLocation: "center",
+			windowTransition: "fadeIn",
+			windowTransitionSpeed: "0.4",
+			windowTransitionEffect: "fadeIn",
+			windowShadowOffsetX: "0",
+			windowShadowOffsetY: "0",
+			windowShadowBlurRadius: "20px",
+			windowShadowSpreadRadius: "0",
+			windowShadowColor: "none",
+			windowBackground: "none",
+			windowRadius: "0px",
+			windowMargin: "10px",
+			windowPadding: "10px",
+	
+			// Close and reopen button
+			closeButton: "icon no3",
+			reopenClass: "openactiveModal-10",
+		});
+		$("#popup-6").activeModals({
+			// Functionality
+			popupType: "delayed",
+			delayTime: 1000,
+			exitTopDistance: 40,
+			scrollTopDistance: 400,
+			setCookie: false,
+			cookieDays: 0,
+			cookieTriggerClass: "setCookie-1",
+			cookieName: "activeModal-1",
+	
+			// Overlay options
+			overlayBg: true,
+			overlayBgColor: "rgba(255, 255, 255, 0.721569)",
+			overlayTransition: "ease",
+			overlayTransitionSpeed: "0.4",
+	
+			// Background effects
+			bgEffect: "scaled",
+			blurBgRadius: "2px",
+			scaleBgValue: "1",
+	
+			// Window options
+			windowWidth: "530px",
+			windowHeight: "580px",
+			windowLocation: "center",
+			windowTransition: "fadeIn",
+			windowTransitionSpeed: "0.4",
+			windowTransitionEffect: "fadeIn",
+			windowShadowOffsetX: "0",
+			windowShadowOffsetY: "0",
+			windowShadowBlurRadius: "20px",
+			windowShadowSpreadRadius: "0",
+			windowShadowColor: "none",
+			windowBackground: "none",
+			windowRadius: "0px",
+			windowMargin: "10px",
+			windowPadding: "10px",
+	
+			// Close and reopen button
+			closeButton: "icon no3",
+			reopenClass: "openactiveModal-11",
+		});
+	}
+	$(document).ready(function () {
+		set_modal();	
+		$('.window_set').on('click','.author_contact_submitter',function(event){
+			event.preventDefault();
+			var now = $(this);
+			var btntxt = now.html();
+			var form = now.closest('form');  
+			var success = now.data('success');
+			var unsuccessful = now.data('unsuccessful');
+			var formdata = false;
+			if (window.FormData){
+				formdata = new FormData(form[0]);
+			}
+	
+			$.ajax({
+				url: form.attr('action'), // form action url
+				type: 'POST', // form submit method get/post
+				dataType: 'html', // request type html/json/xml
+				data: formdata ? formdata : form.serialize(), // serialize form data 
+				cache       : false,
+				contentType : false,
+				processData : false,
+				beforeSend: function() {
+					now.html('<span>submitting...</span>');
+				},
+				success: function(data) {
+					if(data == 'success'){
+						notify(success,'success','bottom','right');
+						$(".closeModal").click();
+					} else {
+						var text = '<div>'+unsuccessful+'</div>'+data;
+						notify(text,'warning','bottom','right');
+					}
+					now.html(btntxt);
+				},
+				error: function(e) {
+					console.log(e)
+				}
+			});
+		});
+	});
+
+	
+	function load_iamges(){
+		$('body').find('.image_delay').each(function(){
+			var src = $(this).data('src');
+			if($(this).is('img')){
+				$(this).attr('src',src);			
+			} else {
+				$(this).css('background-image',"url('"+src+"')");			
+			}
+		});	
+	}
+	
+</script>
+        <script>
+	var base_url = 'http://localhost/newsproud/';
+</script>
+<script>
+$(document).ready(function(e) {
+    $('#tabs a').click(function (e) {
+	  e.preventDefault()
+	  $(this).tab('show')
+	})
+});
+</script>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+</script>
+<!-- JS Global -->
+<script src="http://localhost/newsproud/template/front/assets/js/bootstrap-notify.min.js"></script>
+<script src="http://localhost/newsproud/template/front/assets/js/ajax_method.js"></script>
+<script src="http://localhost/newsproud/template/front/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="http://localhost/newsproud/template/front/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="http://localhost/newsproud/template/front/assets/plugins/bootstrap-select/js/bootstrap-select.min.js"></script>
+<script src="http://localhost/newsproud/template/front/assets/plugins/superfish/js/superfish.min.js"></script>
+<script src="http://localhost/newsproud/template/front/assets/plugins/jquery.sticky.min.js"></script>
+<script src="http://localhost/newsproud/template/front/assets/plugins/jquery.smoothscroll.min.js"></script>
+<script src="http://localhost/newsproud/template/front/assets/plugins/smooth-scrollbar.min.js"></script>
+<script src="http://localhost/newsproud/template/front/assets/plugins/jquery.sticky.min.js"></script>
+<script src="http://localhost/newsproud/template/front/assets/plugins/jquery.easing.min.js"></script>
+<script src="http://localhost/newsproud/template/front/assets/modal/js/jquery.active-modals.js"></script>
+
+<!-- JS Page Level -->
+<script src="http://localhost/newsproud/template/front/assets/js/theme.js"></script>
+
+<script src="http://localhost/newsproud/template/front/assets/plugins/owl-carousel2/owl.carousel.min.js"></script>
+<script src="http://localhost/newsproud/template/front/assets/plugins/countdown/jquery.plugin.min.js"></script>
+<script src="http://localhost/newsproud/template/front/assets/plugins/countdown/jquery.countdown.min.js"></script>
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="http://localhost/newsproud/template/front/assets/plugins/jquery.cookie.js"></script>
+<script src="http://localhost/newsproud/template/front/assets/js/theme-config.js"></script>
+<!--<![endif]-->
+    </body>
+</html>
